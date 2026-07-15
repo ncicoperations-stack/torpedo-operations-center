@@ -4,211 +4,38 @@ TORPEDO v2.0.0
 National Cyber Intelligence Center
 Operations Center
 
-File: dashboard.css
-Purpose: Dashboard View Styling
+File:
+dashboard.css
+
+Purpose:
+Dashboard
+Statistics
+Widgets
+Analytics
+Operations Panels
+
 ==============================================================
 */
 
 
 /* ==========================================================
-   DASHBOARD CONTAINER
+   PAGE
 ========================================================== */
 
-.dashboard {
-
-    width: 100%;
-
-}
-
-
-
-/* ==========================================================
-   HEADER
-========================================================== */
-
-.dashboard-header {
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    gap: var(--space-4);
-
-    margin-bottom: var(--space-6);
-
-}
-
-
-
-.dashboard-header h1 {
-
-    font-size: var(--font-size-2xl);
-
-    font-weight: var(--weight-bold);
-
-}
-
-
-
-.dashboard-header p {
-
-    margin-top: var(--space-2);
-
-    color: var(--text-secondary);
-
-    font-size: var(--font-size-sm);
-
-}
-
-
-
-.dashboard-actions {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: var(--space-3);
-
-}
-
-
-
-/* ==========================================================
-   STAT CARDS
-========================================================== */
-
-.stats-grid {
-
-    display: grid;
-
-    grid-template-columns:
-
-        repeat(4, minmax(0, 1fr));
-
-    gap:
-
-        var(--space-4);
-
-    margin-bottom:
-
-        var(--space-6);
-
-}
-
-
-
-.stat-card {
-
-    display: flex;
-
-    align-items: center;
-
-    gap: var(--space-4);
-
-    padding: var(--space-5);
-
-    background: var(--color-panel);
-
-    border:
-
-        var(--border-width)
-
-        var(--border-style)
-
-        var(--color-border);
-
-    border-radius: var(--radius-lg);
-
-    box-shadow: var(--shadow-md);
-
-}
-
-
-
-.stat-icon {
-
-    width: 54px;
-
-    height: 54px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: var(--radius-lg);
-
-    color: white;
-
-    font-size: 1.3rem;
-
-}
-
-
-
-.stat-icon.blue {
-
-    background: var(--color-primary);
-
-}
-
-
-
-.stat-icon.orange {
-
-    background: var(--color-warning);
-
-}
-
-
-
-.stat-icon.green {
-
-    background: var(--color-success);
-
-}
-
-
-
-.stat-icon.red {
-
-    background: var(--color-danger);
-
-}
-
-
-
-.stat-content {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-
-.stat-content span {
-
-    color: var(--text-secondary);
-
-    font-size: var(--font-size-sm);
-
-}
-
-
-
-.stat-content strong {
-
-    margin-top: var(--space-1);
-
-    font-size: var(--font-size-2xl);
-
-    font-weight: var(--weight-bold);
+.dashboard,
+.analytics-page,
+.intelligence-page,
+.cases-page,
+.evidence-page,
+.investigators-page,
+.admin-page,
+.settings-page{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:24px;
 
 }
 
@@ -218,280 +45,492 @@ Purpose: Dashboard View Styling
    DASHBOARD GRID
 ========================================================== */
 
-.dashboard-grid {
+.dashboard-grid{
 
-    display: grid;
+    display:grid;
 
-    grid-template-columns:
+    grid-template-columns:2fr 1fr;
 
-        repeat(2, minmax(0, 1fr));
+    gap:24px;
 
-    gap: var(--space-5);
-
-}
-
-
-
-.dashboard-grid .large {
-
-    grid-column:
-
-        span 2;
+    align-items:start;
 
 }
 
 
 
 /* ==========================================================
-   PANEL CONTENT
+   STATS GRID
 ========================================================== */
 
-.panel {
+.stats-grid{
 
-    overflow: hidden;
+    display:grid;
 
-}
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
 
-
-
-.panel-link {
-
-    background: transparent;
-
-    color: var(--color-primary);
-
-    font-size: var(--font-size-sm);
-
-}
-
-
-
-.panel-link:hover {
-
-    text-decoration: underline;
+    gap:20px;
 
 }
 
 
 
 /* ==========================================================
-   TABLE
+   STAT CARD
 ========================================================== */
 
-.dashboard-table th {
+.stat-card{
 
-    background:
+    position:relative;
 
-        rgba(255,255,255,0.02);
+    overflow:hidden;
 
-}
-
-
-
-.dashboard-table tbody tr {
-
-    transition:
-
-        background var(--transition-fast);
+    transition:var(--transition);
 
 }
 
+.stat-card::before{
 
+    content:"";
 
-.dashboard-table tbody tr:hover {
+    position:absolute;
 
-    background:
+    left:0;
 
-        rgba(255,255,255,0.03);
+    top:0;
+
+    width:5px;
+
+    height:100%;
+
+    background:var(--accent);
+
+}
+
+.stat-card:hover{
+
+    transform:translateY(-4px);
+
+}
+
+.stat-card strong{
+
+    display:block;
+
+    margin-top:6px;
+
+}
+
+.stat-card small{
+
+    color:var(--text-light);
 
 }
 
 
 
 /* ==========================================================
-   ACTIVITY FEED
+   PANEL
 ========================================================== */
 
-.activity-feed {
+.panel{
 
-    min-height: 200px;
+    display:flex;
 
-    padding: var(--space-4);
-
-}
-
-
-
-.activity-item {
-
-    display: flex;
-
-    align-items: flex-start;
-
-    gap: var(--space-3);
-
-    padding-bottom: var(--space-4);
+    flex-direction:column;
 
 }
 
+.panel-body{
 
-
-.activity-icon {
-
-    width: 34px;
-
-    height: 34px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: var(--color-primary);
-
-    color: white;
-
-}
-
-
-
-.activity-content {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-
-.activity-content strong {
-
-    font-size: var(--font-size-sm);
-
-}
-
-
-
-.activity-content span {
-
-    color: var(--text-secondary);
-
-    font-size: var(--font-size-xs);
+    flex:1;
 
 }
 
 
 
 /* ==========================================================
-   INTELLIGENCE ALERTS
+   QUICK ACTIONS
 ========================================================== */
 
-.alert-item {
+.quick-actions{
 
-    display: flex;
-
-    align-items: center;
-
-    justify-content: space-between;
-
-    padding: var(--space-4);
-
-    border-bottom:
-
-        var(--border-width)
-
-        var(--border-style)
-
-        var(--color-border);
+    margin-top:8px;
 
 }
 
+.action-grid{
 
+    display:grid;
 
-.alert-item:last-child {
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
 
-    border-bottom: none;
+    gap:18px;
 
-}
-
-
-
-.alert-critical {
-
-    border-left:
-
-        4px solid
-
-        var(--color-danger);
+    padding:20px;
 
 }
 
+.action-grid button{
 
+    display:flex;
 
-.alert-warning {
+    flex-direction:column;
 
-    border-left:
+    justify-content:center;
 
-        4px solid
+    align-items:center;
 
-        var(--color-warning);
+    gap:14px;
+
+    min-height:140px;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-lg);
+
+    background:var(--panel);
+
+    transition:var(--transition);
+
+    font-weight:600;
+
+    color:var(--primary);
+
+}
+
+.action-grid button:hover{
+
+    background:var(--primary);
+
+    color:var(--text-white);
+
+    border-color:var(--primary);
+
+    transform:translateY(-4px);
+
+    box-shadow:var(--shadow-lg);
+
+}
+
+.action-grid i{
+
+    font-size:2rem;
 
 }
 
 
 
 /* ==========================================================
-   SYSTEM HEALTH
+   THREAT OVERVIEW
 ========================================================== */
 
-.health-list {
+.threat-item{
 
-    padding: var(--space-4);
+    display:flex;
 
-    display: flex;
+    justify-content:space-between;
 
-    flex-direction: column;
+    align-items:center;
 
-    gap: var(--space-3);
+    padding:16px 20px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.threat-item:last-child{
+
+    border-bottom:none;
+
+}
+
+.threat-item strong{
+
+    color:var(--success);
 
 }
 
 
 
-.health-item {
+/* ==========================================================
+   CHARTS
+========================================================== */
 
-    display: flex;
+canvas{
 
-    align-items: center;
+    width:100%;
 
-    justify-content: space-between;
+    max-width:100%;
 
-    padding: var(--space-3);
-
-    background: var(--color-panel-light);
-
-    border-radius: var(--radius-md);
+    height:var(--chart-height);
 
 }
 
 
 
-.health-item span {
+/* ==========================================================
+   SETTINGS CARDS
+========================================================== */
 
-    color: var(--text-secondary);
+.settings-grid{
 
-    font-size: var(--font-size-sm);
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+
+    gap:20px;
+
+}
+
+.setting-card{
+
+    transition:var(--transition);
+
+}
+
+.setting-card:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:var(--shadow-md);
 
 }
 
 
 
-.health-item strong {
+/* ==========================================================
+   MODULE LIST
+========================================================== */
 
-    font-size: var(--font-size-sm);
+.module-list{
+
+    border:1px solid var(--border);
+
+    border-radius:var(--radius-md);
+
+    overflow:hidden;
+
+}
+
+.module-list div{
+
+    background:var(--panel);
+
+    transition:var(--transition);
+
+}
+
+.module-list div:nth-child(even){
+
+    background:var(--panel-alt);
+
+}
+
+.module-list div:hover{
+
+    background:var(--bg-secondary);
+
+}
+
+
+
+/* ==========================================================
+   DASHBOARD STATUS
+========================================================== */
+
+.dashboard-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 18px;
+
+    border-radius:var(--radius-round);
+
+    background:#ECFDF5;
+
+    color:var(--success);
+
+    border:1px solid rgba(39,174,96,.25);
+
+    font-weight:600;
+
+}
+
+
+
+/* ==========================================================
+   ANALYTICS
+========================================================== */
+
+.analytics-page canvas{
+
+    background:var(--panel);
+
+    border-radius:var(--radius-md);
+
+}
+
+
+
+/* ==========================================================
+   TABLE CONTAINER
+========================================================== */
+
+.table-container{
+
+    width:100%;
+
+    overflow-x:auto;
+
+}
+
+
+
+/* ==========================================================
+   EMPTY STATE
+========================================================== */
+
+.empty-state{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+    align-items:center;
+
+    padding:60px;
+
+    color:var(--text-light);
+
+    text-align:center;
+
+}
+
+.empty-state i{
+
+    font-size:3rem;
+
+    margin-bottom:18px;
+
+    color:var(--border-dark);
+
+}
+
+
+
+/* ==========================================================
+   LOADING CARD
+========================================================== */
+
+.loading-card{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    min-height:200px;
+
+    color:var(--text-light);
+
+}
+
+
+
+/* ==========================================================
+   BADGES
+========================================================== */
+
+.badge{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    min-width:90px;
+
+    padding:6px 12px;
+
+    border-radius:999px;
+
+    font-size:.8rem;
+
+    font-weight:600;
+
+}
+
+.badge-success{
+
+    background:#ECFDF5;
+
+    color:var(--success);
+
+}
+
+.badge-warning{
+
+    background:#FFF7E6;
+
+    color:var(--warning);
+
+}
+
+.badge-danger{
+
+    background:#FDECEC;
+
+    color:var(--danger);
+
+}
+
+.badge-info{
+
+    background:#EEF6FD;
+
+    color:var(--info);
+
+}
+
+
+
+/* ==========================================================
+   PANEL ANIMATION
+========================================================== */
+
+.panel,
+.stat-card,
+.action-grid button{
+
+    animation:fadeUp .35s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(16px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
 
 }
