@@ -1,0 +1,497 @@
+/*
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: dashboard.css
+Purpose: Dashboard View Styling
+==============================================================
+*/
+
+
+/* ==========================================================
+   DASHBOARD CONTAINER
+========================================================== */
+
+.dashboard {
+
+    width: 100%;
+
+}
+
+
+
+/* ==========================================================
+   HEADER
+========================================================== */
+
+.dashboard-header {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: var(--space-4);
+
+    margin-bottom: var(--space-6);
+
+}
+
+
+
+.dashboard-header h1 {
+
+    font-size: var(--font-size-2xl);
+
+    font-weight: var(--weight-bold);
+
+}
+
+
+
+.dashboard-header p {
+
+    margin-top: var(--space-2);
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.dashboard-actions {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+
+}
+
+
+
+/* ==========================================================
+   STAT CARDS
+========================================================== */
+
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(4, minmax(0, 1fr));
+
+    gap:
+
+        var(--space-4);
+
+    margin-bottom:
+
+        var(--space-6);
+
+}
+
+
+
+.stat-card {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-4);
+
+    padding: var(--space-5);
+
+    background: var(--color-panel);
+
+    border:
+
+        var(--border-width)
+
+        var(--border-style)
+
+        var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-md);
+
+}
+
+
+
+.stat-icon {
+
+    width: 54px;
+
+    height: 54px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: var(--radius-lg);
+
+    color: white;
+
+    font-size: 1.3rem;
+
+}
+
+
+
+.stat-icon.blue {
+
+    background: var(--color-primary);
+
+}
+
+
+
+.stat-icon.orange {
+
+    background: var(--color-warning);
+
+}
+
+
+
+.stat-icon.green {
+
+    background: var(--color-success);
+
+}
+
+
+
+.stat-icon.red {
+
+    background: var(--color-danger);
+
+}
+
+
+
+.stat-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+
+.stat-content span {
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.stat-content strong {
+
+    margin-top: var(--space-1);
+
+    font-size: var(--font-size-2xl);
+
+    font-weight: var(--weight-bold);
+
+}
+
+
+
+/* ==========================================================
+   DASHBOARD GRID
+========================================================== */
+
+.dashboard-grid {
+
+    display: grid;
+
+    grid-template-columns:
+
+        repeat(2, minmax(0, 1fr));
+
+    gap: var(--space-5);
+
+}
+
+
+
+.dashboard-grid .large {
+
+    grid-column:
+
+        span 2;
+
+}
+
+
+
+/* ==========================================================
+   PANEL CONTENT
+========================================================== */
+
+.panel {
+
+    overflow: hidden;
+
+}
+
+
+
+.panel-link {
+
+    background: transparent;
+
+    color: var(--color-primary);
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.panel-link:hover {
+
+    text-decoration: underline;
+
+}
+
+
+
+/* ==========================================================
+   TABLE
+========================================================== */
+
+.dashboard-table th {
+
+    background:
+
+        rgba(255,255,255,0.02);
+
+}
+
+
+
+.dashboard-table tbody tr {
+
+    transition:
+
+        background var(--transition-fast);
+
+}
+
+
+
+.dashboard-table tbody tr:hover {
+
+    background:
+
+        rgba(255,255,255,0.03);
+
+}
+
+
+
+/* ==========================================================
+   ACTIVITY FEED
+========================================================== */
+
+.activity-feed {
+
+    min-height: 200px;
+
+    padding: var(--space-4);
+
+}
+
+
+
+.activity-item {
+
+    display: flex;
+
+    align-items: flex-start;
+
+    gap: var(--space-3);
+
+    padding-bottom: var(--space-4);
+
+}
+
+
+
+.activity-icon {
+
+    width: 34px;
+
+    height: 34px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--color-primary);
+
+    color: white;
+
+}
+
+
+
+.activity-content {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+
+.activity-content strong {
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.activity-content span {
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-size-xs);
+
+}
+
+
+
+/* ==========================================================
+   INTELLIGENCE ALERTS
+========================================================== */
+
+.alert-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: var(--space-4);
+
+    border-bottom:
+
+        var(--border-width)
+
+        var(--border-style)
+
+        var(--color-border);
+
+}
+
+
+
+.alert-item:last-child {
+
+    border-bottom: none;
+
+}
+
+
+
+.alert-critical {
+
+    border-left:
+
+        4px solid
+
+        var(--color-danger);
+
+}
+
+
+
+.alert-warning {
+
+    border-left:
+
+        4px solid
+
+        var(--color-warning);
+
+}
+
+
+
+/* ==========================================================
+   SYSTEM HEALTH
+========================================================== */
+
+.health-list {
+
+    padding: var(--space-4);
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: var(--space-3);
+
+}
+
+
+
+.health-item {
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    padding: var(--space-3);
+
+    background: var(--color-panel-light);
+
+    border-radius: var(--radius-md);
+
+}
+
+
+
+.health-item span {
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.health-item strong {
+
+    font-size: var(--font-size-sm);
+
+}
