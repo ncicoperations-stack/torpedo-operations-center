@@ -1,0 +1,567 @@
+/*
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: topbar.css
+Purpose: Top Navigation Styling
+==============================================================
+*/
+
+
+/* ==========================================================
+   TOPBAR CONTAINER
+========================================================== */
+
+.topbar {
+
+    height: var(--topbar-height);
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: var(--space-4);
+
+    padding:
+
+        0
+
+        var(--space-6);
+
+    background: var(--color-sidebar);
+
+    border-bottom:
+
+        var(--border-width)
+
+        var(--border-style)
+
+        var(--color-border);
+
+    flex-shrink: 0;
+
+}
+
+
+
+/* ==========================================================
+   LEFT SECTION
+========================================================== */
+
+.topbar-left {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-4);
+
+    min-width: 260px;
+
+}
+
+
+
+.topbar-button {
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: var(--radius-md);
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    font-size: 1.1rem;
+
+    transition:
+
+        background var(--transition-fast),
+
+        color var(--transition-fast);
+
+}
+
+
+
+.topbar-button:hover {
+
+    background: var(--color-panel);
+
+    color: var(--text-primary);
+
+}
+
+
+
+.page-title {
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+
+.page-title h1 {
+
+    font-size: var(--font-size-lg);
+
+    font-weight: var(--weight-semibold);
+
+    color: var(--text-primary);
+
+}
+
+
+
+.page-title span {
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-size-xs);
+
+}
+
+
+
+/* ==========================================================
+   SEARCH
+========================================================== */
+
+.topbar-search {
+
+    flex: 1;
+
+    display: flex;
+
+    justify-content: center;
+
+}
+
+
+
+.search-box {
+
+    width: 100%;
+
+    max-width: 520px;
+
+    height: 42px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+
+    padding:
+
+        0
+
+        var(--space-4);
+
+    background: var(--color-panel);
+
+    border:
+
+        var(--border-width)
+
+        var(--border-style)
+
+        var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+}
+
+
+
+.search-box i {
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.search-box input {
+
+    width: 100%;
+
+    background: transparent;
+
+    border: none;
+
+    outline: none;
+
+    color: var(--text-primary);
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.search-box input::placeholder {
+
+    color: var(--text-muted);
+
+}
+
+
+
+/* ==========================================================
+   RIGHT SECTION
+========================================================== */
+
+.topbar-right {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-4);
+
+}
+
+
+
+/* ==========================================================
+   CONNECTION STATUS
+========================================================== */
+
+.connection-status {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-2);
+
+    font-size: var(--font-size-sm);
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.status-dot {
+
+    width: 9px;
+
+    height: 9px;
+
+    border-radius: 50%;
+
+    background: var(--color-danger);
+
+}
+
+
+
+.status-dot.online {
+
+    background: var(--color-success);
+
+}
+
+
+
+/* ==========================================================
+   CLOCK
+========================================================== */
+
+.system-clock {
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: flex-end;
+
+}
+
+
+
+.system-clock strong {
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.system-clock small {
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-size-xs);
+
+}
+
+
+
+/* ==========================================================
+   ICON BUTTONS
+========================================================== */
+
+.topbar-icon {
+
+    position: relative;
+
+    width: 40px;
+
+    height: 40px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: var(--radius-md);
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+}
+
+
+
+.topbar-icon:hover {
+
+    background: var(--color-panel);
+
+    color: var(--text-primary);
+
+}
+
+
+
+.notification-badge {
+
+    position: absolute;
+
+    top: 2px;
+
+    right: 2px;
+
+    min-width: 16px;
+
+    height: 16px;
+
+    padding: 0 4px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 20px;
+
+    background: var(--color-danger);
+
+    color: white;
+
+    font-size: 10px;
+
+    font-weight: var(--weight-bold);
+
+}
+
+
+
+/* ==========================================================
+   USER MENU
+========================================================== */
+
+.user-menu {
+
+    position: relative;
+
+}
+
+
+
+.user-button {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+
+    background: transparent;
+
+    color: var(--text-primary);
+
+}
+
+
+
+.user-avatar-small {
+
+    width: 38px;
+
+    height: 38px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: var(--color-primary);
+
+    color: white;
+
+}
+
+
+
+.user-details {
+
+    display: flex;
+
+    flex-direction: column;
+
+    text-align: left;
+
+}
+
+
+
+.user-details strong {
+
+    font-size: var(--font-size-sm);
+
+}
+
+
+
+.user-details small {
+
+    color: var(--text-secondary);
+
+    font-size: var(--font-size-xs);
+
+}
+
+
+
+/* ==========================================================
+   DROPDOWN
+========================================================== */
+
+.user-dropdown {
+
+    position: absolute;
+
+    top: calc(100% + 10px);
+
+    right: 0;
+
+    width: 220px;
+
+    padding: var(--space-3);
+
+    background: var(--color-panel);
+
+    border:
+
+        var(--border-width)
+
+        var(--border-style)
+
+        var(--color-border);
+
+    border-radius: var(--radius-lg);
+
+    box-shadow: var(--shadow-lg);
+
+    display: none;
+
+    z-index: var(--z-topbar);
+
+}
+
+
+
+.user-dropdown.active {
+
+    display: block;
+
+}
+
+
+
+.user-dropdown a,
+
+.user-dropdown button {
+
+    width: 100%;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: var(--space-3);
+
+    padding: var(--space-3);
+
+    background: transparent;
+
+    color: var(--text-secondary);
+
+    border-radius: var(--radius-md);
+
+}
+
+
+
+.user-dropdown a:hover,
+
+.user-dropdown button:hover {
+
+    background: var(--color-panel-light);
+
+    color: var(--text-primary);
+
+}
+
+
+
+.user-dropdown hr {
+
+    border: 0;
+
+    border-top:
+
+        var(--border-width)
+
+        var(--border-style)
+
+        var(--color-border);
+
+    margin: var(--space-2) 0;
+
+}
