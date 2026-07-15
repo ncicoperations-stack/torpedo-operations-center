@@ -1,8 +1,66 @@
-@import url("variables.css");
-@import url("main.css");
-@import url("sidebar.css");
-@import url("topbar.css");
-@import url("dashboard.css");
-@import url("tables.css");
-@import url("forms.css");
-@import url("responsive.css");
+/*
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File:
+app.css
+
+Purpose:
+Master Stylesheet
+
+Load Order
+
+1. Variables
+2. Main
+3. Sidebar
+4. Topbar
+5. Dashboard
+6. Tables
+7. Forms
+8. Responsive
+
+==============================================================
+*/
+
+
+/* ==========================================================
+   DESIGN SYSTEM
+========================================================== */
+
+@import url("./variables.css");
+
+
+/* ==========================================================
+   GLOBAL FOUNDATION
+========================================================== */
+
+@import url("./main.css");
+
+
+/* ==========================================================
+   LAYOUT COMPONENTS
+========================================================== */
+
+@import url("./sidebar.css");
+
+@import url("./topbar.css");
+
+
+/* ==========================================================
+   APPLICATION VIEWS
+========================================================== */
+
+@import url("./dashboard.css");
+
+@import url("./tables.css");
+
+@import url("./forms.css");
+
+
+/* ==========================================================
+   RESPONSIVE
+========================================================== */
+
+@import url("./responsive.css");
