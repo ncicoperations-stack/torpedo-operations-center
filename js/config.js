@@ -5,7 +5,10 @@ National Cyber Intelligence Center
 Operations Center
 
 File: config.js
-Purpose: Global Application Configuration
+
+Purpose:
+Global Application Configuration
+
 ==============================================================
 */
 
@@ -14,206 +17,258 @@ Purpose: Global Application Configuration
 
 
 
-/* ==========================================================
-   TORPEDO CONFIGURATION
-========================================================== */
-
-
 const TORPEDO_CONFIG = {
 
 
+
     /*
-    ----------------------------------------------------------
-    Application Information
-    ----------------------------------------------------------
+    ==========================================================
+    APPLICATION INFORMATION
+    ==========================================================
     */
 
-    APP_NAME:
+
+    APP:{
+
+
+        NAME:
 
         "TORPEDO",
 
 
-    ORGANIZATION:
+
+        ORGANIZATION:
 
         "National Cyber Intelligence Center",
 
 
-    MODULE:
 
-        "Operations Center",
-
-
-    VERSION:
+        VERSION:
 
         "2.0.0",
 
 
 
-    /*
-    ----------------------------------------------------------
-    Environment
-    ----------------------------------------------------------
-    */
+        MODE:
 
-    ENVIRONMENT:
+        "PRODUCTION"
 
-        "production",
-
-
-
-    /*
-    ----------------------------------------------------------
-    Application Behavior
-    ----------------------------------------------------------
-    */
-
-    DEFAULT_VIEW:
-
-        "dashboard",
-
-
-    ENABLE_LOGGING:
-
-        true,
-
-
-    AUTO_REFRESH:
-
-        true,
-
-
-    REFRESH_INTERVAL:
-
-        30000,
-
-
-
-    /*
-    ----------------------------------------------------------
-    Google Integration
-    ----------------------------------------------------------
-
-    These values will connect TORPEDO
-    with Google Apps Script / Google Sheets.
-
-    Replace only when the backend is ready.
-
-    ----------------------------------------------------------
-    */
-
-    GOOGLE:
-
-    {
-
-
-        ENABLED:
-
-            true,
-
-
-        APPS_SCRIPT_URL:
-
-            "",
-
-
-        SPREADSHEET_ID:
-
-            "",
-
-
-        SHEETS:
-
-        {
-
-            CASES:
-
-                "Cases",
-
-
-            INVESTIGATORS:
-
-                "Investigators",
-
-
-            INTELLIGENCE:
-
-                "Intelligence",
-
-
-            EVIDENCE:
-
-                "Evidence",
-
-
-            USERS:
-
-                "Users"
-
-
-        }
 
 
     },
 
 
 
+
+
+
+
     /*
-    ----------------------------------------------------------
-    API
-    ----------------------------------------------------------
+    ==========================================================
+    GOOGLE BACKEND
+    ==========================================================
     */
 
-    API:
 
-    {
-
-
-        ENABLED:
-
-            true,
+    GOOGLE:{
 
 
-        BASE_URL:
+        SCRIPT_URL:
 
-            "",
+
+        "https://script.google.com/macros/s/AKfycbx0zb4qKyw2SB0X-0TysCK_ZT4Yqud1ZVm2pFIz01JGXDvI_qAwELGYPXxVlrkY-UAujA/exec"
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    API SETTINGS
+    ==========================================================
+    */
+
+
+    API:{
 
 
         TIMEOUT:
 
-            10000
+        10000,
+
+
+
+        RETRY:
+
+        3
+
 
 
     },
 
 
 
+
+
+
+
     /*
-    ----------------------------------------------------------
-    Authentication
-    ----------------------------------------------------------
+    ==========================================================
+    AUTHENTICATION
+    ==========================================================
     */
 
-    AUTH:
 
-    {
-
-
-        REQUIRED:
-
-            true,
+    AUTH:{
 
 
         SESSION_KEY:
 
-            "TORPEDO_SESSION",
+        "TORPEDO_SESSION",
 
 
-        ROLE:
 
-            "Administrator"
+        TOKEN_KEY:
+
+        "TORPEDO_TOKEN"
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    MODULES
+    ==========================================================
+    */
+
+
+    MODULES:{
+
+
+        DASHBOARD:true,
+
+
+        CASES:true,
+
+
+        INVESTIGATORS:true,
+
+
+        INTELLIGENCE:true,
+
+
+        ANALYTICS:true,
+
+
+        EVIDENCE:true,
+
+
+        ADMIN:true,
+
+
+        SETTINGS:true
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    CASE CATEGORIES
+    ==========================================================
+    */
+
+
+    CATEGORIES:[
+
+
+        "Online Scam",
+
+
+        "Identity Theft",
+
+
+        "Financial Fraud",
+
+
+        "Cybercrime",
+
+
+        "Honeytrap",
+
+
+        "Child Safety",
+
+
+        "Other Incidents"
+
+
+
+    ],
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    STATUS VALUES
+    ==========================================================
+    */
+
+
+    STATUS:{
+
+
+        RECEIVED:
+
+        "Received",
+
+
+
+        REVIEW:
+
+        "Under Review",
+
+
+
+        ACTIVE:
+
+        "Active Investigation",
+
+
+
+        CLOSED:
+
+        "Closed"
+
 
 
     }
+
+
+
 
 
 
@@ -221,34 +276,13 @@ const TORPEDO_CONFIG = {
 
 
 
-/* ==========================================================
-   EXPORT TO WINDOW
-========================================================== */
+
+
+/*
+==============================================================
+MAKE GLOBAL
+==============================================================
+*/
 
 
 window.TORPEDO_CONFIG = TORPEDO_CONFIG;
-
-
-
-/* ==========================================================
-   STARTUP LOG
-========================================================== */
-
-
-if (TORPEDO_CONFIG.ENABLE_LOGGING) {
-
-
-    console.log(
-
-        "%cTORPEDO v" +
-
-        TORPEDO_CONFIG.VERSION +
-
-        " Loaded",
-
-        "color:#2563EB;font-weight:bold;"
-
-    );
-
-
-}
