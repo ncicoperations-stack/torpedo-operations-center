@@ -5,7 +5,10 @@ National Cyber Intelligence Center
 Operations Center
 
 File: app.js
-Purpose: Main Application Bootstrap Controller
+
+Purpose:
+Main Application Controller
+
 ==============================================================
 */
 
@@ -14,31 +17,288 @@ Purpose: Main Application Bootstrap Controller
 
 
 
-/* ==========================================================
-   APPLICATION CONTROLLER
-========================================================== */
-
-
 const TORPEDO_APP = {
 
 
 
+    version:
+
+        TORPEDO_CONFIG.APP.VERSION,
+
+
+
     /*
-    ----------------------------------------------------------
-    INITIALIZE APPLICATION
-    ----------------------------------------------------------
+    ==========================================================
+    START APPLICATION
+    ==========================================================
     */
 
 
-    async init() {
+    async init(){
 
 
 
         console.log(
 
-            "Starting TORPEDO Operations Center..."
+            "TORPEDO v"
+
+            +
+
+            this.version
+
+            +
+
+            " Starting..."
 
         );
+
+
+
+
+
+        this.showLoading(
+
+            "Starting TORPEDO..."
+
+        );
+
+
+
+
+
+        await this.loadInterface();
+
+
+
+
+
+        if(
+
+            window.TORPEDO_AUTH
+
+        ){
+
+
+            TORPEDO_AUTH.init();
+
+
+        }
+
+
+
+
+
+
+        await this.checkConnection();
+
+
+
+
+
+        if(
+
+            window.TORPEDO_ROUTER
+
+        ){
+
+
+            TORPEDO_ROUTER.init();
+
+
+        }
+
+
+
+
+
+
+        this.hideLoading();
+
+
+
+
+
+        console.log(
+
+            "TORPEDO Ready"
+
+        );
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    LOAD UI COMPONENTS
+    ==========================================================
+    */
+
+
+    async loadInterface(){
+
+
+
+        const components = [
+
+
+            {
+
+
+                element:
+
+                "sidebar-container",
+
+
+                file:
+
+                "components/sidebar.html"
+
+
+            },
+
+
+            {
+
+
+                element:
+
+                "topbar-container",
+
+
+                file:
+
+                "components/topbar.html"
+
+
+            },
+
+
+            {
+
+
+                element:
+
+                "statusbar-container",
+
+
+                file:
+
+                "components/statusbar.html"
+
+
+            }
+
+
+
+        ];
+
+
+
+
+
+        for(
+
+            const component of components
+
+        ){
+
+
+
+            try {
+
+
+
+                const response =
+
+                    await fetch(
+
+                        component.file
+
+                    );
+
+
+
+
+
+                const html =
+
+                    await response.text();
+
+
+
+
+
+                const target =
+
+                    document.getElementById(
+
+                        component.element
+
+                    );
+
+
+
+
+
+                if(target){
+
+
+                    target.innerHTML = html;
+
+
+                }
+
+
+
+            }
+
+
+
+            catch(error){
+
+
+
+                console.warn(
+
+                    "Component loading failed:",
+
+                    component.file
+
+                );
+
+
+
+            }
+
+
+
+        }
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    GOOGLE CONNECTION TEST
+    ==========================================================
+    */
+
+
+    async checkConnection(){
 
 
 
@@ -46,37 +306,33 @@ const TORPEDO_APP = {
 
 
 
-            TORPEDO_UI.showLoading(
+            const result =
 
-                "Initializing TORPEDO..."
+                await TORPEDO_API.get(
 
-            );
+                    "?action=status"
 
-
-
-            await TORPEDO_UI.loadLayout();
+                );
 
 
-
-            this.bindEvents();
-
-
-
-            this.startClock();
-
-
-
-            await this.checkGoogleConnection();
-
-
-
-            TORPEDO_ROUTER.init();
 
 
 
             console.log(
 
-                "TORPEDO initialized successfully"
+                "Google API:",
+
+                result
+
+            );
+
+
+
+
+
+            this.updateStatus(
+
+                true
 
             );
 
@@ -84,13 +340,15 @@ const TORPEDO_APP = {
 
         }
 
-        catch(error) {
+
+
+        catch(error){
 
 
 
             console.error(
 
-                "TORPEDO Startup Error:",
+                "Google connection failed",
 
                 error
 
@@ -98,32 +356,9 @@ const TORPEDO_APP = {
 
 
 
-            TORPEDO_UI.toast(
+            this.updateStatus(
 
-                "System initialization failed",
-
-                "danger"
-
-            );
-
-
-        }
-
-        finally {
-
-
-
-            setTimeout(
-
-                () => {
-
-
-                    TORPEDO_UI.hideLoading();
-
-
-                },
-
-                500
+                false
 
             );
 
@@ -139,201 +374,16 @@ const TORPEDO_APP = {
 
 
 
-    /*
-    ----------------------------------------------------------
-    EVENT HANDLERS
-    ----------------------------------------------------------
-    */
-
-
-    bindEvents() {
-
-
-
-        /*
-        Navigation
-        */
-
-
-        document.addEventListener(
-
-            "click",
-
-            event => {
-
-
-
-                const link =
-
-                    event.target.closest(
-
-                        ".nav-link"
-
-                    );
-
-
-
-                if(link) {
-
-
-
-                    event.preventDefault();
-
-
-
-                    const view =
-
-                        link.dataset.view;
-
-
-
-                    window.location.hash =
-
-                        view;
-
-
-
-                }
-
-
-
-            }
-
-        );
-
-
-
-
-
-        /*
-        Mobile Menu
-        */
-
-
-        document.addEventListener(
-
-            "click",
-
-            event => {
-
-
-
-                if(
-
-                    event.target.closest(
-
-                        "#mobileMenuButton"
-
-                    )
-
-                ) {
-
-
-
-                    const sidebar =
-
-                        document.getElementById(
-
-                            "sidebar-container"
-
-                        );
-
-
-
-                    if(sidebar) {
-
-
-
-                        sidebar.classList.toggle(
-
-                            "open"
-
-                        );
-
-
-                    }
-
-
-
-                }
-
-
-
-            }
-
-        );
-
-
-
-
-
-        /*
-        Logout Buttons
-        */
-
-
-        document.addEventListener(
-
-            "click",
-
-            event => {
-
-
-
-                if(
-
-                    event.target.closest(
-
-                        "#logoutButton"
-
-                    )
-
-                    ||
-
-                    event.target.closest(
-
-                        "#topbarLogout"
-
-                    )
-
-                ) {
-
-
-
-                    this.logout();
-
-
-
-                }
-
-
-
-            }
-
-        );
-
-
-
-    },
-
-
-
 
 
     /*
-    ----------------------------------------------------------
-    GOOGLE CONNECTION
-    ----------------------------------------------------------
+    ==========================================================
+    UPDATE SYSTEM STATUS
+    ==========================================================
     */
 
 
-    async checkGoogleConnection() {
-
-
-
-        const result =
-
-            await TORPEDO_API.testConnection();
+    updateStatus(online){
 
 
 
@@ -341,93 +391,117 @@ const TORPEDO_APP = {
 
             document.getElementById(
 
-                "connectionStatus"
+                "systemStatus"
 
             );
 
 
 
-        const indicator =
+
+
+        if(!status)
+
+            return;
+
+
+
+
+
+        if(online){
+
+
+            status.innerHTML =
+
+            `
+
+            <span class="online">
+
+                ● Online
+
+            </span>
+
+            `;
+
+
+        }
+
+
+        else{
+
+
+            status.innerHTML =
+
+            `
+
+            <span class="offline">
+
+                ● Offline
+
+            </span>
+
+            `;
+
+
+        }
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    LOADING SCREEN
+    ==========================================================
+    */
+
+
+    showLoading(message){
+
+
+
+        const overlay =
 
             document.getElementById(
 
-                "connectionIndicator"
+                "loading-overlay"
 
             );
 
 
 
-        if(
+        const text =
 
-            result.connected
+            document.getElementById(
 
-        ) {
+                "loadingMessage"
 
-
-
-            if(status) {
+            );
 
 
 
-                status.textContent =
-
-                    "Connected";
 
 
-            }
+        if(text)
 
-
-
-            if(indicator) {
+            text.textContent = message;
 
 
 
-                indicator.classList.add(
-
-                    "online"
-
-                );
 
 
-            }
+        if(overlay)
 
+            overlay.classList.remove(
 
+                "hidden"
 
-        }
-
-        else {
-
-
-
-            if(status) {
-
-
-
-                status.textContent =
-
-                    "Offline";
-
-
-            }
-
-
-
-            if(indicator) {
-
-
-
-                indicator.classList.remove(
-
-                    "online"
-
-                );
-
-
-            }
-
-
-
-        }
+            );
 
 
 
@@ -437,163 +511,36 @@ const TORPEDO_APP = {
 
 
 
-    /*
-    ----------------------------------------------------------
-    SYSTEM CLOCK
-    ----------------------------------------------------------
-    */
+    hideLoading(){
 
 
-    startClock() {
 
+        const overlay =
 
+            document.getElementById(
 
-        const update = () => {
+                "loading-overlay"
 
+            );
 
 
-            const now =
 
-                new Date();
 
 
+        if(overlay)
 
-            const time =
+            overlay.classList.add(
 
-                document.getElementById(
+                "hidden"
 
-                    "currentTime"
-
-                );
-
-
-
-            const date =
-
-                document.getElementById(
-
-                    "currentDate"
-
-                );
-
-
-
-            const systemTime =
-
-                document.getElementById(
-
-                    "systemTime"
-
-                );
-
-
-
-            const formattedTime =
-
-                now.toLocaleTimeString();
-
-
-
-            const formattedDate =
-
-                now.toLocaleDateString();
-
-
-
-            if(time)
-
-                time.textContent =
-
-                    formattedTime;
-
-
-
-            if(date)
-
-                date.textContent =
-
-                    formattedDate;
-
-
-
-            if(systemTime)
-
-                systemTime.textContent =
-
-                    formattedTime;
-
-
-
-        };
-
-
-
-        update();
-
-
-
-        setInterval(
-
-            update,
-
-            1000
-
-        );
-
-
-
-    },
-
-
-
-
-
-    /*
-    ----------------------------------------------------------
-    LOGOUT
-    ----------------------------------------------------------
-    */
-
-
-    logout() {
-
-
-
-        localStorage.removeItem(
-
-            TORPEDO_CONFIG.AUTH.SESSION_KEY
-
-        );
-
-
-
-        TORPEDO_UI.toast(
-
-            "Logged out successfully",
-
-            "success"
-
-        );
-
-
-
-        setTimeout(
-
-            () => {
-
-
-                location.reload();
-
-
-            },
-
-            1000
-
-        );
+            );
 
 
 
     }
+
+
+
 
 
 
@@ -603,21 +550,24 @@ const TORPEDO_APP = {
 
 
 
-/* ==========================================================
-   APPLICATION START
-========================================================== */
+
+
+
+/*
+==============================================================
+START
+==============================================================
+*/
 
 
 document.addEventListener(
 
     "DOMContentLoaded",
 
-    () => {
-
+    ()=>{
 
 
         TORPEDO_APP.init();
-
 
 
     }
@@ -626,9 +576,6 @@ document.addEventListener(
 
 
 
-/* ==========================================================
-   EXPORT
-========================================================== */
 
 
 window.TORPEDO_APP = TORPEDO_APP;
