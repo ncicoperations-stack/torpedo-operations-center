@@ -37,7 +37,7 @@ const TORPEDO_API = {
 
     URL:
 
-    "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE",
+"https://script.google.com/macros/s/AKfycbx0zb4qKyw2SB0X-0TysCK_ZT4Yqud1ZVm2pFIz01JGXDvI_qAwELGYPXxVlrkY-UAujA/exec",
 
 
 
