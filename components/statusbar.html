@@ -5,165 +5,125 @@ National Cyber Intelligence Center
 Operations Center
 
 File: statusbar.html
-Purpose: Application System Status Footer
+
+Purpose:
+Application Status Bar
+
 ==============================================================
 -->
 
-<footer class="statusbar"
-        id="statusbar">
+<div class="statusbar">
+
+    <!-- LEFT -->
+
+    <div class="status-left">
+
+        <span>
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            TORPEDO Operations Center
+
+        </span>
+
+        <span>
+
+            Version:
+            <strong>2.0.0</strong>
+
+        </span>
+
+    </div>
 
 
-    <!-- ======================================================
-        LEFT STATUS
-    ======================================================= -->
-
-    <div class="statusbar-left">
 
 
-        <div class="status-item">
 
+    <!-- CENTER -->
 
-            <span class="status-label">
+    <div class="status-center">
 
-                Application
+        <span>
 
-            </span>
+            Backend:
 
+            <strong id="backendStatus">
 
-            <strong>
-
-                TORPEDO v2.0.0
+                Online
 
             </strong>
 
+        </span>
 
-        </div>
+        <span>
 
+            API:
 
+            <strong id="apiLatency">
 
-        <div class="status-divider"></div>
-
-
-
-        <div class="status-item">
-
-
-            <span class="status-label">
-
-                Environment
-
-            </span>
-
-
-            <strong id="environmentStatus">
-
-                Production
-
+                --
             </strong>
 
+            ms
 
-        </div>
-
-
-    </div>
-
-
-
-    <!-- ======================================================
-        CENTER STATUS
-    ======================================================= -->
-
-    <div class="statusbar-center">
-
-
-        <div class="status-item">
-
-
-            <span class="status-indicator online"
-                  id="apiIndicator">
-
-            </span>
-
-
-            <span id="apiStatus">
-
-                API Connected
-
-            </span>
-
-
-        </div>
-
-
-
-        <div class="status-item">
-
-
-            <span class="status-indicator online"
-                  id="databaseIndicator">
-
-            </span>
-
-
-            <span id="databaseConnection">
-
-                Database Ready
-
-            </span>
-
-
-        </div>
-
+        </span>
 
     </div>
 
 
 
-    <!-- ======================================================
-        RIGHT STATUS
-    ======================================================= -->
-
-    <div class="statusbar-right">
 
 
-        <div class="status-item">
+    <!-- RIGHT -->
 
+    <div class="status-right">
 
-            <i class="fa-solid fa-user-shield"></i>
+        <span id="utcClock">
 
+            --:--:--
 
-            <span id="currentOperator">
+        </span>
 
-                Administrator
+        <span>
 
-            </span>
+            UTC
 
-
-        </div>
-
-
-
-        <div class="status-divider"></div>
-
-
-
-        <div class="status-item">
-
-
-            <i class="fa-solid fa-clock"></i>
-
-
-            <span id="systemTime">
-
-                --:--:--
-
-            </span>
-
-
-        </div>
-
+        </span>
 
     </div>
 
+</div>
 
-</footer>
+<script>
+
+(function(){
+
+    function updateClock(){
+
+        const now = new Date();
+
+        const utc = now.toLocaleTimeString(
+            "en-GB",
+            {
+                hour12:false,
+                timeZone:"UTC"
+            }
+        );
+
+        const clock = document.getElementById("utcClock");
+
+        if(clock){
+
+            clock.textContent = utc;
+
+        }
+
+    }
+
+    updateClock();
+
+    setInterval(updateClock,1000);
+
+})();
+
+</script>
