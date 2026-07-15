@@ -5,22 +5,25 @@ National Cyber Intelligence Center
 Operations Center
 
 File: investigators.html
-Purpose: Investigator Management Module
+
+Purpose:
+Investigator Management Module
+
 ==============================================================
 -->
 
 
-<section class="investigators-page"
-         id="investigatorsPage">
+
+<div class="investigators-page">
 
 
 
-    <!-- ======================================================
-        PAGE HEADER
-    ======================================================= -->
 
 
-    <div class="dashboard-header">
+    <!-- HEADER -->
+
+
+    <section class="page-header">
 
 
         <div>
@@ -35,7 +38,7 @@ Purpose: Investigator Management Module
 
             <p>
 
-                Manage personnel, assignments, and investigation workload.
+                Manage operational personnel and assignments
 
             </p>
 
@@ -44,73 +47,60 @@ Purpose: Investigator Management Module
 
 
 
-        <div class="dashboard-actions">
 
 
-            <button class="action-button primary"
-                    id="addInvestigatorButton">
+        <button
+
+        id="addInvestigatorButton"
+
+        class="primary-button">
 
 
-                <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-user-plus"></i>
 
 
-                Add Investigator
+            Add Investigator
 
 
-            </button>
-
-
-        </div>
-
-
-    </div>
+        </button>
 
 
 
+    </section>
 
 
-    <!-- ======================================================
-        INVESTIGATOR SUMMARY
-    ======================================================= -->
 
 
-    <div class="stats-grid">
+
+
+
+
+    <!-- STATISTICS -->
+
+
+    <section class="stats-grid">
 
 
 
         <div class="stat-card">
 
 
-            <div class="stat-icon blue">
+            <h3>
+
+                Total Investigators
+
+            </h3>
 
 
-                <i class="fa-solid fa-users"></i>
+            <strong id="totalInvestigators">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Total Investigators
-
-                </span>
-
-
-                <strong id="totalInvestigators">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -119,36 +109,22 @@ Purpose: Investigator Management Module
         <div class="stat-card">
 
 
-            <div class="stat-icon green">
+            <h3>
+
+                Available
+
+            </h3>
 
 
-                <i class="fa-solid fa-circle-check"></i>
+            <strong id="availableInvestigators">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Available
-
-                </span>
-
-
-                <strong id="availableInvestigators">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -157,36 +133,22 @@ Purpose: Investigator Management Module
         <div class="stat-card">
 
 
-            <div class="stat-icon orange">
+            <h3>
+
+                Assigned Cases
+
+            </h3>
 
 
-                <i class="fa-solid fa-clock"></i>
+            <strong id="assignedCases">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Active Cases
-
-                </span>
-
-
-                <strong id="assignedCases">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -195,207 +157,37 @@ Purpose: Investigator Management Module
         <div class="stat-card">
 
 
-            <div class="stat-icon red">
+            <h3>
+
+                Restricted
+
+            </h3>
 
 
-                <i class="fa-solid fa-user-lock"></i>
+            <strong id="restrictedInvestigators">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Restricted
-
-                </span>
-
-
-                <strong id="restrictedInvestigators">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
 
 
 
-    </div>
+    </section>
 
 
 
 
 
-    <!-- ======================================================
-        SEARCH / FILTER
-    ======================================================= -->
 
 
-    <div class="panel">
 
+    <!-- SEARCH PANEL -->
 
-        <div class="filter-container">
 
-
-            <div class="filter-group">
-
-
-                <label>
-
-                    Search Investigator
-
-                </label>
-
-
-                <div class="search-box">
-
-
-                    <i class="fa-solid fa-search"></i>
-
-
-                    <input type="text"
-                           id="investigatorSearch"
-                           placeholder="Name, ID, department...">
-
-
-                </div>
-
-
-            </div>
-
-
-
-
-
-            <div class="filter-group">
-
-
-                <label>
-
-                    Status
-
-                </label>
-
-
-                <select id="investigatorStatusFilter">
-
-
-                    <option value="">
-
-                        All
-
-                    </option>
-
-
-                    <option value="Available">
-
-                        Available
-
-                    </option>
-
-
-                    <option value="Assigned">
-
-                        Assigned
-
-                    </option>
-
-
-                    <option value="Offline">
-
-                        Offline
-
-                    </option>
-
-
-                </select>
-
-
-            </div>
-
-
-
-
-
-            <div class="filter-group">
-
-
-                <label>
-
-                    Clearance
-
-                </label>
-
-
-                <select id="clearanceFilter">
-
-
-                    <option value="">
-
-                        All Levels
-
-                    </option>
-
-
-                    <option value="Level 1">
-
-                        Level 1
-
-                    </option>
-
-
-                    <option value="Level 2">
-
-                        Level 2
-
-                    </option>
-
-
-                    <option value="Level 3">
-
-                        Level 3
-
-                    </option>
-
-
-                    <option value="Level 4">
-
-                        Level 4
-
-                    </option>
-
-
-                </select>
-
-
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        INVESTIGATOR TABLE
-    ======================================================= -->
-
-
-    <div class="panel"
-         style="margin-top:24px;">
+    <section class="panel">
 
 
 
@@ -404,17 +196,9 @@ Purpose: Investigator Management Module
 
             <h2>
 
-                Investigator Directory
+                Search Investigators
 
             </h2>
-
-
-
-            <span id="investigatorCount">
-
-                0 Personnel
-
-            </span>
 
 
         </div>
@@ -422,16 +206,72 @@ Purpose: Investigator Management Module
 
 
 
+
+        <div class="search-bar">
+
+
+            <input
+
+
+            id="investigatorSearch"
+
+
+            type="text"
+
+
+            placeholder="Search name, department, clearance...">
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <!-- INVESTIGATOR TABLE -->
+
+
+    <section class="panel">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Personnel Directory
+
+            </h2>
+
+
+        </div>
+
+
+
+
+
         <div class="table-container">
 
 
-            <table class="dashboard-table">
+
+            <table class="data-table">
+
 
 
                 <thead>
 
 
                     <tr>
+
 
 
                         <th>
@@ -441,11 +281,13 @@ Purpose: Investigator Management Module
                         </th>
 
 
+
                         <th>
 
                             Name
 
                         </th>
+
 
 
                         <th>
@@ -455,11 +297,13 @@ Purpose: Investigator Management Module
                         </th>
 
 
+
                         <th>
 
                             Clearance
 
                         </th>
+
 
 
                         <th>
@@ -469,11 +313,13 @@ Purpose: Investigator Management Module
                         </th>
 
 
+
                         <th>
 
                             Cases
 
                         </th>
+
 
 
                         <th>
@@ -483,11 +329,13 @@ Purpose: Investigator Management Module
                         </th>
 
 
+
                         <th>
 
                             Action
 
                         </th>
+
 
 
                     </tr>
@@ -497,7 +345,10 @@ Purpose: Investigator Management Module
 
 
 
+
+
                 <tbody id="investigatorTableBody">
+
 
 
                     <tr>
@@ -515,6 +366,7 @@ Purpose: Investigator Management Module
                     </tr>
 
 
+
                 </tbody>
 
 
@@ -522,111 +374,16 @@ Purpose: Investigator Management Module
             </table>
 
 
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        WORKLOAD PANEL
-    ======================================================= -->
-
-
-    <div class="panel"
-         style="margin-top:24px;">
-
-
-        <div class="panel-header">
-
-
-            <h2>
-
-                Assignment Workload
-
-            </h2>
-
 
         </div>
 
 
 
-        <div class="health-list">
-
-
-            <div class="health-item">
-
-
-                <span>
-
-                    High Workload
-
-                </span>
-
-
-                <strong class="danger"
-                        id="highWorkload">
-
-                    0
-
-                </strong>
-
-
-            </div>
+    </section>
 
 
 
-            <div class="health-item">
-
-
-                <span>
-
-                    Normal Workload
-
-                </span>
-
-
-                <strong class="online"
-                        id="normalWorkload">
-
-                    0
-
-                </strong>
-
-
-            </div>
 
 
 
-            <div class="health-item">
-
-
-                <span>
-
-                    Available Capacity
-
-                </span>
-
-
-                <strong id="availableCapacity">
-
-                    0
-
-                </strong>
-
-
-            </div>
-
-
-
-        </div>
-
-
-    </div>
-
-
-
-</section>
+</div>
