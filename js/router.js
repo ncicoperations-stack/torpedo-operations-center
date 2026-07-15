@@ -5,7 +5,10 @@ National Cyber Intelligence Center
 Operations Center
 
 File: router.js
-Purpose: Single Page Application Router
+
+Purpose:
+Single Page Application Router
+
 ==============================================================
 */
 
@@ -14,244 +17,65 @@ Purpose: Single Page Application Router
 
 
 
-/* ==========================================================
-   ROUTER
-========================================================== */
-
-
 const TORPEDO_ROUTER = {
 
 
 
-    /*
-    ----------------------------------------------------------
-    ROUTE DEFINITIONS
-    ----------------------------------------------------------
-    */
+    currentView:
+
+        "dashboard",
 
 
-    routes:
 
-    {
+    routes:{
+
 
 
         dashboard:
 
-            {
-
-                title:
-
-                    "Dashboard",
-
-
-                subtitle:
-
-                    "Operations Overview",
-
-
-                file:
-
-                    "views/dashboard.html"
-
-
-            },
+        "views/dashboard.html",
 
 
 
         cases:
 
-            {
-
-                title:
-
-                    "Case Management",
-
-
-                subtitle:
-
-                    "Investigation Records",
-
-
-                file:
-
-                    "views/cases.html"
-
-
-            },
+        "views/cases.html",
 
 
 
         investigators:
 
-            {
-
-                title:
-
-                    "Investigators",
-
-
-                subtitle:
-
-                    "Personnel Management",
-
-
-                file:
-
-                    "views/investigators.html"
-
-
-            },
+        "views/investigators.html",
 
 
 
         intelligence:
 
-            {
-
-                title:
-
-                    "Intelligence Center",
-
-
-                subtitle:
-
-                    "Threat Intelligence Operations",
-
-
-                file:
-
-                    "views/intelligence.html"
-
-
-            },
-
-
-
-        evidence:
-
-            {
-
-                title:
-
-                    "Evidence Management",
-
-
-                subtitle:
-
-                    "Evidence Tracking System",
-
-
-                file:
-
-                    "views/evidence.html"
-
-
-            },
+        "views/intelligence.html",
 
 
 
         analytics:
 
-            {
-
-                title:
-
-                    "Analytics",
+        "views/analytics.html",
 
 
-                subtitle:
 
-                    "Operational Data Analysis",
+        evidence:
 
-
-                file:
-
-                    "views/analytics.html"
-
-
-            },
+        "views/evidence.html",
 
 
 
         admin:
 
-            {
-
-                title:
-
-                    "Administration",
-
-
-                subtitle:
-
-                    "System Administration",
-
-
-                file:
-
-                    "views/admin.html"
-
-
-            },
+        "views/admin.html",
 
 
 
         settings:
 
-            {
-
-                title:
-
-                    "Settings",
-
-
-                subtitle:
-
-                    "System Configuration",
-
-
-                file:
-
-                    "views/settings.html"
-
-
-            }
-
-
-    },
-
-
-
-
-
-    /*
-    ----------------------------------------------------------
-    INITIALIZE ROUTER
-    ----------------------------------------------------------
-    */
-
-
-    init() {
-
-
-
-        window.addEventListener(
-
-            "hashchange",
-
-            () => {
-
-
-                this.load();
-
-
-            }
-
-        );
-
-
-
-        this.load();
+        "views/settings.html"
 
 
 
@@ -261,20 +85,26 @@ const TORPEDO_ROUTER = {
 
 
 
+
+
     /*
-    ----------------------------------------------------------
-    LOAD CURRENT VIEW
-    ----------------------------------------------------------
+    ==========================================================
+    INITIALIZE
+    ==========================================================
     */
 
 
-    async load() {
+    init(){
 
 
 
-        let view =
+        this.bindNavigation();
 
-            window.location.hash.replace(
+
+
+        const hash =
+
+            location.hash.replace(
 
                 "#",
 
@@ -284,13 +114,46 @@ const TORPEDO_ROUTER = {
 
 
 
-        if(!view) {
+
+
+        this.load(
+
+            hash ||
+
+            "dashboard"
+
+        );
 
 
 
-            view =
+    },
 
-                TORPEDO_CONFIG.DEFAULT_VIEW;
+
+
+
+
+
+
+    /*
+    ==========================================================
+    LOAD VIEW
+    ==========================================================
+    */
+
+
+    async load(view){
+
+
+
+        if(
+
+            !this.routes[view]
+
+        ){
+
+
+
+            view = "dashboard";
 
 
 
@@ -298,25 +161,6 @@ const TORPEDO_ROUTER = {
 
 
 
-        if(!this.routes[view]) {
-
-
-
-            view =
-
-                "dashboard";
-
-
-
-        }
-
-
-
-
-
-        const route =
-
-            this.routes[view];
 
 
 
@@ -330,23 +174,36 @@ const TORPEDO_ROUTER = {
 
 
 
-        if(!container) return;
+
+
+        if(!container)
+
+            return;
 
 
 
 
 
-        try {
+        try{
 
 
 
-            TORPEDO_UI.showLoading(
+            container.innerHTML = `
 
-                "Loading " +
 
-                route.title
 
-            );
+                <div class="loading-panel">
+
+                    Loading ${view}...
+
+                </div>
+
+
+
+            `;
+
+
+
 
 
 
@@ -354,28 +211,15 @@ const TORPEDO_ROUTER = {
 
                 await fetch(
 
-                    route.file
+                    this.routes[view]
 
                 );
 
 
 
-            if(!response.ok) {
 
 
-
-                throw new Error(
-
-                    "View not found"
-
-                );
-
-
-            }
-
-
-
-            container.innerHTML =
+            const html =
 
                 await response.text();
 
@@ -383,25 +227,32 @@ const TORPEDO_ROUTER = {
 
 
 
-            TORPEDO_UI.updateTitle(
-
-                route.title,
-
-                route.subtitle
-
-            );
+            container.innerHTML = html;
 
 
 
-            this.updateNavigation(
 
-                view
 
-            );
+            this.currentView = view;
+
+
+
+
+
+            this.updateNavigation();
+
+
+
+
+
+            this.updateBreadcrumb();
+
+
 
 
 
             window.dispatchEvent(
+
 
                 new CustomEvent(
 
@@ -409,19 +260,21 @@ const TORPEDO_ROUTER = {
 
                     {
 
-                        detail:
 
-                        {
+                        detail:{
 
-                            view:
 
-                                view
+                            view:view
+
 
                         }
 
+
                     }
 
+
                 )
+
 
             );
 
@@ -429,13 +282,15 @@ const TORPEDO_ROUTER = {
 
         }
 
-        catch(error) {
+
+
+        catch(error){
 
 
 
             console.error(
 
-                "Router Error:",
+                "View loading error:",
 
                 error
 
@@ -446,33 +301,16 @@ const TORPEDO_ROUTER = {
             container.innerHTML = `
 
 
-                <div class="empty-state">
 
+                <div class="error-panel">
 
-                    <i class="fa-solid fa-triangle-exclamation"></i>
-
-
-                    <p>
-
-                        Unable to load module
-
-                    </p>
-
+                    Unable to load module
 
                 </div>
 
 
+
             `;
-
-
-
-        }
-
-        finally {
-
-
-
-            TORPEDO_UI.hideLoading();
 
 
 
@@ -486,65 +324,209 @@ const TORPEDO_ROUTER = {
 
 
 
+
+
     /*
-    ----------------------------------------------------------
-    UPDATE ACTIVE MENU
-    ----------------------------------------------------------
+    ==========================================================
+    NAVIGATION EVENTS
+    ==========================================================
     */
 
 
-    updateNavigation(view) {
+    bindNavigation(){
 
 
 
-        document
+        document.addEventListener(
 
-            .querySelectorAll(
+            "click",
 
-                ".nav-link"
-
-            )
-
-            .forEach(
-
-                link => {
+            event=>{
 
 
 
-                    link.classList.remove(
 
-                        "active"
+
+                const link =
+
+                    event.target.closest(
+
+                        "[data-route]"
 
                     );
 
 
 
-                    if(
 
-                        link.dataset.view
 
-                        ===
+                if(!link)
 
-                        view
-
-                    ) {
+                    return;
 
 
 
-                        link.classList.add(
-
-                            "active"
-
-                        );
 
 
-                    }
+                event.preventDefault();
 
 
 
-                }
+
+
+                const route =
+
+                    link.dataset.route;
+
+
+
+
+
+                location.hash = route;
+
+
+
+
+
+                this.load(
+
+                    route
+
+                );
+
+
+
+
+
+            }
+
+
+        );
+
+
+
+
+
+
+        window.addEventListener(
+
+            "hashchange",
+
+            ()=>{
+
+
+
+                const view =
+
+                    location.hash.replace(
+
+                        "#",
+
+                        ""
+
+                    );
+
+
+
+                this.load(
+
+                    view
+
+                );
+
+
+
+            }
+
+
+        );
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    ACTIVE MENU
+    ==========================================================
+    */
+
+
+    updateNavigation(){
+
+
+
+        document
+
+        .querySelectorAll(
+
+            "[data-route]"
+
+        )
+
+        .forEach(item=>{
+
+
+
+            item.classList.remove(
+
+                "active"
 
             );
+
+
+
+
+
+            if(
+
+                item.dataset.route
+
+                ===
+
+                this.currentView
+
+            ){
+
+
+
+                item.classList.add(
+
+                    "active"
+
+                );
+
+
+
+            }
+
+
+
+        });
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    BREADCRUMB
+    ==========================================================
+    */
+
+
+    updateBreadcrumb(){
 
 
 
@@ -552,19 +534,30 @@ const TORPEDO_ROUTER = {
 
             document.getElementById(
 
-                "breadcrumbCurrent"
+                "breadcrumb"
 
             );
 
 
 
-        if(breadcrumb) {
+
+
+        if(breadcrumb){
 
 
 
             breadcrumb.textContent =
 
-                this.routes[view].title;
+
+                this.currentView
+
+                .charAt(0)
+
+                .toUpperCase()
+
+                +
+
+                this.currentView.slice(1);
 
 
 
@@ -578,15 +571,16 @@ const TORPEDO_ROUTER = {
 
 
 
+
 };
 
 
 
 
 
-/* ==========================================================
-   EXPORT
-========================================================== */
 
 
-window.TORPEDO_ROUTER = TORPEDO_ROUTER;
+
+window.TORPEDO_ROUTER =
+
+    TORPEDO_ROUTER;
