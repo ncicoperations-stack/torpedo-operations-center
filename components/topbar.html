@@ -1,0 +1,231 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: topbar.html
+Purpose: Application Top Navigation
+==============================================================
+-->
+
+<header class="topbar" id="topbar">
+
+    <!-- ======================================================
+        LEFT SECTION
+    ======================================================= -->
+
+    <div class="topbar-left">
+
+        <button
+            type="button"
+            class="topbar-button"
+            id="mobileMenuButton">
+
+            <i class="fa-solid fa-bars"></i>
+
+        </button>
+
+
+        <div class="page-title">
+
+            <h1 id="pageTitle">
+
+                Dashboard
+
+            </h1>
+
+            <span id="pageSubtitle">
+
+                Operations Overview
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+        CENTER SEARCH
+    ======================================================= -->
+
+    <div class="topbar-search">
+
+        <div class="search-box">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+            <input
+                type="text"
+                id="globalSearch"
+                placeholder="Search cases, investigators, intelligence...">
+
+        </div>
+
+    </div>
+
+
+    <!-- ======================================================
+        RIGHT SECTION
+    ======================================================= -->
+
+    <div class="topbar-right">
+
+
+        <!-- SYSTEM CONNECTION -->
+
+        <div class="connection-status">
+
+            <span
+                class="status-dot online"
+                id="connectionIndicator">
+            </span>
+
+
+            <span id="connectionStatus">
+
+                Connected
+
+            </span>
+
+        </div>
+
+
+
+        <!-- CLOCK -->
+
+        <div class="system-clock">
+
+            <strong id="currentTime">
+
+                --:--:--
+
+            </strong>
+
+
+            <small id="currentDate">
+
+                Loading...
+
+            </small>
+
+        </div>
+
+
+
+        <!-- ALERTS -->
+
+        <button
+            type="button"
+            class="topbar-icon"
+            id="notificationButton">
+
+            <i class="fa-solid fa-bell"></i>
+
+
+            <span class="notification-badge">
+
+                0
+
+            </span>
+
+        </button>
+
+
+
+        <!-- USER MENU -->
+
+        <div class="user-menu">
+
+
+            <button
+                type="button"
+                class="user-button"
+                id="userMenuButton">
+
+
+                <div class="user-avatar-small">
+
+                    <i class="fa-solid fa-user"></i>
+
+                </div>
+
+
+                <div class="user-details">
+
+                    <strong id="topbarUserName">
+
+                        Administrator
+
+                    </strong>
+
+
+                    <small id="topbarUserRole">
+
+                        Operations Supervisor
+
+                    </small>
+
+
+                </div>
+
+
+                <i class="fa-solid fa-chevron-down"></i>
+
+
+            </button>
+
+
+
+            <!-- USER DROPDOWN -->
+
+            <div
+                class="user-dropdown"
+                id="userDropdown">
+
+
+                <a href="#"
+                   data-view="settings">
+
+                    <i class="fa-solid fa-user-gear"></i>
+
+                    Profile Settings
+
+                </a>
+
+
+                <a href="#"
+                   data-view="admin">
+
+                    <i class="fa-solid fa-users"></i>
+
+                    Administration
+
+                </a>
+
+
+                <hr>
+
+
+                <button
+                    type="button"
+                    id="topbarLogout">
+
+                    <i class="fa-solid fa-right-from-bracket"></i>
+
+                    Logout
+
+                </button>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</header>
