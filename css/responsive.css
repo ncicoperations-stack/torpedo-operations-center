@@ -1,0 +1,291 @@
+/*
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: responsive.css
+Purpose: Responsive Layout Rules
+==============================================================
+*/
+
+
+/* ==========================================================
+   LARGE TABLETS / SMALL LAPTOPS
+========================================================== */
+
+@media (max-width: 1200px) {
+
+
+    .stats-grid {
+
+        grid-template-columns:
+
+            repeat(2, minmax(0, 1fr));
+
+    }
+
+
+    .dashboard-grid {
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+
+    .dashboard-grid .large {
+
+        grid-column:
+
+            span 1;
+
+    }
+
+
+    .topbar-search {
+
+        display: none;
+
+    }
+
+
+}
+
+
+
+/* ==========================================================
+   TABLETS
+========================================================== */
+
+@media (max-width: 900px) {
+
+
+    body {
+
+        overflow: auto;
+
+    }
+
+
+
+    #app {
+
+        overflow: visible;
+
+    }
+
+
+
+    #sidebar-container {
+
+        position: fixed;
+
+        left: -100%;
+
+        top: 0;
+
+        z-index: var(--z-sidebar);
+
+        transition:
+
+            left var(--transition-normal);
+
+    }
+
+
+
+    #sidebar-container.open {
+
+        left: 0;
+
+    }
+
+
+
+    #main-app {
+
+        width: 100%;
+
+    }
+
+
+
+    .topbar {
+
+        padding:
+
+            0
+
+            var(--space-4);
+
+    }
+
+
+
+    .page-title span {
+
+        display: none;
+
+    }
+
+
+
+    #view-container {
+
+        padding: var(--space-4);
+
+    }
+
+
+
+}
+
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 600px) {
+
+
+
+    .stats-grid {
+
+        grid-template-columns:
+
+            1fr;
+
+    }
+
+
+
+    .dashboard-header {
+
+        flex-direction: column;
+
+        align-items: flex-start;
+
+    }
+
+
+
+    .dashboard-actions {
+
+        width: 100%;
+
+    }
+
+
+
+    .dashboard-actions button {
+
+        flex: 1;
+
+    }
+
+
+
+    .topbar {
+
+        height: auto;
+
+        min-height: var(--topbar-height);
+
+    }
+
+
+
+    .topbar-right {
+
+        gap: var(--space-2);
+
+    }
+
+
+
+    .connection-status {
+
+        display: none;
+
+    }
+
+
+
+    .system-clock {
+
+        display: none;
+
+    }
+
+
+
+    .user-details {
+
+        display: none;
+
+    }
+
+
+
+    .panel-header {
+
+        padding: var(--space-3);
+
+    }
+
+
+
+    .dashboard-table {
+
+        min-width: 650px;
+
+    }
+
+
+
+}
+
+
+
+/* ==========================================================
+   SMALL MOBILE
+========================================================== */
+
+@media (max-width: 400px) {
+
+
+
+    .topbar-button {
+
+        width: 36px;
+
+        height: 36px;
+
+    }
+
+
+
+    .user-avatar-small {
+
+        width: 34px;
+
+        height: 34px;
+
+    }
+
+
+
+    .dashboard-header h1 {
+
+        font-size:
+
+            var(--font-size-xl);
+
+    }
+
+
+
+}
