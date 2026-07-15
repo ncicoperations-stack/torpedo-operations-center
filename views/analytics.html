@@ -1,0 +1,559 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: analytics.html
+Purpose: Operations Analytics Module
+==============================================================
+-->
+
+
+<section class="analytics-page"
+         id="analyticsPage">
+
+
+
+    <!-- ======================================================
+        PAGE HEADER
+    ======================================================= -->
+
+
+    <div class="dashboard-header">
+
+
+        <div>
+
+
+            <h1>
+
+                Analytics Center
+
+            </h1>
+
+
+            <p>
+
+                Operational statistics, trends,
+                and performance analysis.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-actions">
+
+
+            <button class="action-button"
+                    id="refreshAnalytics">
+
+
+                <i class="fa-solid fa-chart-line"></i>
+
+
+                Refresh Data
+
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        ANALYTICS SUMMARY
+    ======================================================= -->
+
+
+    <div class="stats-grid">
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon blue">
+
+
+                <i class="fa-solid fa-folder-open"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Total Cases
+
+                </span>
+
+
+                <strong id="analyticsCases">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon green">
+
+
+                <i class="fa-solid fa-check-circle"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Resolution Rate
+
+                </span>
+
+
+                <strong id="resolutionRate">
+
+                    0%
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon orange">
+
+
+                <i class="fa-solid fa-bolt"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Average Response
+
+                </span>
+
+
+                <strong id="responseTime">
+
+                    0h
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon red">
+
+
+                <i class="fa-solid fa-chart-simple"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Threat Growth
+
+                </span>
+
+
+                <strong id="threatGrowth">
+
+                    0%
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        CHART AREA
+    ======================================================= -->
+
+
+    <div class="dashboard-grid">
+
+
+
+        <!-- CASE TREND -->
+
+        <div class="panel large">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Case Activity Trends
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div class="chart-container"
+                 id="caseTrendChart">
+
+
+                <div class="empty-state">
+
+
+                    <i class="fa-solid fa-chart-line"></i>
+
+
+                    <p>
+
+                        Chart data loading...
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- CATEGORY BREAKDOWN -->
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Case Categories
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div id="categoryBreakdown">
+
+
+                <div class="empty-state">
+
+
+                    <i class="fa-solid fa-layer-group"></i>
+
+
+                    <p>
+
+                        No category data
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- PERFORMANCE -->
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Performance
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div class="health-list">
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Investigators Active
+
+                    </span>
+
+
+                    <strong id="performanceInvestigators">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Cases Completed
+
+                    </span>
+
+
+                    <strong id="completedCases">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Intelligence Reports
+
+                    </span>
+
+
+                    <strong id="completedReports">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        DATA TABLE
+    ======================================================= -->
+
+
+    <div class="panel"
+         style="margin-top:24px;">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Analytics Records
+
+            </h2>
+
+
+
+            <button class="panel-link">
+
+                Export Report
+
+            </button>
+
+
+        </div>
+
+
+
+
+
+        <div class="table-container">
+
+
+            <table class="dashboard-table">
+
+
+                <thead>
+
+
+                    <tr>
+
+
+                        <th>
+
+                            Metric
+
+                        </th>
+
+
+                        <th>
+
+                            Current
+
+                        </th>
+
+
+                        <th>
+
+                            Previous
+
+                        </th>
+
+
+                        <th>
+
+                            Change
+
+                        </th>
+
+
+                        <th>
+
+                            Status
+
+                        </th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+                <tbody id="analyticsTableBody">
+
+
+                    <tr>
+
+
+                        <td colspan="5">
+
+
+                            Loading analytics...
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
