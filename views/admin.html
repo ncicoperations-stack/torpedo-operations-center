@@ -5,22 +5,25 @@ National Cyber Intelligence Center
 Operations Center
 
 File: admin.html
-Purpose: Administration Control Module
+
+Purpose:
+Administration Module
+
 ==============================================================
 -->
 
 
-<section class="admin-page"
-         id="adminPage">
+
+<div class="admin-page">
 
 
 
-    <!-- ======================================================
-        PAGE HEADER
-    ======================================================= -->
 
 
-    <div class="dashboard-header">
+    <!-- HEADER -->
+
+
+    <section class="page-header">
 
 
         <div>
@@ -35,8 +38,7 @@ Purpose: Administration Control Module
 
             <p>
 
-                Manage users, permissions,
-                system access, and audit activity.
+                Manage users, permissions, and system activity
 
             </p>
 
@@ -45,17 +47,169 @@ Purpose: Administration Control Module
 
 
 
-        <div class="dashboard-actions">
 
 
-            <button class="action-button primary"
-                    id="createUserButton">
+        <button
+
+        id="createUserButton"
+
+        class="primary-button">
 
 
-                <i class="fa-solid fa-user-plus"></i>
+            <i class="fa-solid fa-user-plus"></i>
 
 
-                Create User
+            Create User
+
+
+        </button>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <!-- ADMIN STATISTICS -->
+
+
+    <section class="stats-grid">
+
+
+
+        <div class="stat-card">
+
+
+            <h3>
+
+                Total Users
+
+            </h3>
+
+
+            <strong id="adminUsers">
+
+                0
+
+            </strong>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <h3>
+
+                Active Users
+
+            </h3>
+
+
+            <strong id="activeUsers">
+
+                0
+
+            </strong>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <h3>
+
+                Audit Events
+
+            </h3>
+
+
+            <strong id="auditEvents">
+
+                0
+
+            </strong>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <h3>
+
+                System Status
+
+            </h3>
+
+
+            <strong>
+
+                Online
+
+            </strong>
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <!-- USERS PANEL -->
+
+
+    <section class="panel">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                User Management
+
+            </h2>
+
+
+
+            <button
+
+            id="refreshAdmin"
+
+            class="table-button">
+
+
+                Refresh
 
 
             </button>
@@ -64,507 +218,126 @@ Purpose: Administration Control Module
         </div>
 
 
-    </div>
+
+
+
+        <div class="table-container">
+
+
+
+            <table class="data-table">
+
+
+
+                <thead>
+
+
+                    <tr>
+
+
+
+                        <th>
+
+                            User ID
+
+                        </th>
+
+
+
+                        <th>
+
+                            Name
+
+                        </th>
+
+
+
+                        <th>
+
+                            Role
+
+                        </th>
+
+
+
+                        <th>
+
+                            Status
+
+                        </th>
+
+
+
+                        <th>
+
+                            Last Login
+
+                        </th>
+
+
+
+                        <th>
+
+                            Action
+
+                        </th>
+
+
+
+                    </tr>
+
+
+                </thead>
 
 
 
 
 
-    <!-- ======================================================
-        ADMIN SUMMARY
-    ======================================================= -->
-
-
-    <div class="stats-grid">
+                <tbody id="usersTableBody">
 
 
 
-        <div class="stat-card">
+                    <tr>
 
 
-            <div class="stat-icon blue">
+                        <td colspan="6">
 
 
-                <i class="fa-solid fa-users"></i>
+                            Loading users...
 
 
-            </div>
+                        </td>
 
 
-            <div class="stat-content">
+                    </tr>
 
 
-                <span>
 
-                    Total Users
-
-                </span>
+                </tbody>
 
 
-                <strong id="totalUsers">
 
-                    0
+            </table>
 
-                </strong>
-
-
-            </div>
 
 
         </div>
 
 
 
+    </section>
 
 
-        <div class="stat-card">
 
 
-            <div class="stat-icon green">
 
 
-                <i class="fa-solid fa-user-check"></i>
 
 
-            </div>
+    <!-- AUDIT LOG -->
 
 
-            <div class="stat-content">
-
-
-                <span>
-
-                    Active Users
-
-                </span>
-
-
-                <strong id="activeUsers">
-
-                    0
-
-                </strong>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <div class="stat-card">
-
-
-            <div class="stat-icon orange">
-
-
-                <i class="fa-solid fa-key"></i>
-
-
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Roles
-
-                </span>
-
-
-                <strong id="roleCount">
-
-                    0
-
-                </strong>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <div class="stat-card">
-
-
-            <div class="stat-icon red">
-
-
-                <i class="fa-solid fa-clock-rotate-left"></i>
-
-
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Audit Events
-
-                </span>
-
-
-                <strong id="auditEvents">
-
-                    0
-
-                </strong>
-
-
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        ADMIN GRID
-    ======================================================= -->
-
-
-    <div class="dashboard-grid">
-
-
-
-        <!-- USERS -->
-
-        <div class="panel large">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    User Management
-
-                </h2>
-
-
-            </div>
-
-
-
-
-            <div class="table-container">
-
-
-                <table class="dashboard-table">
-
-
-                    <thead>
-
-
-                        <tr>
-
-
-                            <th>
-
-                                User ID
-
-                            </th>
-
-
-                            <th>
-
-                                Name
-
-                            </th>
-
-
-                            <th>
-
-                                Role
-
-                            </th>
-
-
-                            <th>
-
-                                Permission
-
-                            </th>
-
-
-                            <th>
-
-                                Status
-
-                            </th>
-
-
-                            <th>
-
-                                Last Login
-
-                            </th>
-
-
-                            <th>
-
-                                Action
-
-                            </th>
-
-
-                        </tr>
-
-
-                    </thead>
-
-
-
-                    <tbody id="usersTableBody">
-
-
-                        <tr>
-
-
-                            <td colspan="7">
-
-
-                                Loading users...
-
-
-                            </td>
-
-
-                        </tr>
-
-
-                    </tbody>
-
-
-
-                </table>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- PERMISSIONS -->
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Permissions
-
-                </h2>
-
-
-            </div>
-
-
-
-            <div class="health-list">
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Administrator
-
-                    </span>
-
-
-                    <strong>
-
-                        Full Access
-
-                    </strong>
-
-
-                </div>
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Investigator
-
-                    </span>
-
-
-                    <strong>
-
-                        Case Access
-
-                    </strong>
-
-
-                </div>
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Analyst
-
-                    </span>
-
-
-                    <strong>
-
-                        Intelligence Access
-
-                    </strong>
-
-
-                </div>
-
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- SYSTEM CONTROLS -->
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    System Controls
-
-                </h2>
-
-
-            </div>
-
-
-
-            <div class="health-list">
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Database
-
-                    </span>
-
-
-                    <strong class="online">
-
-                        Online
-
-                    </strong>
-
-
-                </div>
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        API
-
-                    </span>
-
-
-                    <strong class="online">
-
-                        Connected
-
-                    </strong>
-
-
-                </div>
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Backup
-
-                    </span>
-
-
-                    <strong>
-
-                        Scheduled
-
-                    </strong>
-
-
-                </div>
-
-
-
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        AUDIT LOG
-    ======================================================= -->
-
-
-    <div class="panel"
-         style="margin-top:24px;">
+    <section class="panel">
 
 
 
@@ -583,32 +356,100 @@ Purpose: Administration Control Module
 
 
 
-        <div class="activity-feed"
-             id="auditLog">
+
+        <div class="table-container">
 
 
-            <div class="empty-state">
+
+            <table class="data-table">
 
 
-                <i class="fa-solid fa-list-check"></i>
+
+                <thead>
 
 
-                <p>
-
-                    No audit activity
-
-                </p>
+                    <tr>
 
 
-            </div>
+
+                        <th>
+
+                            Event ID
+
+                        </th>
+
+
+
+                        <th>
+
+                            User
+
+                        </th>
+
+
+
+                        <th>
+
+                            Action
+
+                        </th>
+
+
+
+                        <th>
+
+                            Date
+
+                        </th>
+
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+
+
+                <tbody id="auditTableBody">
+
+
+
+                    <tr>
+
+
+                        <td colspan="4">
+
+
+                            Loading audit records...
+
+
+                        </td>
+
+
+                    </tr>
+
+
+
+                </tbody>
+
+
+
+            </table>
+
 
 
         </div>
 
 
 
-    </div>
+    </section>
 
 
 
-</section>
+
+
+
+</div>
