@@ -1,0 +1,169 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: statusbar.html
+Purpose: Application System Status Footer
+==============================================================
+-->
+
+<footer class="statusbar"
+        id="statusbar">
+
+
+    <!-- ======================================================
+        LEFT STATUS
+    ======================================================= -->
+
+    <div class="statusbar-left">
+
+
+        <div class="status-item">
+
+
+            <span class="status-label">
+
+                Application
+
+            </span>
+
+
+            <strong>
+
+                TORPEDO v2.0.0
+
+            </strong>
+
+
+        </div>
+
+
+
+        <div class="status-divider"></div>
+
+
+
+        <div class="status-item">
+
+
+            <span class="status-label">
+
+                Environment
+
+            </span>
+
+
+            <strong id="environmentStatus">
+
+                Production
+
+            </strong>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ======================================================
+        CENTER STATUS
+    ======================================================= -->
+
+    <div class="statusbar-center">
+
+
+        <div class="status-item">
+
+
+            <span class="status-indicator online"
+                  id="apiIndicator">
+
+            </span>
+
+
+            <span id="apiStatus">
+
+                API Connected
+
+            </span>
+
+
+        </div>
+
+
+
+        <div class="status-item">
+
+
+            <span class="status-indicator online"
+                  id="databaseIndicator">
+
+            </span>
+
+
+            <span id="databaseConnection">
+
+                Database Ready
+
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ======================================================
+        RIGHT STATUS
+    ======================================================= -->
+
+    <div class="statusbar-right">
+
+
+        <div class="status-item">
+
+
+            <i class="fa-solid fa-user-shield"></i>
+
+
+            <span id="currentOperator">
+
+                Administrator
+
+            </span>
+
+
+        </div>
+
+
+
+        <div class="status-divider"></div>
+
+
+
+        <div class="status-item">
+
+
+            <i class="fa-solid fa-clock"></i>
+
+
+            <span id="systemTime">
+
+                --:--:--
+
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+</footer>
