@@ -1,0 +1,544 @@
+/*
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File:
+forms.css
+
+Purpose:
+Forms
+Buttons
+Dialogs
+Modals
+Toasts
+Loading Overlay
+
+==============================================================
+*/
+
+
+/* ==========================================================
+   FORM LAYOUT
+========================================================== */
+
+.form-grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+
+    gap:20px;
+
+}
+
+.form-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+
+    margin-bottom:18px;
+
+}
+
+.form-group.full-width{
+
+    grid-column:1/-1;
+
+}
+
+
+
+/* ==========================================================
+   LABELS
+========================================================== */
+
+.form-group label{
+
+    font-size:.9rem;
+
+    font-weight:600;
+
+    color:var(--primary);
+
+}
+
+
+
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+
+    width:100%;
+
+    min-height:var(--input-height);
+
+    padding:12px 14px;
+
+    border:1px solid var(--border);
+
+    border-radius:var(--input-radius);
+
+    background:#fff;
+
+    color:var(--text);
+
+    transition:var(--transition);
+
+}
+
+.form-group textarea{
+
+    min-height:140px;
+
+    resize:vertical;
+
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+
+    border-color:var(--accent);
+
+    box-shadow:0 0 0 3px rgba(0,183,255,.15);
+
+}
+
+
+
+/* ==========================================================
+   PLACEHOLDER
+========================================================== */
+
+::placeholder{
+
+    color:var(--text-light);
+
+}
+
+
+
+/* ==========================================================
+   CHECKBOXES
+========================================================== */
+
+.checkbox-group{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+}
+
+.checkbox-group input{
+
+    width:18px;
+
+    height:18px;
+
+}
+
+
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+.button-group{
+
+    display:flex;
+
+    gap:12px;
+
+    flex-wrap:wrap;
+
+    margin-top:20px;
+
+}
+
+.primary-button,
+.secondary-button,
+.danger-button{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:10px;
+
+    min-width:140px;
+
+    height:44px;
+
+    padding:0 20px;
+
+    border-radius:var(--button-radius);
+
+    font-weight:600;
+
+    transition:var(--transition);
+
+}
+
+.primary-button{
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.primary-button:hover{
+
+    background:var(--secondary);
+
+}
+
+.secondary-button{
+
+    background:#fff;
+
+    color:var(--primary);
+
+    border:1px solid var(--border);
+
+}
+
+.secondary-button:hover{
+
+    background:var(--bg-secondary);
+
+}
+
+.danger-button{
+
+    background:var(--danger);
+
+    color:#fff;
+
+}
+
+.danger-button:hover{
+
+    filter:brightness(.95);
+
+}
+
+
+
+/* ==========================================================
+   MODAL
+========================================================== */
+
+.modal{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:rgba(0,0,0,.45);
+
+    z-index:var(--z-modal);
+
+}
+
+.modal.hidden{
+
+    display:none;
+
+}
+
+.modal-content{
+
+    width:min(90%,700px);
+
+    background:#fff;
+
+    border-radius:var(--radius-lg);
+
+    box-shadow:var(--shadow-xl);
+
+    overflow:hidden;
+
+    animation:modalIn .25s ease;
+
+}
+
+.modal-header{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    padding:18px 22px;
+
+    background:var(--primary);
+
+    color:#fff;
+
+}
+
+.modal-body{
+
+    padding:24px;
+
+}
+
+.modal-footer{
+
+    display:flex;
+
+    justify-content:flex-end;
+
+    gap:12px;
+
+    padding:18px 22px;
+
+    border-top:1px solid var(--border);
+
+}
+
+
+
+/* ==========================================================
+   TOASTS
+========================================================== */
+
+.toast{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    min-width:320px;
+
+    margin-bottom:12px;
+
+    padding:14px 18px;
+
+    border-radius:var(--radius-md);
+
+    color:#fff;
+
+    box-shadow:var(--shadow-lg);
+
+    animation:toastSlide .25s ease;
+
+}
+
+.toast-success{
+
+    background:var(--success);
+
+}
+
+.toast-warning{
+
+    background:var(--warning);
+
+}
+
+.toast-error{
+
+    background:var(--danger);
+
+}
+
+.toast-info{
+
+    background:var(--info);
+
+}
+
+
+
+/* ==========================================================
+   ALERTS
+========================================================== */
+
+.alert{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+    padding:16px 18px;
+
+    border-radius:var(--radius-md);
+
+    margin-bottom:20px;
+
+    font-weight:500;
+
+}
+
+.alert-success{
+
+    background:#ECFDF5;
+
+    color:var(--success);
+
+}
+
+.alert-warning{
+
+    background:#FFF7E6;
+
+    color:var(--warning);
+
+}
+
+.alert-danger{
+
+    background:#FDECEC;
+
+    color:var(--danger);
+
+}
+
+.alert-info{
+
+    background:#EEF6FD;
+
+    color:var(--info);
+
+}
+
+
+
+/* ==========================================================
+   LOADING SPINNER
+========================================================== */
+
+.spinner{
+
+    width:36px;
+
+    height:36px;
+
+    border:4px solid rgba(255,255,255,.3);
+
+    border-top-color:#fff;
+
+    border-radius:50%;
+
+    animation:spin .8s linear infinite;
+
+}
+
+
+
+/* ==========================================================
+   FILE INPUT
+========================================================== */
+
+.file-upload{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:10px;
+
+    padding:18px;
+
+    border:2px dashed var(--border);
+
+    border-radius:var(--radius-md);
+
+    background:var(--panel-alt);
+
+    text-align:center;
+
+    transition:var(--transition);
+
+}
+
+.file-upload:hover{
+
+    border-color:var(--accent);
+
+    background:#F5FCFF;
+
+}
+
+
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+@keyframes spin{
+
+    to{
+
+        transform:rotate(360deg);
+
+    }
+
+}
+
+@keyframes toastSlide{
+
+    from{
+
+        opacity:0;
+
+        transform:translateX(30px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateX(0);
+
+    }
+
+}
+
+@keyframes modalIn{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.95);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
