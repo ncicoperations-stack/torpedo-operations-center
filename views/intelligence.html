@@ -1,0 +1,545 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: intelligence.html
+Purpose: Intelligence Operations Module
+==============================================================
+-->
+
+
+<section class="intelligence-page"
+         id="intelligencePage">
+
+
+
+    <!-- ======================================================
+        PAGE HEADER
+    ======================================================= -->
+
+
+    <div class="dashboard-header">
+
+
+        <div>
+
+
+            <h1>
+
+                Intelligence Center
+
+            </h1>
+
+
+            <p>
+
+                Monitor threats, intelligence reports,
+                and cyber activity.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-actions">
+
+
+            <button class="action-button primary"
+                    id="newIntelligenceButton">
+
+
+                <i class="fa-solid fa-file-circle-plus"></i>
+
+
+                New Report
+
+
+            </button>
+
+
+            <button class="action-button"
+                    id="refreshIntelligence">
+
+
+                <i class="fa-solid fa-sync"></i>
+
+
+                Refresh
+
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        THREAT OVERVIEW
+    ======================================================= -->
+
+
+    <div class="stats-grid">
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon red">
+
+
+                <i class="fa-solid fa-skull-crossbones"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Critical Threats
+
+                </span>
+
+
+                <strong id="criticalThreats">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon orange">
+
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Active Alerts
+
+                </span>
+
+
+                <strong id="activeAlerts">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon blue">
+
+
+                <i class="fa-solid fa-file-lines"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Reports
+
+                </span>
+
+
+                <strong id="intelligenceReports">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon green">
+
+
+                <i class="fa-solid fa-eye"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Monitored Sources
+
+                </span>
+
+
+                <strong id="monitoredSources">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        INTELLIGENCE WORKSPACE
+    ======================================================= -->
+
+
+    <div class="dashboard-grid">
+
+
+
+        <!-- THREAT MAP -->
+
+        <div class="panel large">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Threat Intelligence Overview
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div class="intelligence-map"
+                 id="threatMap">
+
+
+                <div class="empty-state">
+
+
+                    <i class="fa-solid fa-globe"></i>
+
+
+                    <p>
+
+                        Threat visualization loading...
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- ALERT QUEUE -->
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Alert Queue
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div id="alertQueue">
+
+
+                <div class="empty-state">
+
+
+                    <i class="fa-solid fa-bell"></i>
+
+
+                    <p>
+
+                        No pending alerts
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- ANALYSIS QUEUE -->
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Analysis Queue
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div id="analysisQueue">
+
+
+                <div class="empty-state">
+
+
+                    <i class="fa-solid fa-magnifying-glass-chart"></i>
+
+
+                    <p>
+
+                        No pending analysis
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        INTELLIGENCE REPORT TABLE
+    ======================================================= -->
+
+
+    <div class="panel"
+         style="margin-top:24px;">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Intelligence Reports
+
+            </h2>
+
+
+
+            <span id="intelligenceCount">
+
+                0 Reports
+
+            </span>
+
+
+        </div>
+
+
+
+
+        <div class="table-container">
+
+
+            <table class="dashboard-table">
+
+
+                <thead>
+
+
+                    <tr>
+
+
+                        <th>
+
+                            Report ID
+
+                        </th>
+
+
+                        <th>
+
+                            Threat Type
+
+                        </th>
+
+
+                        <th>
+
+                            Severity
+
+                        </th>
+
+
+                        <th>
+
+                            Source
+
+                        </th>
+
+
+                        <th>
+
+                            Analyst
+
+                        </th>
+
+
+                        <th>
+
+                            Status
+
+                        </th>
+
+
+                        <th>
+
+                            Date
+
+                        </th>
+
+
+                        <th>
+
+                            Action
+
+                        </th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+                <tbody id="intelligenceTableBody">
+
+
+                    <tr>
+
+
+                        <td colspan="8">
+
+
+                            Loading intelligence...
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
