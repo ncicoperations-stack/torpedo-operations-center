@@ -5,22 +5,25 @@ National Cyber Intelligence Center
 Operations Center
 
 File: evidence.html
-Purpose: Evidence Management Module
+
+Purpose:
+Evidence Management Module
+
 ==============================================================
 -->
 
 
-<section class="evidence-page"
-         id="evidencePage">
+
+<div class="evidence-page">
 
 
 
-    <!-- ======================================================
-        PAGE HEADER
-    ======================================================= -->
 
 
-    <div class="dashboard-header">
+    <!-- HEADER -->
+
+
+    <section class="page-header">
 
 
         <div>
@@ -35,8 +38,7 @@ Purpose: Evidence Management Module
 
             <p>
 
-                Track digital evidence, custody records,
-                and investigation assets.
+                Evidence registry and chain of custody monitoring
 
             </p>
 
@@ -45,73 +47,60 @@ Purpose: Evidence Management Module
 
 
 
-        <div class="dashboard-actions">
 
 
-            <button class="action-button primary"
-                    id="uploadEvidenceButton">
+        <button
+
+        id="uploadEvidenceButton"
+
+        class="primary-button">
 
 
-                <i class="fa-solid fa-upload"></i>
+            <i class="fa-solid fa-upload"></i>
 
 
-                Add Evidence
+            Register Evidence
 
 
-            </button>
-
-
-        </div>
-
-
-    </div>
+        </button>
 
 
 
+    </section>
 
 
-    <!-- ======================================================
-        EVIDENCE SUMMARY
-    ======================================================= -->
 
 
-    <div class="stats-grid">
+
+
+
+
+    <!-- STATISTICS -->
+
+
+    <section class="stats-grid">
 
 
 
         <div class="stat-card">
 
 
-            <div class="stat-icon blue">
+            <h3>
+
+                Total Evidence
+
+            </h3>
 
 
-                <i class="fa-solid fa-folder"></i>
+            <strong id="totalEvidence">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Total Evidence
-
-                </span>
-
-
-                <strong id="totalEvidence">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -120,36 +109,22 @@ Purpose: Evidence Management Module
         <div class="stat-card">
 
 
-            <div class="stat-icon green">
+            <h3>
+
+                Secured
+
+            </h3>
 
 
-                <i class="fa-solid fa-lock"></i>
+            <strong id="securedEvidence">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Secured Items
-
-                </span>
-
-
-                <strong id="securedEvidence">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -158,36 +133,22 @@ Purpose: Evidence Management Module
         <div class="stat-card">
 
 
-            <div class="stat-icon orange">
+            <h3>
+
+                Under Review
+
+            </h3>
 
 
-                <i class="fa-solid fa-clock"></i>
+            <strong id="pendingEvidence">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Pending Review
-
-                </span>
-
-
-                <strong id="pendingEvidence">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -196,207 +157,89 @@ Purpose: Evidence Management Module
         <div class="stat-card">
 
 
-            <div class="stat-icon red">
+            <h3>
+
+                Restricted
+
+            </h3>
 
 
-                <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong id="restrictedEvidence">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Restricted
-
-                </span>
-
-
-                <strong id="restrictedEvidence">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
 
 
 
-    </div>
+    </section>
 
 
 
 
 
-    <!-- ======================================================
-        EVIDENCE FILTERS
-    ======================================================= -->
 
 
-    <div class="panel">
 
+    <!-- SEARCH -->
 
-        <div class="filter-container">
 
+    <section class="panel">
 
-            <div class="filter-group">
 
 
-                <label>
+        <div class="panel-header">
 
-                    Search Evidence
 
-                </label>
+            <h2>
 
+                Evidence Search
 
-                <div class="search-box">
+            </h2>
 
 
-                    <i class="fa-solid fa-search"></i>
+        </div>
 
 
-                    <input type="text"
-                           id="evidenceSearch"
-                           placeholder="Evidence ID, case, type...">
 
 
-                </div>
 
+        <div class="search-bar">
 
-            </div>
 
+            <input
 
 
+            id="evidenceSearch"
 
 
-            <div class="filter-group">
+            type="text"
 
 
-                <label>
-
-                    Evidence Type
-
-                </label>
-
-
-                <select id="evidenceTypeFilter">
-
-
-                    <option value="">
-
-                        All Types
-
-                    </option>
-
-
-                    <option value="Digital">
-
-                        Digital File
-
-                    </option>
-
-
-                    <option value="Document">
-
-                        Document
-
-                    </option>
-
-
-                    <option value="Device">
-
-                        Device
-
-                    </option>
-
-
-                    <option value="Communication">
-
-                        Communication Record
-
-                    </option>
-
-
-                </select>
-
-
-            </div>
-
-
-
-
-
-            <div class="filter-group">
-
-
-                <label>
-
-                    Status
-
-                </label>
-
-
-                <select id="evidenceStatusFilter">
-
-
-                    <option value="">
-
-                        All Status
-
-                    </option>
-
-
-                    <option value="Secured">
-
-                        Secured
-
-                    </option>
-
-
-                    <option value="Review">
-
-                        Review
-
-                    </option>
-
-
-                    <option value="Released">
-
-                        Released
-
-                    </option>
-
-
-                </select>
-
-
-            </div>
+            placeholder="Search evidence ID, case, type, custodian...">
 
 
 
         </div>
 
 
-    </div>
+
+    </section>
 
 
 
 
 
-    <!-- ======================================================
-        EVIDENCE TABLE
-    ======================================================= -->
 
 
-    <div class="panel"
-         style="margin-top:24px;">
+
+    <!-- EVIDENCE TABLE -->
+
+
+    <section class="panel">
 
 
 
@@ -410,15 +253,8 @@ Purpose: Evidence Management Module
             </h2>
 
 
-
-            <span id="evidenceCount">
-
-                0 Items
-
-            </span>
-
-
         </div>
+
 
 
 
@@ -426,13 +262,16 @@ Purpose: Evidence Management Module
         <div class="table-container">
 
 
-            <table class="dashboard-table">
+
+            <table class="data-table">
+
 
 
                 <thead>
 
 
                     <tr>
+
 
 
                         <th>
@@ -442,11 +281,13 @@ Purpose: Evidence Management Module
                         </th>
 
 
+
                         <th>
 
                             Case Reference
 
                         </th>
+
 
 
                         <th>
@@ -456,11 +297,13 @@ Purpose: Evidence Management Module
                         </th>
 
 
+
                         <th>
 
                             Submitted By
 
                         </th>
+
 
 
                         <th>
@@ -470,11 +313,13 @@ Purpose: Evidence Management Module
                         </th>
 
 
+
                         <th>
 
                             Status
 
                         </th>
+
 
 
                         <th>
@@ -484,11 +329,13 @@ Purpose: Evidence Management Module
                         </th>
 
 
+
                         <th>
 
                             Action
 
                         </th>
+
 
 
                     </tr>
@@ -498,7 +345,10 @@ Purpose: Evidence Management Module
 
 
 
+
+
                 <tbody id="evidenceTableBody">
+
 
 
                     <tr>
@@ -516,6 +366,7 @@ Purpose: Evidence Management Module
                     </tr>
 
 
+
                 </tbody>
 
 
@@ -523,64 +374,16 @@ Purpose: Evidence Management Module
             </table>
 
 
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        CHAIN OF CUSTODY
-    ======================================================= -->
-
-
-    <div class="panel"
-         style="margin-top:24px;">
-
-
-
-        <div class="panel-header">
-
-
-            <h2>
-
-                Chain of Custody
-
-            </h2>
-
 
         </div>
 
 
 
-        <div class="activity-feed"
-             id="custodyLog">
-
-
-            <div class="empty-state">
-
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-
-                <p>
-
-                    No custody records available
-
-                </p>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
+    </section>
 
 
 
-</section>
+
+
+
+</div>
