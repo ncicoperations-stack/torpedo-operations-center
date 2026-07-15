@@ -5,7 +5,10 @@ National Cyber Intelligence Center
 Operations Center
 
 File: api.js
-Purpose: Google Apps Script / API Communication Layer
+
+Purpose:
+Google Apps Script API Connector
+
 ==============================================================
 */
 
@@ -14,111 +17,109 @@ Purpose: Google Apps Script / API Communication Layer
 
 
 
-/* ==========================================================
-   API SERVICE
-========================================================== */
-
-
 const TORPEDO_API = {
 
 
 
     /*
-    ----------------------------------------------------------
-    GET REQUEST
-    ----------------------------------------------------------
+    ==========================================================
+    GOOGLE APPS SCRIPT URL
+
+    Replace this with your deployed Web App URL
+
+    Example:
+
+    https://script.google.com/macros/s/XXXX/exec
+
+    ==========================================================
     */
 
-    async get(endpoint = "") {
+
+    URL:
+
+    "PASTE_YOUR_GOOGLE_APPS_SCRIPT_URL_HERE",
+
+
+
+
+
+
+    /*
+    ==========================================================
+    GET REQUEST
+    ==========================================================
+    */
+
+
+    async get(action){
+
 
 
         try {
 
 
-            const url =
 
-                TORPEDO_CONFIG.API.BASE_URL +
+            const response =
 
-                endpoint;
+                await fetch(
 
-
-
-            const response = await fetch(url,
-
-            {
-
-
-                method:
-
-                    "GET",
-
-
-                headers:
-
-                {
-
-                    "Content-Type":
-
-                        "application/json"
-
-                }
-
-
-            });
-
-
-
-            if (!response.ok) {
-
-
-                throw new Error(
-
-                    "API Request Failed: "
+                    this.URL
 
                     +
 
-                    response.status
+                    action
 
                 );
 
 
-            }
 
 
 
-            return await response.json();
+            const data =
+
+                await response.json();
+
+
+
+
+
+            return data;
 
 
 
         }
 
-        catch(error) {
+
+
+        catch(error){
+
 
 
             console.error(
 
-                "TORPEDO API GET Error:",
+                "TORPEDO API Error:",
 
                 error
 
             );
 
 
+
             return {
 
-                success:
 
-                    false,
+                success:false,
 
 
-                error:
+                error:error.toString()
 
-                    error.message
+
 
             };
 
 
         }
+
 
 
     },
@@ -127,90 +128,62 @@ const TORPEDO_API = {
 
 
 
+
+
     /*
-    ----------------------------------------------------------
+    ==========================================================
     POST REQUEST
-    ----------------------------------------------------------
+
+    Used for future:
+    - user creation
+    - evidence upload
+    - intelligence reports
+
+    ==========================================================
     */
 
-    async post(data = {}) {
+
+    async post(payload){
+
 
 
         try {
 
 
 
-            if (
+            const response =
 
-                !TORPEDO_CONFIG.GOOGLE.ENABLED
+                await fetch(
 
-                ||
+                    this.URL,
 
-                !TORPEDO_CONFIG.GOOGLE.APPS_SCRIPT_URL
-
-            ) {
+                    {
 
 
+                        method:"POST",
 
-                console.warn(
 
-                    "Google Apps Script URL not configured"
+                        headers:{
+
+
+                            "Content-Type":
+
+                            "text/plain"
+
+                        },
+
+
+                        body:
+
+                        JSON.stringify(payload)
+
+
+
+                    }
 
                 );
 
 
-
-                return {
-
-
-                    success:
-
-                        false,
-
-
-                    error:
-
-                        "Backend not configured"
-
-
-                };
-
-
-            }
-
-
-
-            const response = await fetch(
-
-                TORPEDO_CONFIG.GOOGLE.APPS_SCRIPT_URL,
-
-            {
-
-
-                method:
-
-                    "POST",
-
-
-
-                headers:
-
-                {
-
-                    "Content-Type":
-
-                        "application/json"
-
-
-                },
-
-
-                body:
-
-                    JSON.stringify(data)
-
-
-            });
 
 
 
@@ -220,13 +193,15 @@ const TORPEDO_API = {
 
         }
 
-        catch(error) {
+
+
+        catch(error){
 
 
 
             console.error(
 
-                "TORPEDO API POST Error:",
+                "TORPEDO POST ERROR:",
 
                 error
 
@@ -237,147 +212,24 @@ const TORPEDO_API = {
             return {
 
 
-                success:
+                success:false,
 
-                    false,
 
+                error:error.toString()
 
-                error:
-
-                    error.message
-
-
-            };
-
-
-        }
-
-
-    },
-
-
-
-
-
-    /*
-    ----------------------------------------------------------
-    GOOGLE CONNECTION TEST
-    ----------------------------------------------------------
-    */
-
-    async testConnection() {
-
-
-
-        try {
-
-
-
-            if (
-
-                !TORPEDO_CONFIG.GOOGLE.APPS_SCRIPT_URL
-
-            ) {
-
-
-
-                return {
-
-
-                    connected:
-
-                        false,
-
-
-                    message:
-
-                        "Google endpoint missing"
-
-
-                };
-
-
-            }
-
-
-
-
-            const response = await fetch(
-
-                TORPEDO_CONFIG.GOOGLE.APPS_SCRIPT_URL
-
-            );
-
-
-
-            if(response.ok) {
-
-
-
-                return {
-
-
-                    connected:
-
-                        true,
-
-
-                    message:
-
-                        "Google connection successful"
-
-
-                };
-
-
-            }
-
-
-
-            return {
-
-
-                connected:
-
-                    false,
-
-
-                message:
-
-                    "Google connection failed"
 
 
             };
 
 
 
-
         }
 
-        catch(error) {
-
-
-
-            return {
-
-
-                connected:
-
-                    false,
-
-
-                message:
-
-                    error.message
-
-
-            };
-
-
-        }
 
 
     }
+
+
 
 
 
@@ -385,11 +237,6 @@ const TORPEDO_API = {
 
 
 
-
-
-/* ==========================================================
-   EXPORT
-========================================================== */
 
 
 window.TORPEDO_API = TORPEDO_API;
