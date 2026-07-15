@@ -4,313 +4,239 @@ TORPEDO v2.0.0
 National Cyber Intelligence Center
 Operations Center
 
-File: topbar.css
-Purpose: Top Navigation Styling
+File:
+topbar.css
+
+Purpose:
+Application Top Navigation
+
 ==============================================================
 */
 
 
 /* ==========================================================
-   TOPBAR CONTAINER
+   TOPBAR
 ========================================================== */
 
-.topbar {
+.topbar{
 
-    height: var(--topbar-height);
+    height:var(--topbar-height);
 
-    display: flex;
+    background:var(--panel);
 
-    align-items: center;
+    border-bottom:1px solid var(--border);
 
-    justify-content: space-between;
+    display:flex;
 
-    gap: var(--space-4);
+    align-items:center;
 
-    padding:
+    padding:0 24px;
 
-        0
+    box-shadow:var(--shadow-sm);
 
-        var(--space-6);
-
-    background: var(--color-sidebar);
-
-    border-bottom:
-
-        var(--border-width)
-
-        var(--border-style)
-
-        var(--color-border);
-
-    flex-shrink: 0;
+    z-index:var(--z-topbar);
 
 }
 
 
 
 /* ==========================================================
-   LEFT SECTION
+   CONTENT
 ========================================================== */
 
-.topbar-left {
+.topbar-content{
 
-    display: flex;
+    width:100%;
 
-    align-items: center;
+    display:flex;
 
-    gap: var(--space-4);
+    align-items:center;
 
-    min-width: 260px;
+    justify-content:space-between;
 
-}
-
-
-
-.topbar-button {
-
-    width: 40px;
-
-    height: 40px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: var(--radius-md);
-
-    background: transparent;
-
-    color: var(--text-secondary);
-
-    font-size: 1.1rem;
-
-    transition:
-
-        background var(--transition-fast),
-
-        color var(--transition-fast);
-
-}
-
-
-
-.topbar-button:hover {
-
-    background: var(--color-panel);
-
-    color: var(--text-primary);
-
-}
-
-
-
-.page-title {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-
-.page-title h1 {
-
-    font-size: var(--font-size-lg);
-
-    font-weight: var(--weight-semibold);
-
-    color: var(--text-primary);
-
-}
-
-
-
-.page-title span {
-
-    color: var(--text-secondary);
-
-    font-size: var(--font-size-xs);
+    gap:24px;
 
 }
 
 
 
 /* ==========================================================
-   SEARCH
+   LEFT
 ========================================================== */
 
-.topbar-search {
+.topbar-left{
 
-    flex: 1;
+    display:flex;
 
-    display: flex;
+    align-items:center;
 
-    justify-content: center;
-
-}
-
-
-
-.search-box {
-
-    width: 100%;
-
-    max-width: 520px;
-
-    height: 42px;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: var(--space-3);
-
-    padding:
-
-        0
-
-        var(--space-4);
-
-    background: var(--color-panel);
-
-    border:
-
-        var(--border-width)
-
-        var(--border-style)
-
-        var(--color-border);
-
-    border-radius: var(--radius-lg);
+    min-width:260px;
 
 }
 
+.page-title h2{
 
+    font-size:1.25rem;
 
-.search-box i {
+    color:var(--primary);
 
-    color: var(--text-secondary);
-
-}
-
-
-
-.search-box input {
-
-    width: 100%;
-
-    background: transparent;
-
-    border: none;
-
-    outline: none;
-
-    color: var(--text-primary);
-
-    font-size: var(--font-size-sm);
+    font-weight:700;
 
 }
 
+.page-title span{
 
+    display:block;
 
-.search-box input::placeholder {
+    margin-top:4px;
 
-    color: var(--text-muted);
+    color:var(--text-light);
+
+    font-size:.85rem;
 
 }
 
 
 
 /* ==========================================================
-   RIGHT SECTION
+   CENTER
 ========================================================== */
 
-.topbar-right {
+.topbar-center{
 
-    display: flex;
+    flex:1;
 
-    align-items: center;
+    display:flex;
 
-    gap: var(--space-4);
+    justify-content:center;
 
 }
 
 
 
 /* ==========================================================
-   CONNECTION STATUS
+   GLOBAL SEARCH
 ========================================================== */
 
-.connection-status {
+.global-search{
 
-    display: flex;
+    width:100%;
 
-    align-items: center;
+    max-width:520px;
 
-    gap: var(--space-2);
+    height:44px;
 
-    font-size: var(--font-size-sm);
+    display:flex;
 
-    color: var(--text-secondary);
+    align-items:center;
 
-}
+    gap:12px;
 
+    background:var(--bg);
 
+    border:1px solid var(--border);
 
-.status-dot {
+    border-radius:var(--radius-round);
 
-    width: 9px;
+    padding:0 16px;
 
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: var(--color-danger);
+    transition:var(--transition);
 
 }
 
+.global-search:hover{
 
+    border-color:var(--secondary);
 
-.status-dot.online {
+}
 
-    background: var(--color-success);
+.global-search:focus-within{
+
+    border-color:var(--accent);
+
+    box-shadow:0 0 0 3px rgba(0,183,255,.15);
+
+}
+
+.global-search i{
+
+    color:var(--text-light);
+
+}
+
+.global-search input{
+
+    flex:1;
+
+    border:none;
+
+    background:transparent;
+
+    font-size:var(--font-size-md);
 
 }
 
 
 
 /* ==========================================================
-   CLOCK
+   RIGHT
 ========================================================== */
 
-.system-clock {
+.topbar-right{
 
-    display: flex;
+    display:flex;
 
-    flex-direction: column;
+    align-items:center;
 
-    align-items: flex-end;
-
-}
-
-
-
-.system-clock strong {
-
-    font-size: var(--font-size-sm);
+    gap:16px;
 
 }
 
 
 
-.system-clock small {
+/* ==========================================================
+   CONNECTION
+========================================================== */
 
-    color: var(--text-secondary);
+.connection-status{
 
-    font-size: var(--font-size-xs);
+    display:flex;
+
+    align-items:center;
+
+    gap:8px;
+
+    padding:6px 12px;
+
+    border-radius:var(--radius-round);
+
+    background:var(--bg-secondary);
+
+    font-size:.9rem;
+
+}
+
+.status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+}
+
+.status-dot.online{
+
+    background:var(--success);
+
+    box-shadow:0 0 8px rgba(39,174,96,.6);
+
+}
+
+.status-dot.offline{
+
+    background:var(--danger);
 
 }
 
@@ -320,248 +246,210 @@ Purpose: Top Navigation Styling
    ICON BUTTONS
 ========================================================== */
 
-.topbar-icon {
+.icon-button{
 
-    position: relative;
+    width:42px;
 
-    width: 40px;
+    height:42px;
 
-    height: 40px;
+    border:1px solid var(--border);
 
-    display: flex;
+    border-radius:50%;
 
-    align-items: center;
+    background:var(--panel);
 
-    justify-content: center;
+    display:flex;
 
-    border-radius: var(--radius-md);
+    align-items:center;
 
-    background: transparent;
+    justify-content:center;
 
-    color: var(--text-secondary);
+    color:var(--primary);
 
-}
-
-
-
-.topbar-icon:hover {
-
-    background: var(--color-panel);
-
-    color: var(--text-primary);
+    transition:var(--transition);
 
 }
 
+.icon-button:hover{
 
+    background:var(--primary);
 
-.notification-badge {
+    color:var(--text-white);
 
-    position: absolute;
+    border-color:var(--primary);
 
-    top: 2px;
-
-    right: 2px;
-
-    min-width: 16px;
-
-    height: 16px;
-
-    padding: 0 4px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 20px;
-
-    background: var(--color-danger);
-
-    color: white;
-
-    font-size: 10px;
-
-    font-weight: var(--weight-bold);
+    transform:translateY(-2px);
 
 }
 
 
 
 /* ==========================================================
-   USER MENU
+   OPERATOR CARD
 ========================================================== */
 
-.user-menu {
+.operator-card{
 
-    position: relative;
+    display:flex;
 
-}
+    align-items:center;
 
+    gap:12px;
 
+    padding:6px 10px;
 
-.user-button {
+    border-radius:var(--radius-lg);
 
-    display: flex;
-
-    align-items: center;
-
-    gap: var(--space-3);
-
-    background: transparent;
-
-    color: var(--text-primary);
+    transition:var(--transition);
 
 }
 
+.operator-card:hover{
 
-
-.user-avatar-small {
-
-    width: 38px;
-
-    height: 38px;
-
-    display: flex;
-
-    align-items: center;
-
-    justify-content: center;
-
-    border-radius: 50%;
-
-    background: var(--color-primary);
-
-    color: white;
+    background:var(--bg-secondary);
 
 }
 
+.operator-avatar{
 
+    width:44px;
 
-.user-details {
+    height:44px;
 
-    display: flex;
+    border-radius:50%;
 
-    flex-direction: column;
+    background:var(--primary);
 
-    text-align: left;
+    color:var(--text-white);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:1.1rem;
 
 }
 
+.operator-info{
 
+    display:flex;
 
-.user-details strong {
-
-    font-size: var(--font-size-sm);
+    flex-direction:column;
 
 }
 
+.operator-info strong{
 
+    font-size:.95rem;
 
-.user-details small {
+    color:var(--primary);
 
-    color: var(--text-secondary);
+}
 
-    font-size: var(--font-size-xs);
+.operator-info small{
+
+    margin-top:2px;
+
+    color:var(--text-light);
+
+    font-size:.8rem;
 
 }
 
 
 
 /* ==========================================================
-   DROPDOWN
+   BREADCRUMB
 ========================================================== */
 
-.user-dropdown {
+.breadcrumb{
 
-    position: absolute;
+    height:44px;
 
-    top: calc(100% + 10px);
+    display:flex;
 
-    right: 0;
+    align-items:center;
 
-    width: 220px;
+    gap:8px;
 
-    padding: var(--space-3);
+    padding:0 24px;
 
-    background: var(--color-panel);
+    background:var(--panel-alt);
 
-    border:
+    border-bottom:1px solid var(--border);
 
-        var(--border-width)
+    font-size:.9rem;
 
-        var(--border-style)
+    color:var(--text-light);
 
-        var(--color-border);
+}
 
-    border-radius: var(--radius-lg);
+.breadcrumb span:last-child{
 
-    box-shadow: var(--shadow-lg);
+    color:var(--primary);
 
-    display: none;
-
-    z-index: var(--z-topbar);
+    font-weight:600;
 
 }
 
 
 
-.user-dropdown.active {
+/* ==========================================================
+   STATUS BAR
+========================================================== */
 
-    display: block;
+.statusbar{
+
+    height:var(--statusbar-height);
+
+    background:var(--primary);
+
+    color:var(--text-white);
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 20px;
+
+    font-size:.8rem;
+
+}
+
+.status-left,
+.status-center,
+.status-right{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.statusbar strong{
+
+    color:var(--accent-light);
 
 }
 
 
 
-.user-dropdown a,
+/* ==========================================================
+   ANIMATION
+========================================================== */
 
-.user-dropdown button {
+.topbar,
+.global-search,
+.operator-card,
+.connection-status,
+.icon-button{
 
-    width: 100%;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: var(--space-3);
-
-    padding: var(--space-3);
-
-    background: transparent;
-
-    color: var(--text-secondary);
-
-    border-radius: var(--radius-md);
-
-}
-
-
-
-.user-dropdown a:hover,
-
-.user-dropdown button:hover {
-
-    background: var(--color-panel-light);
-
-    color: var(--text-primary);
-
-}
-
-
-
-.user-dropdown hr {
-
-    border: 0;
-
-    border-top:
-
-        var(--border-width)
-
-        var(--border-style)
-
-        var(--color-border);
-
-    margin: var(--space-2) 0;
+    transition:var(--transition);
 
 }
