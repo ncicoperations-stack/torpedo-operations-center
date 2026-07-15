@@ -4,288 +4,456 @@ TORPEDO v2.0.0
 National Cyber Intelligence Center
 Operations Center
 
-File: responsive.css
-Purpose: Responsive Layout Rules
+File:
+responsive.css
+
+Purpose:
+Responsive Layout
+Desktop
+Laptop
+Tablet
+Mobile
+
 ==============================================================
 */
 
 
 /* ==========================================================
-   LARGE TABLETS / SMALL LAPTOPS
+   1600px
 ========================================================== */
 
-@media (max-width: 1200px) {
+@media (max-width:1600px){
 
+    #view-container{
 
-    .stats-grid {
-
-        grid-template-columns:
-
-            repeat(2, minmax(0, 1fr));
+        padding:24px;
 
     }
-
-
-    .dashboard-grid {
-
-        grid-template-columns:
-
-            1fr;
-
-    }
-
-
-    .dashboard-grid .large {
-
-        grid-column:
-
-            span 1;
-
-    }
-
-
-    .topbar-search {
-
-        display: none;
-
-    }
-
 
 }
 
 
 
 /* ==========================================================
-   TABLETS
+   1400px
 ========================================================== */
 
-@media (max-width: 900px) {
+@media (max-width:1400px){
 
+    .dashboard-grid{
 
-    body {
-
-        overflow: auto;
-
-    }
-
-
-
-    #app {
-
-        overflow: visible;
+        grid-template-columns:1fr;
 
     }
 
+    .stats-grid{
 
-
-    #sidebar-container {
-
-        position: fixed;
-
-        left: -100%;
-
-        top: 0;
-
-        z-index: var(--z-sidebar);
-
-        transition:
-
-            left var(--transition-normal);
+        grid-template-columns:repeat(2,1fr);
 
     }
-
-
-
-    #sidebar-container.open {
-
-        left: 0;
-
-    }
-
-
-
-    #main-app {
-
-        width: 100%;
-
-    }
-
-
-
-    .topbar {
-
-        padding:
-
-            0
-
-            var(--space-4);
-
-    }
-
-
-
-    .page-title span {
-
-        display: none;
-
-    }
-
-
-
-    #view-container {
-
-        padding: var(--space-4);
-
-    }
-
-
 
 }
 
 
 
 /* ==========================================================
-   MOBILE
+   1200px
 ========================================================== */
 
-@media (max-width: 600px) {
+@media (max-width:1200px){
 
+    .sidebar{
 
+        width:240px;
 
-    .stats-grid {
-
-        grid-template-columns:
-
-            1fr;
+        min-width:240px;
 
     }
 
+    .topbar-content{
 
-
-    .dashboard-header {
-
-        flex-direction: column;
-
-        align-items: flex-start;
+        gap:16px;
 
     }
 
+    .page-title h2{
 
-
-    .dashboard-actions {
-
-        width: 100%;
+        font-size:1.1rem;
 
     }
 
+    .global-search{
 
-
-    .dashboard-actions button {
-
-        flex: 1;
+        max-width:380px;
 
     }
-
-
-
-    .topbar {
-
-        height: auto;
-
-        min-height: var(--topbar-height);
-
-    }
-
-
-
-    .topbar-right {
-
-        gap: var(--space-2);
-
-    }
-
-
-
-    .connection-status {
-
-        display: none;
-
-    }
-
-
-
-    .system-clock {
-
-        display: none;
-
-    }
-
-
-
-    .user-details {
-
-        display: none;
-
-    }
-
-
-
-    .panel-header {
-
-        padding: var(--space-3);
-
-    }
-
-
-
-    .dashboard-table {
-
-        min-width: 650px;
-
-    }
-
-
 
 }
 
 
 
 /* ==========================================================
-   SMALL MOBILE
+   992px
 ========================================================== */
 
-@media (max-width: 400px) {
+@media (max-width:992px){
 
+    .app-container{
 
-
-    .topbar-button {
-
-        width: 36px;
-
-        height: 36px;
+        flex-direction:column;
 
     }
 
+    .sidebar{
 
+        position:fixed;
 
-    .user-avatar-small {
+        left:-280px;
 
-        width: 34px;
+        top:0;
 
-        height: 34px;
+        height:100vh;
 
-    }
+        transition:.3s ease;
 
-
-
-    .dashboard-header h1 {
-
-        font-size:
-
-            var(--font-size-xl);
+        z-index:1000;
 
     }
 
+    .sidebar.open{
 
+        left:0;
+
+    }
+
+    .main-area{
+
+        width:100%;
+
+    }
+
+    .topbar{
+
+        padding:0 16px;
+
+    }
+
+    .topbar-center{
+
+        display:none;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr 1fr;
+
+    }
+
+    .action-grid{
+
+        grid-template-columns:repeat(2,1fr);
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   768px
+========================================================== */
+
+@media (max-width:768px){
+
+    body{
+
+        overflow:auto;
+
+    }
+
+    #view-container{
+
+        padding:16px;
+
+    }
+
+    .page-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:16px;
+
+    }
+
+    .stats-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .dashboard-grid{
+
+        gap:18px;
+
+    }
+
+    .action-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .form-grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .button-group{
+
+        flex-direction:column;
+
+    }
+
+    .primary-button,
+    .secondary-button,
+    .danger-button{
+
+        width:100%;
+
+    }
+
+    .search-bar{
+
+        flex-direction:column;
+
+    }
+
+    .search-bar input,
+    .search-bar select{
+
+        width:100%;
+
+    }
+
+    .topbar-right{
+
+        gap:10px;
+
+    }
+
+    .operator-info{
+
+        display:none;
+
+    }
+
+    .breadcrumb{
+
+        padding:0 16px;
+
+        font-size:.8rem;
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   576px
+========================================================== */
+
+@media (max-width:576px){
+
+    .topbar{
+
+        height:auto;
+
+        padding:12px;
+
+    }
+
+    .topbar-content{
+
+        flex-direction:column;
+
+        align-items:stretch;
+
+        gap:12px;
+
+    }
+
+    .topbar-left,
+    .topbar-center,
+    .topbar-right{
+
+        width:100%;
+
+        justify-content:center;
+
+    }
+
+    .global-search{
+
+        max-width:none;
+
+        width:100%;
+
+    }
+
+    .connection-status{
+
+        display:none;
+
+    }
+
+    .icon-button{
+
+        width:38px;
+
+        height:38px;
+
+    }
+
+    .panel-header{
+
+        flex-direction:column;
+
+        align-items:flex-start;
+
+        gap:10px;
+
+    }
+
+    .modal-content{
+
+        width:95%;
+
+    }
+
+    .toast{
+
+        min-width:unset;
+
+        width:100%;
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   SMALL PHONES
+========================================================== */
+
+@media (max-width:420px){
+
+    .page-title h2{
+
+        font-size:1rem;
+
+    }
+
+    .page-title span{
+
+        font-size:.75rem;
+
+    }
+
+    .stat-card{
+
+        padding:16px;
+
+    }
+
+    .stat-card strong{
+
+        font-size:1.5rem;
+
+    }
+
+    .stat-icon{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:1.2rem;
+
+    }
+
+    .panel-body{
+
+        padding:16px;
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   TABLES
+========================================================== */
+
+@media (max-width:992px){
+
+    .table-container{
+
+        overflow-x:auto;
+
+    }
+
+    .data-table{
+
+        min-width:900px;
+
+    }
+
+}
+
+
+
+/* ==========================================================
+   PRINT
+========================================================== */
+
+@media print{
+
+    .sidebar,
+    .topbar,
+    .breadcrumb,
+    .statusbar,
+    .button-group,
+    .icon-button{
+
+        display:none !important;
+
+    }
+
+    body{
+
+        background:#fff;
+
+    }
+
+    #view-container{
+
+        padding:0;
+
+    }
+
+    .panel{
+
+        border:1px solid #ccc;
+
+        box-shadow:none;
+
+    }
 
 }
