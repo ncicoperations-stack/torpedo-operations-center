@@ -1,0 +1,510 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: dashboard.html
+Purpose: Main Operations Dashboard View
+==============================================================
+-->
+
+<section class="dashboard"
+         id="dashboard">
+
+
+    <!-- ======================================================
+        PAGE HEADER
+    ======================================================= -->
+
+    <div class="dashboard-header">
+
+
+        <div>
+
+            <h1>
+
+                Operations Dashboard
+
+            </h1>
+
+
+            <p>
+
+                Real-time overview of cases, intelligence,
+                investigations, and system activity.
+
+            </p>
+
+        </div>
+
+
+        <div class="dashboard-actions">
+
+
+            <button class="action-button primary"
+                    id="createCaseButton">
+
+
+                <i class="fa-solid fa-plus"></i>
+
+
+                New Case
+
+
+            </button>
+
+
+
+            <button class="action-button"
+                    id="refreshDashboard">
+
+
+                <i class="fa-solid fa-rotate"></i>
+
+
+                Refresh
+
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ======================================================
+        KPI CARDS
+    ======================================================= -->
+
+    <div class="stats-grid">
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon blue">
+
+                <i class="fa-solid fa-folder-open"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Total Cases
+
+                </span>
+
+
+                <strong id="totalCases">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon orange">
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Critical Cases
+
+                </span>
+
+
+                <strong id="criticalCases">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon green">
+
+                <i class="fa-solid fa-user-secret"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Active Investigators
+
+                </span>
+
+
+                <strong id="activeInvestigators">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon red">
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Threat Alerts
+
+                </span>
+
+
+                <strong id="threatAlerts">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ======================================================
+        MAIN DASHBOARD GRID
+    ======================================================= -->
+
+    <div class="dashboard-grid">
+
+
+
+        <!-- RECENT CASES -->
+
+        <div class="panel large">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Recent Cases
+
+                </h2>
+
+
+                <button class="panel-link"
+                        data-view="cases">
+
+                    View All
+
+                </button>
+
+
+            </div>
+
+
+
+            <div class="table-container">
+
+
+                <table class="dashboard-table">
+
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                Reference
+                            </th>
+
+                            <th>
+                                Category
+                            </th>
+
+                            <th>
+                                Priority
+                            </th>
+
+                            <th>
+                                Status
+                            </th>
+
+                            <th>
+                                Date
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="recentCasesTable">
+
+
+                        <tr>
+
+                            <td colspan="5">
+
+                                Loading cases...
+
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+
+                </table>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- ACTIVITY FEED -->
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Activity Feed
+
+                </h2>
+
+
+            </div>
+
+
+            <div class="activity-feed"
+                 id="activityFeed">
+
+
+                <div class="empty-state">
+
+
+                    <i class="fa-solid fa-clock"></i>
+
+
+                    <p>
+
+                        No recent activity
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- INTELLIGENCE ALERTS -->
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Intelligence Alerts
+
+                </h2>
+
+
+            </div>
+
+
+            <div id="intelligenceAlerts">
+
+
+                <div class="empty-state">
+
+
+                    <i class="fa-solid fa-shield-halved"></i>
+
+
+                    <p>
+
+                        No active alerts
+
+                    </p>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- SYSTEM HEALTH -->
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    System Health
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div class="health-list">
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        API Service
+
+                    </span>
+
+
+                    <strong class="online">
+
+                        Online
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Google Connection
+
+                    </span>
+
+
+                    <strong class="online">
+
+                        Connected
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Database
+
+                    </span>
+
+
+                    <strong class="online">
+
+                        Ready
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
