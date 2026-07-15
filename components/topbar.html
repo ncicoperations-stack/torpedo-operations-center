@@ -5,39 +5,30 @@ National Cyber Intelligence Center
 Operations Center
 
 File: topbar.html
-Purpose: Application Top Navigation
+
+Purpose:
+Application Top Navigation
+
 ==============================================================
 -->
 
-<header class="topbar" id="topbar">
+<div class="topbar-content">
 
-    <!-- ======================================================
-        LEFT SECTION
-    ======================================================= -->
+    <!-- LEFT -->
 
     <div class="topbar-left">
 
-        <button
-            type="button"
-            class="topbar-button"
-            id="mobileMenuButton">
-
-            <i class="fa-solid fa-bars"></i>
-
-        </button>
-
-
         <div class="page-title">
 
-            <h1 id="pageTitle">
+            <h2>
 
-                Dashboard
+                National Cyber Intelligence Center
 
-            </h1>
+            </h2>
 
-            <span id="pageSubtitle">
+            <span>
 
-                Operations Overview
+                TORPEDO Operations Center
 
             </span>
 
@@ -46,44 +37,39 @@ Purpose: Application Top Navigation
     </div>
 
 
-    <!-- ======================================================
-        CENTER SEARCH
-    ======================================================= -->
 
-    <div class="topbar-search">
 
-        <div class="search-box">
+
+    <!-- CENTER -->
+
+    <div class="topbar-center">
+
+        <div class="global-search">
 
             <i class="fa-solid fa-magnifying-glass"></i>
 
             <input
-                type="text"
                 id="globalSearch"
-                placeholder="Search cases, investigators, intelligence...">
+                type="text"
+                placeholder="Search cases, investigators, evidence...">
 
         </div>
 
     </div>
 
 
-    <!-- ======================================================
-        RIGHT SECTION
-    ======================================================= -->
+
+
+
+    <!-- RIGHT -->
 
     <div class="topbar-right">
 
-
-        <!-- SYSTEM CONNECTION -->
-
         <div class="connection-status">
 
-            <span
-                class="status-dot online"
-                id="connectionIndicator">
-            </span>
+            <span class="status-dot online"></span>
 
-
-            <span id="connectionStatus">
+            <span id="connectionLabel">
 
                 Connected
 
@@ -93,139 +79,54 @@ Purpose: Application Top Navigation
 
 
 
-        <!-- CLOCK -->
-
-        <div class="system-clock">
-
-            <strong id="currentTime">
-
-                --:--:--
-
-            </strong>
-
-
-            <small id="currentDate">
-
-                Loading...
-
-            </small>
-
-        </div>
-
-
-
-        <!-- ALERTS -->
-
         <button
-            type="button"
-            class="topbar-icon"
-            id="notificationButton">
+            id="notificationButton"
+            class="icon-button"
+            title="Notifications">
 
             <i class="fa-solid fa-bell"></i>
-
-
-            <span class="notification-badge">
-
-                0
-
-            </span>
 
         </button>
 
 
 
-        <!-- USER MENU -->
+        <button
+            id="refreshSystemButton"
+            class="icon-button"
+            title="Refresh">
 
-        <div class="user-menu">
+            <i class="fa-solid fa-rotate"></i>
 
-
-            <button
-                type="button"
-                class="user-button"
-                id="userMenuButton">
-
-
-                <div class="user-avatar-small">
-
-                    <i class="fa-solid fa-user"></i>
-
-                </div>
-
-
-                <div class="user-details">
-
-                    <strong id="topbarUserName">
-
-                        Administrator
-
-                    </strong>
-
-
-                    <small id="topbarUserRole">
-
-                        Operations Supervisor
-
-                    </small>
-
-
-                </div>
-
-
-                <i class="fa-solid fa-chevron-down"></i>
-
-
-            </button>
+        </button>
 
 
 
-            <!-- USER DROPDOWN -->
+        <div class="operator-card">
 
-            <div
-                class="user-dropdown"
-                id="userDropdown">
+            <div class="operator-avatar">
 
-
-                <a href="#"
-                   data-view="settings">
-
-                    <i class="fa-solid fa-user-gear"></i>
-
-                    Profile Settings
-
-                </a>
-
-
-                <a href="#"
-                   data-view="admin">
-
-                    <i class="fa-solid fa-users"></i>
-
-                    Administration
-
-                </a>
-
-
-                <hr>
-
-
-                <button
-                    type="button"
-                    id="topbarLogout">
-
-                    <i class="fa-solid fa-right-from-bracket"></i>
-
-                    Logout
-
-                </button>
-
+                <i class="fa-solid fa-user"></i>
 
             </div>
 
+            <div class="operator-info">
+
+                <strong id="operatorName">
+
+                    Operator
+
+                </strong>
+
+                <small id="operatorRole">
+
+                    Operations Center
+
+                </small>
+
+            </div>
 
         </div>
 
-
     </div>
 
-
-</header>
+</div>
