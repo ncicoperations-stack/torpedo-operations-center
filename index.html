@@ -1,55 +1,42 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 
 <head>
 
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-    <title>
-        TORPEDO | Operations Center
-    </title>
+<title>
 
+TORPEDO | NCIC Operations Center
 
-
-    <!-- ==================================================
-         ICONS
-    =================================================== -->
-
-    <link rel="stylesheet"
-          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</title>
 
 
 
-    <!-- ==================================================
-         CSS
-    =================================================== -->
+<!-- ICONS -->
 
-    <link rel="stylesheet"
-          href="css/main.css">
+<link
 
-    <link rel="stylesheet"
-          href="css/sidebar.css">
+rel="stylesheet"
 
-    <link rel="stylesheet"
-          href="css/topbar.css">
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <link rel="stylesheet"
-          href="css/dashboard.css">
 
-    <link rel="stylesheet"
-          href="css/cases.css">
 
-    <link rel="stylesheet"
-          href="css/investigators.css">
+<!-- MAIN STYLE -->
 
-    <link rel="stylesheet"
-          href="css/responsive.css">
+<link
+
+rel="stylesheet"
+
+href="css/style.css">
 
 
 
@@ -57,96 +44,38 @@
 
 
 
+
+
+
 <body>
 
 
 
-<div id="app">
+
+
+<!-- LOADING SCREEN -->
+
+
+<div id="loading-overlay" class="hidden">
 
 
 
-    <!-- ==================================================
-         SIDEBAR
-    =================================================== -->
-
-
-    <aside id="sidebar-container"></aside>
-
-
-
-
-
-    <!-- ==================================================
-         MAIN APPLICATION
-    =================================================== -->
-
-
-    <main id="main-app">
-
-
-
-        <!-- TOPBAR -->
-
-        <header id="topbar-container"></header>
-
-
-
-
-
-        <!-- BREADCRUMB -->
-
-        <div id="breadcrumb-container"></div>
-
-
-
-
-
-        <!-- PAGE CONTENT -->
-
-        <section id="view-container">
-
-
-        </section>
-
-
-
-
-
-        <!-- STATUS BAR -->
-
-        <footer id="statusbar-container"></footer>
-
-
-
-    </main>
-
-
-
-
-</div>
-
-
-
-
-
-<!-- ======================================================
-     SYSTEM ELEMENTS
-======================================================= -->
-
-
-<div id="loading-overlay"
-     class="hidden">
-
-
-    <div class="loader-box">
+    <div class="loading-box">
 
 
         <i class="fa-solid fa-shield-halved"></i>
 
 
+        <h2>
+
+            TORPEDO
+
+        </h2>
+
+
         <p id="loadingMessage">
 
-            Loading TORPEDO...
+            Starting Operations Center...
 
         </p>
 
@@ -154,14 +83,28 @@
     </div>
 
 
+
 </div>
 
 
 
 
 
+
+
+
+<!-- TOAST HOLDER -->
+
+
 <div id="toast-root"></div>
 
+
+
+
+
+
+
+<!-- MODAL HOLDER -->
 
 
 <div id="modal-root"></div>
@@ -170,10 +113,153 @@
 
 
 
-<!-- ======================================================
-     JAVASCRIPT CORE
-======================================================= -->
 
+
+
+<!-- APPLICATION FRAME -->
+
+
+<div class="app-container">
+
+
+
+
+
+    <!-- SIDEBAR -->
+
+
+    <aside class="sidebar">
+
+
+        <div id="sidebar-container">
+
+
+        </div>
+
+
+    </aside>
+
+
+
+
+
+
+
+
+    <!-- MAIN AREA -->
+
+
+    <main class="main-area">
+
+
+
+
+
+        <!-- TOPBAR -->
+
+
+        <header class="topbar">
+
+
+            <div id="topbar-container">
+
+
+            </div>
+
+
+        </header>
+
+
+
+
+
+
+
+
+        <!-- BREADCRUMB -->
+
+
+        <div class="breadcrumb">
+
+
+            <span>
+
+                Operations Center
+
+            </span>
+
+
+            /
+
+            <span id="breadcrumb">
+
+                Dashboard
+
+            </span>
+
+
+        </div>
+
+
+
+
+
+
+
+
+        <!-- CONTENT -->
+
+
+        <section id="view-container">
+
+
+            Loading TORPEDO...
+
+
+        </section>
+
+
+
+
+
+
+
+
+        <!-- STATUS BAR -->
+
+
+        <footer>
+
+
+            <div id="statusbar-container">
+
+
+            </div>
+
+
+        </footer>
+
+
+
+
+
+    </main>
+
+
+
+
+
+</div>
+
+
+
+
+
+
+
+
+
+<!-- CORE -->
 
 <script src="js/config.js"></script>
 
@@ -196,10 +282,8 @@
 
 
 
-<!-- ======================================================
-     MODULES
-======================================================= -->
 
+<!-- MODULES -->
 
 <script src="js/cases.js"></script>
 
@@ -207,10 +291,10 @@
 <script src="js/investigators.js"></script>
 
 
-<script src="js/analytics.js"></script>
-
-
 <script src="js/intelligence.js"></script>
+
+
+<script src="js/analytics.js"></script>
 
 
 <script src="js/evidence.js"></script>
@@ -218,10 +302,13 @@
 
 <script src="js/admin.js"></script>
 
-    
+
 <script src="js/settings.js"></script>
 
-    
+
+
+
+
 </body>
 
 
