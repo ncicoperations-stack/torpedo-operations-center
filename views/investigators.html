@@ -1,0 +1,632 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: investigators.html
+Purpose: Investigator Management Module
+==============================================================
+-->
+
+
+<section class="investigators-page"
+         id="investigatorsPage">
+
+
+
+    <!-- ======================================================
+        PAGE HEADER
+    ======================================================= -->
+
+
+    <div class="dashboard-header">
+
+
+        <div>
+
+
+            <h1>
+
+                Investigator Management
+
+            </h1>
+
+
+            <p>
+
+                Manage personnel, assignments, and investigation workload.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-actions">
+
+
+            <button class="action-button primary"
+                    id="addInvestigatorButton">
+
+
+                <i class="fa-solid fa-user-plus"></i>
+
+
+                Add Investigator
+
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        INVESTIGATOR SUMMARY
+    ======================================================= -->
+
+
+    <div class="stats-grid">
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon blue">
+
+
+                <i class="fa-solid fa-users"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Total Investigators
+
+                </span>
+
+
+                <strong id="totalInvestigators">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon green">
+
+
+                <i class="fa-solid fa-circle-check"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Available
+
+                </span>
+
+
+                <strong id="availableInvestigators">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon orange">
+
+
+                <i class="fa-solid fa-clock"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Active Cases
+
+                </span>
+
+
+                <strong id="assignedCases">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon red">
+
+
+                <i class="fa-solid fa-user-lock"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Restricted
+
+                </span>
+
+
+                <strong id="restrictedInvestigators">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        SEARCH / FILTER
+    ======================================================= -->
+
+
+    <div class="panel">
+
+
+        <div class="filter-container">
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Search Investigator
+
+                </label>
+
+
+                <div class="search-box">
+
+
+                    <i class="fa-solid fa-search"></i>
+
+
+                    <input type="text"
+                           id="investigatorSearch"
+                           placeholder="Name, ID, department...">
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Status
+
+                </label>
+
+
+                <select id="investigatorStatusFilter">
+
+
+                    <option value="">
+
+                        All
+
+                    </option>
+
+
+                    <option value="Available">
+
+                        Available
+
+                    </option>
+
+
+                    <option value="Assigned">
+
+                        Assigned
+
+                    </option>
+
+
+                    <option value="Offline">
+
+                        Offline
+
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Clearance
+
+                </label>
+
+
+                <select id="clearanceFilter">
+
+
+                    <option value="">
+
+                        All Levels
+
+                    </option>
+
+
+                    <option value="Level 1">
+
+                        Level 1
+
+                    </option>
+
+
+                    <option value="Level 2">
+
+                        Level 2
+
+                    </option>
+
+
+                    <option value="Level 3">
+
+                        Level 3
+
+                    </option>
+
+
+                    <option value="Level 4">
+
+                        Level 4
+
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        INVESTIGATOR TABLE
+    ======================================================= -->
+
+
+    <div class="panel"
+         style="margin-top:24px;">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Investigator Directory
+
+            </h2>
+
+
+
+            <span id="investigatorCount">
+
+                0 Personnel
+
+            </span>
+
+
+        </div>
+
+
+
+
+        <div class="table-container">
+
+
+            <table class="dashboard-table">
+
+
+                <thead>
+
+
+                    <tr>
+
+
+                        <th>
+
+                            ID
+
+                        </th>
+
+
+                        <th>
+
+                            Name
+
+                        </th>
+
+
+                        <th>
+
+                            Department
+
+                        </th>
+
+
+                        <th>
+
+                            Clearance
+
+                        </th>
+
+
+                        <th>
+
+                            Status
+
+                        </th>
+
+
+                        <th>
+
+                            Cases
+
+                        </th>
+
+
+                        <th>
+
+                            Last Activity
+
+                        </th>
+
+
+                        <th>
+
+                            Action
+
+                        </th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+                <tbody id="investigatorTableBody">
+
+
+                    <tr>
+
+
+                        <td colspan="8">
+
+
+                            Loading investigators...
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        WORKLOAD PANEL
+    ======================================================= -->
+
+
+    <div class="panel"
+         style="margin-top:24px;">
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Assignment Workload
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="health-list">
+
+
+            <div class="health-item">
+
+
+                <span>
+
+                    High Workload
+
+                </span>
+
+
+                <strong class="danger"
+                        id="highWorkload">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+
+            <div class="health-item">
+
+
+                <span>
+
+                    Normal Workload
+
+                </span>
+
+
+                <strong class="online"
+                        id="normalWorkload">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+
+            <div class="health-item">
+
+
+                <span>
+
+                    Available Capacity
+
+                </span>
+
+
+                <strong id="availableCapacity">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
