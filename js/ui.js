@@ -5,7 +5,10 @@ National Cyber Intelligence Center
 Operations Center
 
 File: ui.js
-Purpose: User Interface Controller
+
+Purpose:
+User Interface Controller
+
 ==============================================================
 */
 
@@ -14,288 +17,18 @@ Purpose: User Interface Controller
 
 
 
-/* ==========================================================
-   UI CONTROLLER
-========================================================== */
-
-
 const TORPEDO_UI = {
 
 
 
     /*
-    ----------------------------------------------------------
-    LOAD HTML COMPONENT
-    ----------------------------------------------------------
+    ==========================================================
+    TOAST NOTIFICATION
+    ==========================================================
     */
 
 
-    async loadComponent(
-
-        containerId,
-
-        filePath
-
-    ) {
-
-
-
-        try {
-
-
-
-            const container =
-
-                document.getElementById(containerId);
-
-
-
-            if(!container) {
-
-
-
-                console.error(
-
-                    "Container not found:",
-
-                    containerId
-
-                );
-
-
-                return false;
-
-
-            }
-
-
-
-            const response = await fetch(filePath);
-
-
-
-            if(!response.ok) {
-
-
-
-                throw new Error(
-
-                    "Unable to load component "
-
-                    +
-
-                    filePath
-
-                );
-
-
-            }
-
-
-
-            container.innerHTML =
-
-                await response.text();
-
-
-
-            return true;
-
-
-
-        }
-
-        catch(error) {
-
-
-
-            console.error(
-
-                "Component loading error:",
-
-                error
-
-            );
-
-
-
-            return false;
-
-
-        }
-
-
-
-    },
-
-
-
-
-
-    /*
-    ----------------------------------------------------------
-    LOAD MULTIPLE COMPONENTS
-    ----------------------------------------------------------
-    */
-
-
-    async loadLayout() {
-
-
-
-        await this.loadComponent(
-
-            "sidebar-container",
-
-            "components/sidebar.html"
-
-        );
-
-
-
-        await this.loadComponent(
-
-            "topbar-container",
-
-            "components/topbar.html"
-
-        );
-
-
-
-        await this.loadComponent(
-
-            "breadcrumb-container",
-
-            "components/breadcrumb.html"
-
-        );
-
-
-
-        await this.loadComponent(
-
-            "statusbar-container",
-
-            "components/statusbar.html"
-
-        );
-
-
-
-    },
-
-
-
-
-
-    /*
-    ----------------------------------------------------------
-    LOADING OVERLAY
-    ----------------------------------------------------------
-    */
-
-
-    showLoading(message = "Loading...") {
-
-
-
-        const overlay =
-
-            document.getElementById(
-
-                "loading-overlay"
-
-            );
-
-
-
-        const text =
-
-            document.getElementById(
-
-                "loadingMessage"
-
-            );
-
-
-
-        if(text) {
-
-
-            text.textContent = message;
-
-
-        }
-
-
-
-        if(overlay) {
-
-
-            overlay.classList.remove(
-
-                "hidden"
-
-            );
-
-
-        }
-
-
-    },
-
-
-
-
-
-    hideLoading() {
-
-
-
-        const overlay =
-
-            document.getElementById(
-
-                "loading-overlay"
-
-            );
-
-
-
-        if(overlay) {
-
-
-            overlay.classList.add(
-
-                "hidden"
-
-            );
-
-
-        }
-
-
-    },
-
-
-
-
-
-    /*
-    ----------------------------------------------------------
-    TOAST NOTIFICATIONS
-    ----------------------------------------------------------
-    */
-
-
-    toast(
-
-        message,
-
-        type = "info"
-
-    ) {
+    toast(message, type="info"){
 
 
 
@@ -309,7 +42,13 @@ const TORPEDO_UI = {
 
 
 
-        if(!root) return;
+
+
+        if(!root)
+
+            return;
+
+
 
 
 
@@ -323,6 +62,8 @@ const TORPEDO_UI = {
 
 
 
+
+
         toast.className =
 
             "toast "
@@ -333,7 +74,14 @@ const TORPEDO_UI = {
 
 
 
+
+
         toast.innerHTML = `
+
+
+
+            <i class="fa-solid fa-circle-info"></i>
+
 
             <span>
 
@@ -341,25 +89,193 @@ const TORPEDO_UI = {
 
             </span>
 
+
+
         `;
 
 
 
-        root.appendChild(toast);
+
+
+        root.appendChild(
+
+            toast
+
+        );
 
 
 
-        setTimeout(
 
-            () => {
+
+        setTimeout(()=>{
+
+
+
+            toast.classList.add(
+
+                "show"
+
+            );
+
+
+
+        },50);
+
+
+
+
+
+        setTimeout(()=>{
+
+
+
+            toast.classList.remove(
+
+                "show"
+
+            );
+
+
+
+
+
+            setTimeout(()=>{
 
 
                 toast.remove();
 
 
-            },
+            },300);
 
-            4000
+
+
+
+        },3500);
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    MODAL
+    ==========================================================
+    */
+
+
+    modal(title,content){
+
+
+
+        const root =
+
+            document.getElementById(
+
+                "modal-root"
+
+            );
+
+
+
+
+
+        if(!root)
+
+            return;
+
+
+
+
+
+        root.innerHTML = `
+
+
+
+        <div class="modal-overlay">
+
+
+
+            <div class="modal-box">
+
+
+
+                <div class="modal-header">
+
+
+
+                    <h2>
+
+                        ${title}
+
+                    </h2>
+
+
+
+                    <button id="closeModal">
+
+                        ×
+
+                    </button>
+
+
+
+                </div>
+
+
+
+
+
+                <div class="modal-content">
+
+
+                    ${content}
+
+
+                </div>
+
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+        `;
+
+
+
+
+
+
+        document
+
+        .getElementById(
+
+            "closeModal"
+
+        )
+
+        ?.addEventListener(
+
+            "click",
+
+            ()=>{
+
+
+                this.closeModal();
+
+
+            }
+
 
         );
 
@@ -371,14 +287,16 @@ const TORPEDO_UI = {
 
 
 
+
+
     /*
-    ----------------------------------------------------------
-    MODALS
-    ----------------------------------------------------------
+    ==========================================================
+    CLOSE MODAL
+    ==========================================================
     */
 
 
-    openModal(content) {
+    closeModal(){
 
 
 
@@ -392,26 +310,171 @@ const TORPEDO_UI = {
 
 
 
-        if(!root) return;
+
+
+        if(root)
+
+            root.innerHTML = "";
 
 
 
-        root.innerHTML = `
+    },
 
 
-            <div class="modal-backdrop">
 
 
-                <div class="modal">
 
 
-                    ${content}
+
+    /*
+    ==========================================================
+    CONFIRMATION
+    ==========================================================
+    */
 
 
-                </div>
+    confirm(message){
 
 
-            </div>
+
+        return window.confirm(
+
+            message
+
+        );
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    LOADING
+    ==========================================================
+    */
+
+
+    loading(show=true,message="Loading..."){
+
+
+
+        const overlay =
+
+            document.getElementById(
+
+                "loading-overlay"
+
+            );
+
+
+
+
+
+        const text =
+
+            document.getElementById(
+
+                "loadingMessage"
+
+            );
+
+
+
+
+
+        if(text)
+
+            text.textContent = message;
+
+
+
+
+
+        if(!overlay)
+
+            return;
+
+
+
+
+
+        if(show){
+
+
+
+            overlay.classList.remove(
+
+                "hidden"
+
+            );
+
+
+
+        }
+
+
+        else{
+
+
+            overlay.classList.add(
+
+                "hidden"
+
+            );
+
+
+
+        }
+
+
+
+    },
+
+
+
+
+
+
+
+    /*
+    ==========================================================
+    EMPTY PANEL
+    ==========================================================
+    */
+
+
+    empty(message){
+
+
+
+        return `
+
+
+
+        <div class="empty-state">
+
+
+
+            <i class="fa-solid fa-database"></i>
+
+
+
+            <p>
+
+                ${message}
+
+            </p>
+
+
+
+        </div>
+
 
 
         `;
@@ -424,94 +487,86 @@ const TORPEDO_UI = {
 
 
 
-    closeModal() {
-
-
-
-        const root =
-
-            document.getElementById(
-
-                "modal-root"
-
-            );
-
-
-
-        if(root) {
-
-
-
-            root.innerHTML = "";
-
-
-        }
-
-
-
-    },
-
-
-
 
 
     /*
-    ----------------------------------------------------------
-    UPDATE PAGE TITLE
-    ----------------------------------------------------------
+    ==========================================================
+    STATUS BADGE
+    ==========================================================
     */
 
 
-    updateTitle(
-
-        title,
-
-        subtitle = ""
-
-    ) {
+    badge(status){
 
 
 
-        const pageTitle =
-
-            document.getElementById(
-
-                "pageTitle"
-
-            );
+        let color = "gray";
 
 
 
-        const pageSubtitle =
 
-            document.getElementById(
 
-                "pageSubtitle"
-
-            );
+        switch(status){
 
 
 
-        if(pageTitle) {
+            case "Received":
+
+                color="blue";
+
+                break;
 
 
-            pageTitle.textContent = title;
+
+            case "Active":
+
+                color="green";
+
+                break;
+
+
+
+            case "High":
+
+                color="red";
+
+                break;
+
+
+
+            case "Closed":
+
+                color="gray";
+
+                break;
+
 
 
         }
 
 
 
-        if(pageSubtitle) {
 
 
-            pageSubtitle.textContent = subtitle;
+        return `
 
 
-        }
+
+        <span class="badge ${color}">
+
+            ${status}
+
+        </span>
+
+
+
+        `;
+
 
 
     }
+
+
 
 
 
@@ -522,9 +577,8 @@ const TORPEDO_UI = {
 
 
 
-/* ==========================================================
-   EXPORT
-========================================================== */
 
 
-window.TORPEDO_UI = TORPEDO_UI;
+window.TORPEDO_UI =
+
+    TORPEDO_UI;
