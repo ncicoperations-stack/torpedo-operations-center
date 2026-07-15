@@ -1,0 +1,557 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: settings.html
+Purpose: System Settings Module
+==============================================================
+-->
+
+
+<section class="settings-page"
+         id="settingsPage">
+
+
+
+    <!-- ======================================================
+        PAGE HEADER
+    ======================================================= -->
+
+
+    <div class="dashboard-header">
+
+
+        <div>
+
+
+            <h1>
+
+                System Settings
+
+            </h1>
+
+
+            <p>
+
+                Configure TORPEDO operations,
+                integrations, and security preferences.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-actions">
+
+
+            <button class="action-button primary"
+                    id="saveSettingsButton">
+
+
+                <i class="fa-solid fa-save"></i>
+
+
+                Save Changes
+
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        SETTINGS GRID
+    ======================================================= -->
+
+
+    <div class="dashboard-grid">
+
+
+
+
+
+        <!-- APPLICATION SETTINGS -->
+
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Application Settings
+
+                </h2>
+
+
+            </div>
+
+
+
+
+            <div class="settings-form">
+
+
+
+                <label>
+
+                    System Name
+
+
+                    <input type="text"
+                           id="systemName"
+                           value="TORPEDO">
+
+
+                </label>
+
+
+
+
+
+                <label>
+
+                    Organization
+
+
+                    <input type="text"
+                           id="organizationName"
+                           value="National Cyber Intelligence Center">
+
+
+                </label>
+
+
+
+
+
+                <label>
+
+                    Version
+
+
+                    <input type="text"
+                           value="2.0.0"
+                           disabled>
+
+
+                </label>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- GOOGLE CONNECTION -->
+
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Google Integration
+
+                </h2>
+
+
+            </div>
+
+
+
+
+            <div class="settings-form">
+
+
+
+                <label>
+
+                    Apps Script URL
+
+
+                    <input type="text"
+                           id="googleScriptURL"
+                           placeholder="Enter Google Apps Script URL">
+
+
+                </label>
+
+
+
+
+
+                <label>
+
+                    Spreadsheet ID
+
+
+                    <input type="text"
+                           id="spreadsheetID"
+                           placeholder="Enter Google Sheet ID">
+
+
+                </label>
+
+
+
+
+
+                <button class="action-button"
+                        id="testGoogleConnection">
+
+
+                    <i class="fa-brands fa-google"></i>
+
+
+                    Test Connection
+
+
+                </button>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- SECURITY -->
+
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Security Settings
+
+                </h2>
+
+
+            </div>
+
+
+
+
+            <div class="health-list">
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Authentication
+
+                    </span>
+
+
+                    <strong class="online">
+
+                        Enabled
+
+                    </strong>
+
+
+                </div>
+
+
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Session Timeout
+
+                    </span>
+
+
+                    <strong>
+
+                        30 Minutes
+
+                    </strong>
+
+
+                </div>
+
+
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Audit Logging
+
+                    </span>
+
+
+                    <strong class="online">
+
+                        Active
+
+                    </strong>
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <!-- SYSTEM STATUS -->
+
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    System Status
+
+                </h2>
+
+
+            </div>
+
+
+
+
+            <div class="health-list">
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Frontend
+
+                    </span>
+
+
+                    <strong class="online">
+
+                        Online
+
+                    </strong>
+
+
+                </div>
+
+
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Google API
+
+                    </span>
+
+
+                    <strong id="googleStatus">
+
+                        Checking...
+
+                    </strong>
+
+
+                </div>
+
+
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Database
+
+                    </span>
+
+
+                    <strong>
+
+                        Connected
+
+                    </strong>
+
+
+                </div>
+
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        ADVANCED SETTINGS
+    ======================================================= -->
+
+
+    <div class="panel"
+         style="margin-top:24px;">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Advanced Configuration
+
+            </h2>
+
+
+        </div>
+
+
+
+
+        <div class="settings-form">
+
+
+
+            <label>
+
+
+                Auto Refresh Interval
+
+
+                <select id="refreshInterval">
+
+
+                    <option value="10000">
+
+                        10 Seconds
+
+                    </option>
+
+
+                    <option value="30000"
+                            selected>
+
+                        30 Seconds
+
+                    </option>
+
+
+                    <option value="60000">
+
+                        1 Minute
+
+                    </option>
+
+
+                </select>
+
+
+            </label>
+
+
+
+
+
+            <label>
+
+
+                Enable Notifications
+
+
+                <select id="notificationsEnabled">
+
+
+                    <option value="true">
+
+                        Enabled
+
+                    </option>
+
+
+                    <option value="false">
+
+                        Disabled
+
+                    </option>
+
+
+                </select>
+
+
+            </label>
+
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</section>
