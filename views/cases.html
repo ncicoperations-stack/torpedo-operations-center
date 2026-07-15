@@ -1,0 +1,586 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: cases.html
+Purpose: Case Management Operations Module
+==============================================================
+-->
+
+
+<section class="cases-page"
+         id="casesPage">
+
+
+
+    <!-- ======================================================
+        PAGE HEADER
+    ======================================================= -->
+
+
+    <div class="dashboard-header">
+
+
+        <div>
+
+
+            <h1>
+
+                Case Management
+
+            </h1>
+
+
+            <p>
+
+                Review, track, and manage active intelligence cases.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-actions">
+
+
+            <button class="action-button primary"
+                    id="newCaseButton">
+
+
+                <i class="fa-solid fa-folder-plus"></i>
+
+
+                Create Case
+
+
+            </button>
+
+
+
+            <button class="action-button"
+                    id="exportCasesButton">
+
+
+                <i class="fa-solid fa-file-export"></i>
+
+
+                Export
+
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        FILTER BAR
+    ======================================================= -->
+
+
+    <div class="panel cases-filter-panel">
+
+
+        <div class="filter-container">
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Search
+
+                </label>
+
+
+                <div class="search-box">
+
+
+                    <i class="fa-solid fa-search"></i>
+
+
+                    <input type="text"
+                           id="caseSearch"
+                           placeholder="Search reference, name, category...">
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Status
+
+                </label>
+
+
+                <select id="caseStatusFilter">
+
+
+                    <option value="">
+
+                        All Status
+
+                    </option>
+
+
+                    <option value="Open">
+
+                        Open
+
+                    </option>
+
+
+                    <option value="Review">
+
+                        Under Review
+
+                    </option>
+
+
+                    <option value="Investigating">
+
+                        Investigating
+
+                    </option>
+
+
+                    <option value="Closed">
+
+                        Closed
+
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Priority
+
+                </label>
+
+
+                <select id="casePriorityFilter">
+
+
+                    <option value="">
+
+                        All Priority
+
+                    </option>
+
+
+                    <option value="Critical">
+
+                        Critical
+
+                    </option>
+
+
+                    <option value="High">
+
+                        High
+
+                    </option>
+
+
+                    <option value="Medium">
+
+                        Medium
+
+                    </option>
+
+
+                    <option value="Low">
+
+                        Low
+
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        CASE TABLE
+    ======================================================= -->
+
+
+    <div class="panel">
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Active Cases
+
+            </h2>
+
+
+
+            <span id="caseCount">
+
+                0 Cases
+
+            </span>
+
+
+        </div>
+
+
+
+
+
+        <div class="table-container">
+
+
+            <table class="dashboard-table">
+
+
+                <thead>
+
+
+                    <tr>
+
+
+                        <th>
+
+                            Reference
+
+                        </th>
+
+
+                        <th>
+
+                            Category
+
+                        </th>
+
+
+                        <th>
+
+                            Subject
+
+                        </th>
+
+
+                        <th>
+
+                            Priority
+
+                        </th>
+
+
+                        <th>
+
+                            Assigned
+
+                        </th>
+
+
+                        <th>
+
+                            Status
+
+                        </th>
+
+
+                        <th>
+
+                            Updated
+
+                        </th>
+
+
+                        <th>
+
+                            Action
+
+                        </th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+                <tbody id="casesTableBody">
+
+
+                    <tr>
+
+
+                        <td colspan="8">
+
+
+                            Loading cases...
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        CASE SUMMARY
+    ======================================================= -->
+
+
+    <div class="dashboard-grid"
+         style="margin-top:24px;">
+
+
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Case Statistics
+
+                </h2>
+
+
+            </div>
+
+
+
+            <div class="health-list">
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Open Cases
+
+                    </span>
+
+
+                    <strong id="openCasesCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Investigations
+
+                    </span>
+
+
+                    <strong id="investigatingCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Closed Cases
+
+                    </span>
+
+
+                    <strong id="closedCasesCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+        <div class="panel">
+
+
+            <div class="panel-header">
+
+
+                <h2>
+
+                    Priority Overview
+
+                </h2>
+
+
+            </div>
+
+
+            <div class="health-list">
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Critical
+
+                    </span>
+
+
+                    <strong class="danger"
+                            id="criticalCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        High
+
+                    </span>
+
+
+                    <strong class="warning"
+                            id="highCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+
+                <div class="health-item">
+
+
+                    <span>
+
+                        Normal
+
+                    </span>
+
+
+                    <strong class="online"
+                            id="normalCount">
+
+                        0
+
+                    </strong>
+
+
+                </div>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+</section>
