@@ -5,22 +5,25 @@ National Cyber Intelligence Center
 Operations Center
 
 File: analytics.html
-Purpose: Operations Analytics Module
+
+Purpose:
+Analytics Dashboard Module
+
 ==============================================================
 -->
 
 
-<section class="analytics-page"
-         id="analyticsPage">
+
+<div class="analytics-page">
 
 
 
-    <!-- ======================================================
-        PAGE HEADER
-    ======================================================= -->
 
 
-    <div class="dashboard-header">
+    <!-- HEADER -->
+
+
+    <section class="page-header">
 
 
         <div>
@@ -35,8 +38,7 @@ Purpose: Operations Analytics Module
 
             <p>
 
-                Operational statistics, trends,
-                and performance analysis.
+                Operational intelligence and performance analysis
 
             </p>
 
@@ -45,73 +47,60 @@ Purpose: Operations Analytics Module
 
 
 
-        <div class="dashboard-actions">
 
 
-            <button class="action-button"
-                    id="refreshAnalytics">
+        <button
+
+        id="refreshAnalytics"
+
+        class="primary-button">
 
 
-                <i class="fa-solid fa-chart-line"></i>
+            <i class="fa-solid fa-chart-line"></i>
 
 
-                Refresh Data
+            Refresh
 
 
-            </button>
-
-
-        </div>
-
-
-    </div>
+        </button>
 
 
 
+    </section>
 
 
-    <!-- ======================================================
-        ANALYTICS SUMMARY
-    ======================================================= -->
 
 
-    <div class="stats-grid">
+
+
+
+
+    <!-- METRIC CARDS -->
+
+
+    <section class="stats-grid">
 
 
 
         <div class="stat-card">
 
 
-            <div class="stat-icon blue">
+            <h3>
+
+                Total Reports
+
+            </h3>
 
 
-                <i class="fa-solid fa-folder-open"></i>
+            <strong id="analyticsTotal">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Total Cases
-
-                </span>
-
-
-                <strong id="analyticsCases">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -120,36 +109,22 @@ Purpose: Operations Analytics Module
         <div class="stat-card">
 
 
-            <div class="stat-icon green">
+            <h3>
+
+                Online Scam
+
+            </h3>
 
 
-                <i class="fa-solid fa-check-circle"></i>
+            <strong id="onlineScamCount">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Resolution Rate
-
-                </span>
-
-
-                <strong id="resolutionRate">
-
-                    0%
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -158,36 +133,22 @@ Purpose: Operations Analytics Module
         <div class="stat-card">
 
 
-            <div class="stat-icon orange">
+            <h3>
+
+                Financial Fraud
+
+            </h3>
 
 
-                <i class="fa-solid fa-bolt"></i>
+            <strong id="financialFraudCount">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Average Response
-
-                </span>
-
-
-                <strong id="responseTime">
-
-                    0h
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -196,103 +157,39 @@ Purpose: Operations Analytics Module
         <div class="stat-card">
 
 
-            <div class="stat-icon red">
+            <h3>
+
+                Cybercrime
+
+            </h3>
 
 
-                <i class="fa-solid fa-chart-simple"></i>
+            <strong id="cybercrimeCount">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Threat Growth
-
-                </span>
-
-
-                <strong id="threatGrowth">
-
-                    0%
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
 
 
 
-    </div>
+    </section>
 
 
 
 
 
-    <!-- ======================================================
-        CHART AREA
-    ======================================================= -->
-
-
-    <div class="dashboard-grid">
 
 
 
-        <!-- CASE TREND -->
-
-        <div class="panel large">
+    <!-- CHART AREA -->
 
 
-            <div class="panel-header">
+    <section class="dashboard-grid">
 
 
-                <h2>
-
-                    Case Activity Trends
-
-                </h2>
-
-
-            </div>
-
-
-
-            <div class="chart-container"
-                 id="caseTrendChart">
-
-
-                <div class="empty-state">
-
-
-                    <i class="fa-solid fa-chart-line"></i>
-
-
-                    <p>
-
-                        Chart data loading...
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- CATEGORY BREAKDOWN -->
 
         <div class="panel">
 
@@ -311,26 +208,16 @@ Purpose: Operations Analytics Module
 
 
 
-            <div id="categoryBreakdown">
 
 
-                <div class="empty-state">
+            <div class="panel-body">
 
 
-                    <i class="fa-solid fa-layer-group"></i>
-
-
-                    <p>
-
-                        No category data
-
-                    </p>
-
-
-                </div>
+                <canvas id="categoryChart"></canvas>
 
 
             </div>
+
 
 
         </div>
@@ -339,7 +226,7 @@ Purpose: Operations Analytics Module
 
 
 
-        <!-- PERFORMANCE -->
+
 
         <div class="panel">
 
@@ -349,7 +236,7 @@ Purpose: Operations Analytics Module
 
                 <h2>
 
-                    Performance
+                    Status Overview
 
                 </h2>
 
@@ -358,91 +245,35 @@ Purpose: Operations Analytics Module
 
 
 
-            <div class="health-list">
 
 
-                <div class="health-item">
+            <div class="panel-body">
 
 
-                    <span>
-
-                        Investigators Active
-
-                    </span>
-
-
-                    <strong id="performanceInvestigators">
-
-                        0
-
-                    </strong>
-
-
-                </div>
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Cases Completed
-
-                    </span>
-
-
-                    <strong id="completedCases">
-
-                        0
-
-                    </strong>
-
-
-                </div>
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Intelligence Reports
-
-                    </span>
-
-
-                    <strong id="completedReports">
-
-                        0
-
-                    </strong>
-
-
-                </div>
+                <canvas id="statusChart"></canvas>
 
 
             </div>
+
 
 
         </div>
 
 
 
-    </div>
+    </section>
 
 
 
 
 
-    <!-- ======================================================
-        DATA TABLE
-    ======================================================= -->
 
 
-    <div class="panel"
-         style="margin-top:24px;">
+
+    <!-- REPORT SUMMARY -->
+
+
+    <section class="panel">
 
 
 
@@ -451,17 +282,9 @@ Purpose: Operations Analytics Module
 
             <h2>
 
-                Analytics Records
+                Intelligence Summary
 
             </h2>
-
-
-
-            <button class="panel-link">
-
-                Export Report
-
-            </button>
 
 
         </div>
@@ -470,10 +293,12 @@ Purpose: Operations Analytics Module
 
 
 
-        <div class="table-container">
+        <div class="panel-body">
 
 
-            <table class="dashboard-table">
+
+            <table class="data-table">
+
 
 
                 <thead>
@@ -482,39 +307,37 @@ Purpose: Operations Analytics Module
                     <tr>
 
 
+
                         <th>
 
-                            Metric
+                            Category
 
                         </th>
 
 
+
                         <th>
 
-                            Current
+                            Reports
 
                         </th>
 
 
+
                         <th>
 
-                            Previous
+                            Active
 
                         </th>
 
 
-                        <th>
-
-                            Change
-
-                        </th>
-
 
                         <th>
 
-                            Status
+                            Closed
 
                         </th>
+
 
 
                     </tr>
@@ -524,13 +347,16 @@ Purpose: Operations Analytics Module
 
 
 
+
+
                 <tbody id="analyticsTableBody">
+
 
 
                     <tr>
 
 
-                        <td colspan="5">
+                        <td colspan="4">
 
 
                             Loading analytics...
@@ -542,6 +368,7 @@ Purpose: Operations Analytics Module
                     </tr>
 
 
+
                 </tbody>
 
 
@@ -549,11 +376,16 @@ Purpose: Operations Analytics Module
             </table>
 
 
+
         </div>
 
 
-    </div>
+
+    </section>
 
 
 
-</section>
+
+
+
+</div>
