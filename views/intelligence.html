@@ -5,22 +5,25 @@ National Cyber Intelligence Center
 Operations Center
 
 File: intelligence.html
-Purpose: Intelligence Operations Module
+
+Purpose:
+Threat Intelligence Module
+
 ==============================================================
 -->
 
 
-<section class="intelligence-page"
-         id="intelligencePage">
+
+<div class="intelligence-page">
 
 
 
-    <!-- ======================================================
-        PAGE HEADER
-    ======================================================= -->
 
 
-    <div class="dashboard-header">
+    <!-- HEADER -->
+
+
+    <section class="page-header">
 
 
         <div>
@@ -35,8 +38,7 @@ Purpose: Intelligence Operations Module
 
             <p>
 
-                Monitor threats, intelligence reports,
-                and cyber activity.
+                Threat analysis and intelligence monitoring
 
             </p>
 
@@ -45,86 +47,60 @@ Purpose: Intelligence Operations Module
 
 
 
-        <div class="dashboard-actions">
 
 
-            <button class="action-button primary"
-                    id="newIntelligenceButton">
+        <button
+
+        id="refreshIntelligence"
+
+        class="primary-button">
 
 
-                <i class="fa-solid fa-file-circle-plus"></i>
+            <i class="fa-solid fa-rotate"></i>
 
 
-                New Report
+            Refresh
 
 
-            </button>
+        </button>
 
 
-            <button class="action-button"
-                    id="refreshIntelligence">
 
-
-                <i class="fa-solid fa-sync"></i>
-
-
-                Refresh
-
-
-            </button>
-
-
-        </div>
-
-
-    </div>
+    </section>
 
 
 
 
 
-    <!-- ======================================================
-        THREAT OVERVIEW
-    ======================================================= -->
 
 
-    <div class="stats-grid">
+
+    <!-- INTELLIGENCE STATS -->
+
+
+    <section class="stats-grid">
 
 
 
         <div class="stat-card">
 
 
-            <div class="stat-icon red">
+            <h3>
+
+                Total Reports
+
+            </h3>
 
 
-                <i class="fa-solid fa-skull-crossbones"></i>
+            <strong id="totalIntelligence">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Critical Threats
-
-                </span>
-
-
-                <strong id="criticalThreats">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -133,36 +109,22 @@ Purpose: Intelligence Operations Module
         <div class="stat-card">
 
 
-            <div class="stat-icon orange">
+            <h3>
+
+                Critical Threats
+
+            </h3>
 
 
-                <i class="fa-solid fa-triangle-exclamation"></i>
+            <strong id="criticalThreats">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Active Alerts
-
-                </span>
-
-
-                <strong id="activeAlerts">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -171,36 +133,22 @@ Purpose: Intelligence Operations Module
         <div class="stat-card">
 
 
-            <div class="stat-icon blue">
+            <h3>
+
+                Active Analysis
+
+            </h3>
 
 
-                <i class="fa-solid fa-file-lines"></i>
+            <strong id="activeAnalysis">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Reports
-
-                </span>
-
-
-                <strong id="intelligenceReports">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
+
 
 
 
@@ -209,206 +157,37 @@ Purpose: Intelligence Operations Module
         <div class="stat-card">
 
 
-            <div class="stat-icon green">
+            <h3>
+
+                Analysts
+
+            </h3>
 
 
-                <i class="fa-solid fa-eye"></i>
+            <strong id="activeAnalysts">
 
+                0
 
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Monitored Sources
-
-                </span>
-
-
-                <strong id="monitoredSources">
-
-                    0
-
-                </strong>
-
-
-            </div>
+            </strong>
 
 
         </div>
 
 
 
-    </div>
+    </section>
 
 
 
 
 
-    <!-- ======================================================
-        INTELLIGENCE WORKSPACE
-    ======================================================= -->
 
 
-    <div class="dashboard-grid">
 
+    <!-- SEARCH -->
 
 
-        <!-- THREAT MAP -->
-
-        <div class="panel large">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Threat Intelligence Overview
-
-                </h2>
-
-
-            </div>
-
-
-
-            <div class="intelligence-map"
-                 id="threatMap">
-
-
-                <div class="empty-state">
-
-
-                    <i class="fa-solid fa-globe"></i>
-
-
-                    <p>
-
-                        Threat visualization loading...
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- ALERT QUEUE -->
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Alert Queue
-
-                </h2>
-
-
-            </div>
-
-
-
-            <div id="alertQueue">
-
-
-                <div class="empty-state">
-
-
-                    <i class="fa-solid fa-bell"></i>
-
-
-                    <p>
-
-                        No pending alerts
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- ANALYSIS QUEUE -->
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Analysis Queue
-
-                </h2>
-
-
-            </div>
-
-
-
-            <div id="analysisQueue">
-
-
-                <div class="empty-state">
-
-
-                    <i class="fa-solid fa-magnifying-glass-chart"></i>
-
-
-                    <p>
-
-                        No pending analysis
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        INTELLIGENCE REPORT TABLE
-    ======================================================= -->
-
-
-    <div class="panel"
-         style="margin-top:24px;">
+    <section class="panel">
 
 
 
@@ -417,17 +196,9 @@ Purpose: Intelligence Operations Module
 
             <h2>
 
-                Intelligence Reports
+                Search Intelligence
 
             </h2>
-
-
-
-            <span id="intelligenceCount">
-
-                0 Reports
-
-            </span>
 
 
         </div>
@@ -435,16 +206,71 @@ Purpose: Intelligence Operations Module
 
 
 
+
+        <div class="search-bar">
+
+
+            <input
+
+
+            id="intelligenceSearch"
+
+
+            type="text"
+
+
+            placeholder="Search threat type, source, analyst...">
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <!-- INTELLIGENCE TABLE -->
+
+
+    <section class="panel">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Threat Intelligence Database
+
+            </h2>
+
+
+        </div>
+
+
+
+
+
         <div class="table-container">
 
 
-            <table class="dashboard-table">
+
+            <table class="data-table">
+
 
 
                 <thead>
 
 
                     <tr>
+
 
 
                         <th>
@@ -454,11 +280,13 @@ Purpose: Intelligence Operations Module
                         </th>
 
 
+
                         <th>
 
                             Threat Type
 
                         </th>
+
 
 
                         <th>
@@ -468,11 +296,13 @@ Purpose: Intelligence Operations Module
                         </th>
 
 
+
                         <th>
 
                             Source
 
                         </th>
+
 
 
                         <th>
@@ -482,11 +312,13 @@ Purpose: Intelligence Operations Module
                         </th>
 
 
+
                         <th>
 
                             Status
 
                         </th>
+
 
 
                         <th>
@@ -496,11 +328,13 @@ Purpose: Intelligence Operations Module
                         </th>
 
 
+
                         <th>
 
                             Action
 
                         </th>
+
 
 
                     </tr>
@@ -510,7 +344,10 @@ Purpose: Intelligence Operations Module
 
 
 
+
+
                 <tbody id="intelligenceTableBody">
+
 
 
                     <tr>
@@ -528,6 +365,7 @@ Purpose: Intelligence Operations Module
                     </tr>
 
 
+
                 </tbody>
 
 
@@ -535,11 +373,16 @@ Purpose: Intelligence Operations Module
             </table>
 
 
+
         </div>
 
 
-    </div>
+
+    </section>
 
 
 
-</section>
+
+
+
+</div>
