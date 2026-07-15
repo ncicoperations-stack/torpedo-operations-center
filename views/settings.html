@@ -5,22 +5,25 @@ National Cyber Intelligence Center
 Operations Center
 
 File: settings.html
-Purpose: System Settings Module
+
+Purpose:
+System Settings Module
+
 ==============================================================
 -->
 
 
-<section class="settings-page"
-         id="settingsPage">
+
+<div class="settings-page">
 
 
 
-    <!-- ======================================================
-        PAGE HEADER
-    ======================================================= -->
 
 
-    <div class="dashboard-header">
+    <!-- HEADER -->
+
+
+    <section class="page-header">
 
 
         <div>
@@ -35,8 +38,7 @@ Purpose: System Settings Module
 
             <p>
 
-                Configure TORPEDO operations,
-                integrations, and security preferences.
+                TORPEDO system configuration and diagnostics
 
             </p>
 
@@ -45,415 +47,19 @@ Purpose: System Settings Module
 
 
 
-        <div class="dashboard-actions">
+    </section>
 
 
-            <button class="action-button primary"
-                    id="saveSettingsButton">
 
 
-                <i class="fa-solid fa-save"></i>
 
 
-                Save Changes
 
 
-            </button>
+    <!-- SYSTEM INFORMATION -->
 
 
-        </div>
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        SETTINGS GRID
-    ======================================================= -->
-
-
-    <div class="dashboard-grid">
-
-
-
-
-
-        <!-- APPLICATION SETTINGS -->
-
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Application Settings
-
-                </h2>
-
-
-            </div>
-
-
-
-
-            <div class="settings-form">
-
-
-
-                <label>
-
-                    System Name
-
-
-                    <input type="text"
-                           id="systemName"
-                           value="TORPEDO">
-
-
-                </label>
-
-
-
-
-
-                <label>
-
-                    Organization
-
-
-                    <input type="text"
-                           id="organizationName"
-                           value="National Cyber Intelligence Center">
-
-
-                </label>
-
-
-
-
-
-                <label>
-
-                    Version
-
-
-                    <input type="text"
-                           value="2.0.0"
-                           disabled>
-
-
-                </label>
-
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- GOOGLE CONNECTION -->
-
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Google Integration
-
-                </h2>
-
-
-            </div>
-
-
-
-
-            <div class="settings-form">
-
-
-
-                <label>
-
-                    Apps Script URL
-
-
-                    <input type="text"
-                           id="googleScriptURL"
-                           placeholder="Enter Google Apps Script URL">
-
-
-                </label>
-
-
-
-
-
-                <label>
-
-                    Spreadsheet ID
-
-
-                    <input type="text"
-                           id="spreadsheetID"
-                           placeholder="Enter Google Sheet ID">
-
-
-                </label>
-
-
-
-
-
-                <button class="action-button"
-                        id="testGoogleConnection">
-
-
-                    <i class="fa-brands fa-google"></i>
-
-
-                    Test Connection
-
-
-                </button>
-
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- SECURITY -->
-
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Security Settings
-
-                </h2>
-
-
-            </div>
-
-
-
-
-            <div class="health-list">
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Authentication
-
-                    </span>
-
-
-                    <strong class="online">
-
-                        Enabled
-
-                    </strong>
-
-
-                </div>
-
-
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Session Timeout
-
-                    </span>
-
-
-                    <strong>
-
-                        30 Minutes
-
-                    </strong>
-
-
-                </div>
-
-
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Audit Logging
-
-                    </span>
-
-
-                    <strong class="online">
-
-                        Active
-
-                    </strong>
-
-
-                </div>
-
-
-
-            </div>
-
-
-        </div>
-
-
-
-
-
-        <!-- SYSTEM STATUS -->
-
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    System Status
-
-                </h2>
-
-
-            </div>
-
-
-
-
-            <div class="health-list">
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Frontend
-
-                    </span>
-
-
-                    <strong class="online">
-
-                        Online
-
-                    </strong>
-
-
-                </div>
-
-
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Google API
-
-                    </span>
-
-
-                    <strong id="googleStatus">
-
-                        Checking...
-
-                    </strong>
-
-
-                </div>
-
-
-
-
-
-                <div class="health-item">
-
-
-                    <span>
-
-                        Database
-
-                    </span>
-
-
-                    <strong>
-
-                        Connected
-
-                    </strong>
-
-
-                </div>
-
-
-
-            </div>
-
-
-        </div>
-
-
-
-    </div>
-
-
-
-
-
-    <!-- ======================================================
-        ADVANCED SETTINGS
-    ======================================================= -->
-
-
-    <div class="panel"
-         style="margin-top:24px;">
+    <section class="panel">
 
 
 
@@ -462,7 +68,7 @@ Purpose: System Settings Module
 
             <h2>
 
-                Advanced Configuration
+                System Information
 
             </h2>
 
@@ -472,77 +78,98 @@ Purpose: System Settings Module
 
 
 
-        <div class="settings-form">
+
+        <div class="settings-grid">
 
 
 
-            <label>
+            <div class="setting-card">
 
 
-                Auto Refresh Interval
+                <label>
+
+                    System Name
+
+                </label>
 
 
-                <select id="refreshInterval">
+                <strong id="systemName">
+
+                    --
+
+                </strong>
 
 
-                    <option value="10000">
-
-                        10 Seconds
-
-                    </option>
-
-
-                    <option value="30000"
-                            selected>
-
-                        30 Seconds
-
-                    </option>
-
-
-                    <option value="60000">
-
-                        1 Minute
-
-                    </option>
-
-
-                </select>
-
-
-            </label>
+            </div>
 
 
 
 
 
-            <label>
+            <div class="setting-card">
 
 
-                Enable Notifications
+                <label>
+
+                    Organization
+
+                </label>
 
 
-                <select id="notificationsEnabled">
+                <strong id="organizationName">
+
+                    --
+
+                </strong>
 
 
-                    <option value="true">
-
-                        Enabled
-
-                    </option>
+            </div>
 
 
-                    <option value="false">
-
-                        Disabled
-
-                    </option>
 
 
-                </select>
+
+            <div class="setting-card">
 
 
-            </label>
+                <label>
+
+                    Version
+
+                </label>
+
+
+                <strong id="systemVersion">
+
+                    --
+
+                </strong>
+
+
+            </div>
+
+
+
+
+
+            <div class="setting-card">
+
+
+                <label>
+
+                    Environment
+
+                </label>
+
+
+                <strong id="systemMode">
+
+                    --
+
+                </strong>
+
+
+            </div>
 
 
 
@@ -550,8 +177,252 @@ Purpose: System Settings Module
 
 
 
-    </div>
+    </section>
 
 
 
-</section>
+
+
+
+
+
+    <!-- CONNECTION STATUS -->
+
+
+    <section class="panel">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Backend Connection
+
+            </h2>
+
+
+        </div>
+
+
+
+
+
+        <div class="settings-grid">
+
+
+
+            <div class="setting-card">
+
+
+                <label>
+
+                    Google API Status
+
+                </label>
+
+
+                <strong id="apiStatus">
+
+                    Checking...
+
+                </strong>
+
+
+            </div>
+
+
+
+
+
+            <div class="setting-card">
+
+
+                <label>
+
+                    Database
+
+                </label>
+
+
+                <strong>
+
+                    Google Sheets
+
+                </strong>
+
+
+            </div>
+
+
+
+
+
+            <div class="setting-card">
+
+
+                <label>
+
+                    Connection Type
+
+                </label>
+
+
+                <strong>
+
+                    REST API
+
+                </strong>
+
+
+            </div>
+
+
+
+        </div>
+
+
+
+
+
+
+        <button
+
+        id="testConnection"
+
+        class="primary-button">
+
+
+            <i class="fa-solid fa-plug"></i>
+
+
+            Test Connection
+
+
+        </button>
+
+
+
+    </section>
+
+
+
+
+
+
+
+
+    <!-- MODULE STATUS -->
+
+
+    <section class="panel">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Active Modules
+
+            </h2>
+
+
+        </div>
+
+
+
+
+
+        <div class="module-list">
+
+
+
+            <div>
+
+                Dashboard
+
+                <span>
+
+                    Enabled
+
+                </span>
+
+            </div>
+
+
+
+
+            <div>
+
+                Case Management
+
+                <span>
+
+                    Enabled
+
+                </span>
+
+            </div>
+
+
+
+
+            <div>
+
+                Intelligence
+
+                <span>
+
+                    Enabled
+
+                </span>
+
+            </div>
+
+
+
+
+            <div>
+
+                Evidence
+
+                <span>
+
+                    Enabled
+
+                </span>
+
+            </div>
+
+
+
+
+            <div>
+
+                Administration
+
+                <span>
+
+                    Enabled
+
+                </span>
+
+            </div>
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+
+</div>
