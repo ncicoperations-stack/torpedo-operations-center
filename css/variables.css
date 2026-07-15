@@ -4,302 +4,293 @@ TORPEDO v2.0.0
 National Cyber Intelligence Center
 Operations Center
 
-File: variables.css
-Purpose: Global Design System Variables
+File:
+variables.css
+
+Purpose:
+Global Design System
+
 ==============================================================
 */
 
 
 /* ==========================================================
-   ROOT VARIABLES
+   COLORS
 ========================================================== */
 
-:root {
+:root{
 
+    /* Primary */
 
-    /* ======================================================
-       COLORS
-    ======================================================= */
+    --primary:#0B1F3A;
+    --primary-light:#14325C;
+    --primary-dark:#071425;
 
+    /* Secondary */
 
-    --color-background:
-        #0B1220;
+    --secondary:#1E5AA8;
+    --secondary-light:#2C74D4;
+    --secondary-dark:#16447C;
 
+    /* Accent */
 
-    --color-sidebar:
-        #111827;
+    --accent:#00B7FF;
+    --accent-light:#5DD7FF;
+    --accent-dark:#008BC2;
 
+    /* Status */
 
-    --color-panel:
-        #1F2937;
+    --success:#27AE60;
+    --warning:#F39C12;
+    --danger:#E74C3C;
+    --info:#3498DB;
 
+    /* Background */
 
-    --color-panel-light:
-        #273449;
+    --bg:#F4F7FB;
+    --bg-secondary:#E9EEF5;
+    --bg-dark:#0E1623;
 
+    /* Panels */
 
-    --color-border:
-        #374151;
+    --panel:#FFFFFF;
+    --panel-alt:#F9FBFD;
 
+    /* Text */
 
-    --color-primary:
-        #2563EB;
+    --text:#1C2733;
+    --text-light:#64748B;
+    --text-white:#FFFFFF;
 
+    /* Borders */
 
-    --color-primary-hover:
-        #1D4ED8;
+    --border:#DCE3EC;
+    --border-dark:#C3CEDA;
 
-
-    --color-success:
-        #16A34A;
-
-
-    --color-warning:
-        #F59E0B;
-
-
-    --color-danger:
-        #DC2626;
-
-
-    --color-info:
-        #0EA5E9;
-
-
-
-    /* ======================================================
-       TEXT COLORS
-    ======================================================= */
-
-
-    --text-primary:
-        #F9FAFB;
-
-
-    --text-secondary:
-        #9CA3AF;
-
-
-    --text-muted:
-        #6B7280;
+}
 
 
 
-    /* ======================================================
-       TYPOGRAPHY
-    ======================================================= */
+/* ==========================================================
+   TYPOGRAPHY
+========================================================== */
 
+:root{
 
     --font-family:
-        "Inter",
+        "Segoe UI",
         Arial,
+        Helvetica,
         sans-serif;
 
+    --font-size-xs:.75rem;
+    --font-size-sm:.875rem;
+    --font-size-md:1rem;
+    --font-size-lg:1.125rem;
+    --font-size-xl:1.4rem;
+    --font-size-xxl:2rem;
 
-    --font-size-xs:
-        0.75rem;
+    --font-light:300;
+    --font-normal:400;
+    --font-medium:500;
+    --font-semibold:600;
+    --font-bold:700;
 
+    --line-height:1.5;
 
-    --font-size-sm:
-        0.875rem;
+}
 
 
-    --font-size-md:
-        1rem;
 
+/* ==========================================================
+   SPACING
+========================================================== */
 
-    --font-size-lg:
-        1.25rem;
+:root{
 
+    --space-1:4px;
+    --space-2:8px;
+    --space-3:12px;
+    --space-4:16px;
+    --space-5:20px;
+    --space-6:24px;
+    --space-7:32px;
+    --space-8:40px;
+    --space-9:48px;
+    --space-10:64px;
 
-    --font-size-xl:
-        1.5rem;
+}
 
 
-    --font-size-2xl:
-        2rem;
 
+/* ==========================================================
+   BORDER RADIUS
+========================================================== */
 
+:root{
 
-    /* ======================================================
-       FONT WEIGHTS
-    ======================================================= */
+    --radius-sm:4px;
+    --radius-md:8px;
+    --radius-lg:12px;
+    --radius-xl:18px;
+    --radius-round:999px;
 
+}
 
-    --weight-light:
-        300;
 
 
-    --weight-normal:
-        400;
+/* ==========================================================
+   SHADOWS
+========================================================== */
 
-
-    --weight-medium:
-        500;
-
-
-    --weight-semibold:
-        600;
-
-
-    --weight-bold:
-        700;
-
-
-    --weight-extra-bold:
-        800;
-
-
-
-    /* ======================================================
-       SPACING
-    ======================================================= */
-
-
-    --space-1:
-        4px;
-
-
-    --space-2:
-        8px;
-
-
-    --space-3:
-        12px;
-
-
-    --space-4:
-        16px;
-
-
-    --space-5:
-        20px;
-
-
-    --space-6:
-        24px;
-
-
-    --space-8:
-        32px;
-
-
-    --space-10:
-        40px;
-
-
-    --space-12:
-        48px;
-
-
-
-    /* ======================================================
-       BORDER
-    ======================================================= */
-
-
-    --border-width:
-        1px;
-
-
-    --border-style:
-        solid;
-
-
-    --radius-sm:
-        6px;
-
-
-    --radius-md:
-        10px;
-
-
-    --radius-lg:
-        12px;
-
-
-    --radius-xl:
-        16px;
-
-
-
-    /* ======================================================
-       SHADOWS
-    ======================================================= */
-
+:root{
 
     --shadow-sm:
-        0 1px 2px rgba(0,0,0,0.25);
-
+        0 1px 2px rgba(0,0,0,.08);
 
     --shadow-md:
-        0 4px 12px rgba(0,0,0,0.35);
-
+        0 6px 18px rgba(0,0,0,.08);
 
     --shadow-lg:
-        0 8px 24px rgba(0,0,0,0.45);
+        0 12px 28px rgba(0,0,0,.12);
+
+    --shadow-xl:
+        0 18px 42px rgba(0,0,0,.18);
+
+}
 
 
 
-    /* ======================================================
-       LAYOUT
-    ======================================================= */
+/* ==========================================================
+   TRANSITIONS
+========================================================== */
 
+:root{
 
-    --sidebar-width:
-        280px;
+    --transition-fast:.15s ease;
 
+    --transition:.25s ease;
 
-    --sidebar-collapsed-width:
-        80px;
+    --transition-slow:.4s ease;
 
-
-    --topbar-height:
-        72px;
-
-
-    --statusbar-height:
-        36px;
+}
 
 
 
-    /* ======================================================
-       TRANSITIONS
-    ======================================================= */
+/* ==========================================================
+   LAYOUT
+========================================================== */
+
+:root{
+
+    --sidebar-width:280px;
+
+    --topbar-height:72px;
+
+    --statusbar-height:36px;
+
+    --content-max:1800px;
+
+}
 
 
-    --transition-fast:
-        0.15s ease;
+
+/* ==========================================================
+   Z-INDEX
+========================================================== */
+
+:root{
+
+    --z-sidebar:100;
+
+    --z-topbar:200;
+
+    --z-dropdown:300;
+
+    --z-toast:800;
+
+    --z-modal:900;
+
+    --z-loading:1000;
+
+}
 
 
-    --transition-normal:
-        0.25s ease;
+
+/* ==========================================================
+   TABLES
+========================================================== */
+
+:root{
+
+    --row-height:54px;
+
+    --header-height:56px;
+
+}
 
 
-    --transition-slow:
-        0.4s ease;
+
+/* ==========================================================
+   BUTTONS
+========================================================== */
+
+:root{
+
+    --button-height:42px;
+
+    --button-radius:8px;
+
+}
 
 
 
-    /* ======================================================
-       Z INDEX
-    ======================================================= */
+/* ==========================================================
+   INPUTS
+========================================================== */
+
+:root{
+
+    --input-height:42px;
+
+    --input-radius:8px;
+
+}
 
 
-    --z-sidebar:
-        100;
+
+/* ==========================================================
+   DASHBOARD
+========================================================== */
+
+:root{
+
+    --card-height:120px;
+
+    --chart-height:350px;
+
+}
 
 
-    --z-topbar:
-        200;
+
+/* ==========================================================
+   ANIMATIONS
+========================================================== */
+
+:root{
+
+    --animation-duration:.3s;
+
+}
 
 
-    --z-modal:
-        1000;
 
+/* ==========================================================
+   SCROLLBAR
+========================================================== */
 
-    --z-toast:
-        2000;
+:root{
 
+    --scrollbar-width:10px;
 
 }
