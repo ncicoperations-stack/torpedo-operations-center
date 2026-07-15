@@ -5,105 +5,95 @@ National Cyber Intelligence Center
 Operations Center
 
 File: dashboard.html
-Purpose: Main Operations Dashboard View
+
+Purpose:
+Main Operations Dashboard
+
 ==============================================================
 -->
 
-<section class="dashboard"
-         id="dashboard">
 
 
-    <!-- ======================================================
-        PAGE HEADER
-    ======================================================= -->
+<div class="dashboard">
 
-    <div class="dashboard-header">
+
+
+    <!-- HEADER -->
+
+    <section class="page-header">
 
 
         <div>
 
+
             <h1>
 
-                Operations Dashboard
+                Operations Center Dashboard
 
             </h1>
 
 
             <p>
 
-                Real-time overview of cases, intelligence,
-                investigations, and system activity.
+                National Cyber Intelligence Center
 
             </p>
 
+
         </div>
 
 
-        <div class="dashboard-actions">
+
+        <div class="dashboard-status">
 
 
-            <button class="action-button primary"
-                    id="createCaseButton">
+            <span id="systemStatus">
 
+                ● Checking...
 
-                <i class="fa-solid fa-plus"></i>
-
-
-                New Case
-
-
-            </button>
-
-
-
-            <button class="action-button"
-                    id="refreshDashboard">
-
-
-                <i class="fa-solid fa-rotate"></i>
-
-
-                Refresh
-
-
-            </button>
+            </span>
 
 
         </div>
 
 
-    </div>
+    </section>
 
 
 
-    <!-- ======================================================
-        KPI CARDS
-    ======================================================= -->
 
-    <div class="stats-grid">
+
+
+
+
+    <!-- STAT CARDS -->
+
+
+    <section class="stats-grid">
+
 
 
         <div class="stat-card">
 
 
-            <div class="stat-icon blue">
+            <div class="stat-icon">
 
                 <i class="fa-solid fa-folder-open"></i>
 
             </div>
 
 
-            <div class="stat-content">
+            <div>
 
 
-                <span>
+                <h3>
 
                     Total Cases
 
-                </span>
+                </h3>
 
 
-                <strong id="totalCases">
+                <strong id="analyticsCases">
 
                     0
 
@@ -118,27 +108,68 @@ Purpose: Main Operations Dashboard View
 
 
 
+
+
+
         <div class="stat-card">
 
 
-            <div class="stat-icon orange">
+            <div class="stat-icon">
+
+                <i class="fa-solid fa-user-shield"></i>
+
+            </div>
+
+
+            <div>
+
+
+                <h3>
+
+                    Investigators
+
+                </h3>
+
+
+                <strong id="totalInvestigators">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon">
 
                 <i class="fa-solid fa-triangle-exclamation"></i>
 
             </div>
 
 
-            <div class="stat-content">
+            <div>
 
 
-                <span>
+                <h3>
 
-                    Critical Cases
+                    Active Threats
 
-                </span>
+                </h3>
 
 
-                <strong id="criticalCases">
+                <strong>
 
                     0
 
@@ -149,6 +180,9 @@ Purpose: Main Operations Dashboard View
 
 
         </div>
+
+
+
 
 
 
@@ -156,24 +190,24 @@ Purpose: Main Operations Dashboard View
         <div class="stat-card">
 
 
-            <div class="stat-icon green">
+            <div class="stat-icon">
 
-                <i class="fa-solid fa-user-secret"></i>
+                <i class="fa-solid fa-database"></i>
 
             </div>
 
 
-            <div class="stat-content">
+            <div>
 
 
-                <span>
+                <h3>
 
-                    Active Investigators
+                    Evidence Records
 
-                </span>
+                </h3>
 
 
-                <strong id="activeInvestigators">
+                <strong id="totalEvidence">
 
                     0
 
@@ -187,55 +221,25 @@ Purpose: Main Operations Dashboard View
 
 
 
-
-        <div class="stat-card">
-
-
-            <div class="stat-icon red">
-
-                <i class="fa-solid fa-shield-halved"></i>
-
-            </div>
-
-
-            <div class="stat-content">
-
-
-                <span>
-
-                    Threat Alerts
-
-                </span>
-
-
-                <strong id="threatAlerts">
-
-                    0
-
-                </strong>
-
-
-            </div>
-
-
-        </div>
-
-
-    </div>
+    </section>
 
 
 
-    <!-- ======================================================
-        MAIN DASHBOARD GRID
-    ======================================================= -->
-
-    <div class="dashboard-grid">
 
 
 
-        <!-- RECENT CASES -->
 
-        <div class="panel large">
+
+    <!-- OPERATIONS GRID -->
+
+
+    <section class="dashboard-grid">
+
+
+
+
+
+        <div class="panel">
 
 
             <div class="panel-header">
@@ -248,10 +252,16 @@ Purpose: Main Operations Dashboard View
                 </h2>
 
 
-                <button class="panel-link"
-                        data-view="cases">
 
-                    View All
+                <button
+
+                class="table-button"
+
+                data-route="cases">
+
+
+                View All
+
 
                 </button>
 
@@ -260,51 +270,60 @@ Purpose: Main Operations Dashboard View
 
 
 
-            <div class="table-container">
+
+            <div class="panel-body">
 
 
-                <table class="dashboard-table">
+
+                <table>
 
 
                     <thead>
 
+
                         <tr>
 
+
                             <th>
+
                                 Reference
+
                             </th>
 
+
                             <th>
+
                                 Category
+
                             </th>
 
-                            <th>
-                                Priority
-                            </th>
 
                             <th>
+
                                 Status
+
                             </th>
 
-                            <th>
-                                Date
-                            </th>
 
                         </tr>
+
 
                     </thead>
 
 
-                    <tbody id="recentCasesTable">
+
+                    <tbody id="dashboardCases">
 
 
                         <tr>
 
-                            <td colspan="5">
+
+                            <td colspan="3">
 
                                 Loading cases...
 
                             </td>
+
 
                         </tr>
 
@@ -312,10 +331,13 @@ Purpose: Main Operations Dashboard View
                     </tbody>
 
 
+
                 </table>
 
 
+
             </div>
+
 
 
         </div>
@@ -324,7 +346,8 @@ Purpose: Main Operations Dashboard View
 
 
 
-        <!-- ACTIVITY FEED -->
+
+
 
         <div class="panel">
 
@@ -334,96 +357,7 @@ Purpose: Main Operations Dashboard View
 
                 <h2>
 
-                    Activity Feed
-
-                </h2>
-
-
-            </div>
-
-
-            <div class="activity-feed"
-                 id="activityFeed">
-
-
-                <div class="empty-state">
-
-
-                    <i class="fa-solid fa-clock"></i>
-
-
-                    <p>
-
-                        No recent activity
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- INTELLIGENCE ALERTS -->
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    Intelligence Alerts
-
-                </h2>
-
-
-            </div>
-
-
-            <div id="intelligenceAlerts">
-
-
-                <div class="empty-state">
-
-
-                    <i class="fa-solid fa-shield-halved"></i>
-
-
-                    <p>
-
-                        No active alerts
-
-                    </p>
-
-
-                </div>
-
-
-            </div>
-
-
-        </div>
-
-
-
-        <!-- SYSTEM HEALTH -->
-
-        <div class="panel">
-
-
-            <div class="panel-header">
-
-
-                <h2>
-
-                    System Health
+                    Threat Overview
 
                 </h2>
 
@@ -432,22 +366,24 @@ Purpose: Main Operations Dashboard View
 
 
 
-            <div class="health-list">
+
+            <div class="panel-body">
 
 
-                <div class="health-item">
+
+                <div class="threat-item">
 
 
                     <span>
 
-                        API Service
+                        Online Scam
 
                     </span>
 
 
-                    <strong class="online">
+                    <strong>
 
-                        Online
+                        Monitoring
 
                     </strong>
 
@@ -456,19 +392,21 @@ Purpose: Main Operations Dashboard View
 
 
 
-                <div class="health-item">
+
+
+                <div class="threat-item">
 
 
                     <span>
 
-                        Google Connection
+                        Identity Theft
 
                     </span>
 
 
-                    <strong class="online">
+                    <strong>
 
-                        Connected
+                        Monitoring
 
                     </strong>
 
@@ -477,34 +415,173 @@ Purpose: Main Operations Dashboard View
 
 
 
-                <div class="health-item">
+
+
+                <div class="threat-item">
 
 
                     <span>
 
-                        Database
+                        Financial Fraud
 
                     </span>
 
 
-                    <strong class="online">
+                    <strong>
 
-                        Ready
+                        Monitoring
 
                     </strong>
 
 
                 </div>
+
+
+
+
+                <div class="threat-item">
+
+
+                    <span>
+
+                        Cybercrime
+
+                    </span>
+
+
+                    <strong>
+
+                        Monitoring
+
+                    </strong>
+
+
+                </div>
+
 
 
             </div>
 
 
+
         </div>
 
 
-    </div>
 
 
 
-</section>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- QUICK ACTIONS -->
+
+
+    <section class="panel quick-actions">
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Quick Actions
+
+            </h2>
+
+
+        </div>
+
+
+
+
+
+        <div class="action-grid">
+
+
+
+            <button
+
+            data-route="cases">
+
+
+                <i class="fa-solid fa-folder"></i>
+
+
+                Case Management
+
+
+            </button>
+
+
+
+
+
+
+            <button
+
+            data-route="investigators">
+
+
+                <i class="fa-solid fa-users"></i>
+
+
+                Investigators
+
+
+            </button>
+
+
+
+
+
+
+            <button
+
+            data-route="intelligence">
+
+
+                <i class="fa-solid fa-brain"></i>
+
+
+                Intelligence
+
+
+            </button>
+
+
+
+
+
+
+            <button
+
+            data-route="evidence">
+
+
+                <i class="fa-solid fa-box"></i>
+
+
+                Evidence
+
+
+            </button>
+
+
+
+        </div>
+
+
+
+    </section>
+
+
+
+
+
+</div>
