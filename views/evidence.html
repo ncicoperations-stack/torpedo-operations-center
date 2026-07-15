@@ -1,0 +1,586 @@
+<!--
+==============================================================
+TORPEDO v2.0.0
+National Cyber Intelligence Center
+Operations Center
+
+File: evidence.html
+Purpose: Evidence Management Module
+==============================================================
+-->
+
+
+<section class="evidence-page"
+         id="evidencePage">
+
+
+
+    <!-- ======================================================
+        PAGE HEADER
+    ======================================================= -->
+
+
+    <div class="dashboard-header">
+
+
+        <div>
+
+
+            <h1>
+
+                Evidence Management
+
+            </h1>
+
+
+            <p>
+
+                Track digital evidence, custody records,
+                and investigation assets.
+
+            </p>
+
+
+        </div>
+
+
+
+        <div class="dashboard-actions">
+
+
+            <button class="action-button primary"
+                    id="uploadEvidenceButton">
+
+
+                <i class="fa-solid fa-upload"></i>
+
+
+                Add Evidence
+
+
+            </button>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        EVIDENCE SUMMARY
+    ======================================================= -->
+
+
+    <div class="stats-grid">
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon blue">
+
+
+                <i class="fa-solid fa-folder"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Total Evidence
+
+                </span>
+
+
+                <strong id="totalEvidence">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon green">
+
+
+                <i class="fa-solid fa-lock"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Secured Items
+
+                </span>
+
+
+                <strong id="securedEvidence">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon orange">
+
+
+                <i class="fa-solid fa-clock"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Pending Review
+
+                </span>
+
+
+                <strong id="pendingEvidence">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+
+
+        <div class="stat-card">
+
+
+            <div class="stat-icon red">
+
+
+                <i class="fa-solid fa-triangle-exclamation"></i>
+
+
+            </div>
+
+
+            <div class="stat-content">
+
+
+                <span>
+
+                    Restricted
+
+                </span>
+
+
+                <strong id="restrictedEvidence">
+
+                    0
+
+                </strong>
+
+
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        EVIDENCE FILTERS
+    ======================================================= -->
+
+
+    <div class="panel">
+
+
+        <div class="filter-container">
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Search Evidence
+
+                </label>
+
+
+                <div class="search-box">
+
+
+                    <i class="fa-solid fa-search"></i>
+
+
+                    <input type="text"
+                           id="evidenceSearch"
+                           placeholder="Evidence ID, case, type...">
+
+
+                </div>
+
+
+            </div>
+
+
+
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Evidence Type
+
+                </label>
+
+
+                <select id="evidenceTypeFilter">
+
+
+                    <option value="">
+
+                        All Types
+
+                    </option>
+
+
+                    <option value="Digital">
+
+                        Digital File
+
+                    </option>
+
+
+                    <option value="Document">
+
+                        Document
+
+                    </option>
+
+
+                    <option value="Device">
+
+                        Device
+
+                    </option>
+
+
+                    <option value="Communication">
+
+                        Communication Record
+
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+
+
+            <div class="filter-group">
+
+
+                <label>
+
+                    Status
+
+                </label>
+
+
+                <select id="evidenceStatusFilter">
+
+
+                    <option value="">
+
+                        All Status
+
+                    </option>
+
+
+                    <option value="Secured">
+
+                        Secured
+
+                    </option>
+
+
+                    <option value="Review">
+
+                        Review
+
+                    </option>
+
+
+                    <option value="Released">
+
+                        Released
+
+                    </option>
+
+
+                </select>
+
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        EVIDENCE TABLE
+    ======================================================= -->
+
+
+    <div class="panel"
+         style="margin-top:24px;">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Evidence Registry
+
+            </h2>
+
+
+
+            <span id="evidenceCount">
+
+                0 Items
+
+            </span>
+
+
+        </div>
+
+
+
+
+        <div class="table-container">
+
+
+            <table class="dashboard-table">
+
+
+                <thead>
+
+
+                    <tr>
+
+
+                        <th>
+
+                            Evidence ID
+
+                        </th>
+
+
+                        <th>
+
+                            Case Reference
+
+                        </th>
+
+
+                        <th>
+
+                            Type
+
+                        </th>
+
+
+                        <th>
+
+                            Submitted By
+
+                        </th>
+
+
+                        <th>
+
+                            Custodian
+
+                        </th>
+
+
+                        <th>
+
+                            Status
+
+                        </th>
+
+
+                        <th>
+
+                            Date
+
+                        </th>
+
+
+                        <th>
+
+                            Action
+
+                        </th>
+
+
+                    </tr>
+
+
+                </thead>
+
+
+
+                <tbody id="evidenceTableBody">
+
+
+                    <tr>
+
+
+                        <td colspan="8">
+
+
+                            Loading evidence...
+
+
+                        </td>
+
+
+                    </tr>
+
+
+                </tbody>
+
+
+
+            </table>
+
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <!-- ======================================================
+        CHAIN OF CUSTODY
+    ======================================================= -->
+
+
+    <div class="panel"
+         style="margin-top:24px;">
+
+
+
+        <div class="panel-header">
+
+
+            <h2>
+
+                Chain of Custody
+
+            </h2>
+
+
+        </div>
+
+
+
+        <div class="activity-feed"
+             id="custodyLog">
+
+
+            <div class="empty-state">
+
+
+                <i class="fa-solid fa-shield-halved"></i>
+
+
+                <p>
+
+                    No custody records available
+
+                </p>
+
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+
+</section>
